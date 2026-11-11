@@ -273,6 +273,22 @@ details p{padding-top:4px;color:var(--muted)}
 .cell.sy details p{color:var(--bg);opacity:.85}
 .cell.el .q{background:var(--soft)}
 @media (max-width:760px){.duo{grid-template-columns:1fr;column-gap:0}.duo::before{display:none}}
+/* blocchi di approfondimento */
+.detail{border:1px solid var(--line);border-top:6px solid var(--red);background:var(--surface);padding:clamp(18px,3vw,34px);display:grid;gap:22px;scroll-margin-top:24px}
+.dh{display:flex;gap:16px;align-items:center}
+.dn{width:48px;height:48px;background:var(--red);color:var(--on);font:800 1.9rem/48px var(--f-head);text-align:center;flex:none}
+.dh h3{font:800 clamp(1.7rem,3.4vw,2.4rem)/1 var(--f-head);text-transform:uppercase}
+.kv{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.kvc{background:var(--soft);padding:16px 18px;display:grid;gap:10px;align-content:start;min-width:0}
+.kvc h4{font:800 1.35rem/1 var(--f-head);text-transform:uppercase}
+.kvc ul{margin:0;padding-left:18px;display:grid;gap:8px;font:400 .95rem/1.5 var(--f-ui)}
+.kvc .tag{width:fit-content}
+.callout{border-left:6px solid var(--red);background:var(--tint);padding:14px 18px;font:500 1rem/1.55 var(--f-ui)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line)}
+.tbl{border-collapse:collapse;width:100%;min-width:680px;font:400 .93rem/1.5 var(--f-ui)}
+.tbl th{text-align:left;font:700 .74rem/1.2 var(--f-ui);letter-spacing:.1em;text-transform:uppercase;padding:10px 12px;background:var(--soft)}
+.tbl td{padding:12px;border-top:1px solid var(--line);vertical-align:top}
+.tbl .lt{min-height:32px;padding:5px 9px;justify-content:flex-start;width:fit-content}
 /* vincoli */
 .tiles{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .tile{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;gap:12px;align-items:flex-start}
@@ -363,7 +379,7 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
 </section>
 
 <section id="decisioni">
-  <div class="head"><span class="kick">Già deciso</span><h2>Cinque scelte fatte</h2>
+  <div class="head"><span class="kick">Già deciso</span><h2>Otto scelte fatte</h2>
     <p class="lead">Queste scelte fissano la cornice. Le sezioni che seguono partono da qui e mostrano le opzioni ancora aperte.</p></div>
   <div class="decs">
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Due primarie lo stesso giorno</b><span class="d">Una per il sindaco di Milano e una per il candidato di coalizione.</span></div>
@@ -371,6 +387,9 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Regole scritte dal comitato promotore dei partiti</b><span class="d">Il comitato nomina il coordinamento organizzativo e i garanti, sul modello di Roma 2016.</span></div>
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>2.500 firme per candidarsi a sindaco, 10.000 come candidato di coalizione</b><span class="d">È la soglia per candidarsi. Roma 2016 chiedeva tra 2.000 e 2.500, l'Unione 2005 almeno 10.000.</span></div>
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Niente ballottaggio</b><span class="d">I tempi non lo permettono. Si vota con le preferenze in ordine oppure con un solo nome.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Elenco chiuso di documenti ai seggi</b><span class="d">Ai seggi valgono solo i documenti elencati nel regolamento. Quali siano resta da fissare.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>SPID e CIE tramite un aggregatore</b><span class="d">Un aggregatore privato offre l'accesso a SPID e CIE, attivo entro il 7 dicembre.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Quota di 2 euro al tesoriere</b><span class="d">Il tesoriere del comitato incassa le quote e ne rende conto.</span></div>
   </div>
   <div class="panel">
     <h3><svg class="ic"><use href="#i-flag"/></svg>Chi governa il processo</h3>
@@ -503,24 +522,131 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
 </section>
 
 <section id="vincoli">
-  <div class="head"><span class="kick">Vincoli</span><h2>Sette punti da chiudere prima di partire</h2>
-    <p class="lead">Alcuni dipendono dalla legge e dai fornitori tecnici, altri da scelte politiche del comitato. Vanno risolti prima di aprire le iscrizioni.</p></div>
-  <div class="tiles">
-    <div class="tile"><svg class="ic"><use href="#i-idcard"/></svg><div><b>Carta cartacea valida fino al 31 gennaio, per la pubblica amministrazione</b><span class="tag doc">ufficiale</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-laptop"/></svg><div><b>SPID attivo entro il 7 dicembre tramite aggregatore</b><span class="tag inf">ipotesi</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-pin"/></svg><div><b>SPID e CIE non provano la residenza</b><span class="tag inf">ipotesi</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-shield"/></svg><div><b>Consenso esplicito, valutazione d'impatto e audit indipendente</b><span class="tag doc">ufficiale</span> <span class="tag inf">ipotesi</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-euro"/></svg><div><b>Quota di 2 euro: trasparenza da verificare</b><span class="tag inf">ipotesi</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-people"/></svg><div><b>Albo, SPID e seggi su larga scala, con molti elettori possibili</b><span class="tag inf">ipotesi</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-file"/></svg><div><b>Manca il PDF ufficiale di Milano 2016</b><span class="tag sec">stampa</span></div></div>
-  </div>
-  <h3>Ancora aperto, dopo le scelte fatte</h3>
-  <p class="cap">Sono domande che nascono dalle quattro decisioni. Le ho formulate io <span class="tag inf">ipotesi</span>.</p>
+  <div class="head"><span class="kick">Da chiudere</span><h2>Tre punti da approfondire</h2>
+    <p class="lead">Dei sette punti iniziali, tre sono ora scelte fatte e uno è stato eliminato. Restano tre nodi: come verificare la residenza, come proteggere i dati e come reggere il numero di elettori. Ognuno ha qui il quadro completo.</p></div>
+
+  <article class="detail" id="residenza">
+    <div class="dh"><span class="dn">1</span><h3>Come verificare la residenza</h3></div>
+    <p class="lead">Per la primaria di Milano votano i residenti nel comune. Serve un modo per sapere dove abita l'elettore, oltre a chi è. Ecco cosa può fare ciascuno strumento.</p>
+    <div class="tablewrap" role="region" aria-label="Strumenti e residenza" tabindex="0">
+      <table class="tbl">
+        <thead><tr><th>Strumento</th><th>Prova la residenza?</th><th>Cosa sappiamo</th><th>Fonte</th></tr></thead>
+        <tbody>
+          <tr><td><b>CIE usata online</b> (CieID)</td><td><span class="lt mid"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg>Probabilmente sì</span></td><td>Il decreto dell'8 settembre 2022 elenca tra gli attributi della CIE la residenza anagrafica, che viene da ANPR. Va controllato nel manuale tecnico CIE e con l'aggregatore se la restituisce ai servizi.</td><td><span class="tag sec">stampa</span></td></tr>
+          <tr><td><b>CIE fisica</b>, mostrata al seggio</td><td><span class="lt mid"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg>In parte</span></td><td>La carta non va rinnovata a ogni cambio di residenza, quindi un eventuale indirizzo riportato può essere superato.</td><td><span class="tag sec">stampa</span></td></tr>
+          <tr><td><b>SPID</b></td><td><span class="lt bad"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>No</span></td><td>Il domicilio fisico è un attributo secondario, previsto per le comunicazioni, e non risulta certificato. Da verificare nelle regole AgID.</td><td><span class="tag sec">stampa</span></td></tr>
+          <tr><td><b>Tessera sanitaria</b></td><td><span class="lt bad"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>No</span></td><td>La tessera non riporta l'indirizzo. La residenza risulta dall'anagrafe, non dalla carta. La fonte è debole: un forum e guide locali.</td><td><span class="tag sec">stampa</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kv">
+      <div class="kvc"><h4>Cosa prevediamo</h4><ul>
+        <li>Online: l'elettore dichiara la residenza, e il comitato la confronta con l'attributo della CIE quando l'aggregatore lo restituisce.</li>
+        <li>Con SPID la dichiarazione resta tale, con controlli a campione.</li>
+        <li>Al seggio: un documento dell'elenco chiuso e una dichiarazione firmata di residenza.</li>
+      </ul><span class="tag inf">ipotesi</span></div>
+      <div class="kvc"><h4>Da fare</h4><ul>
+        <li>Chiedere all'aggregatore quali attributi restituisce per CIE e per SPID.</li>
+        <li>Leggere il manuale tecnico CIE e le regole AgID sul domicilio fisico.</li>
+        <li>Decidere cosa fare con chi non può provare la residenza online.</li>
+      </ul></div>
+    </div>
+  </article>
+
+  <article class="detail" id="privacy">
+    <div class="dh"><span class="dn">2</span><h3>Dati personali e sicurezza del voto</h3></div>
+    <p class="lead">L'albo degli elettori dice da che parte politica sta una persona. Per la legge è un dato particolare, protetto in modo rafforzato. Il voto deve restare segreto e il sistema deve poterlo dimostrare.</p>
+    <div class="kv">
+      <div class="kvc"><h4>Quali dati si trattano</h4><ul>
+        <li>L'identità, da SPID o CIE.</li>
+        <li>L'appartenenza all'albo, che rivela un'opinione politica.</li>
+        <li>Il voto, che deve restare segreto e separato dall'identità.</li>
+        <li>Lo stato "ha già votato", per evitare il doppio voto.</li>
+      </ul></div>
+      <div class="kvc"><h4>Cosa chiede la regola</h4><ul>
+        <li>L'opinione politica è un dato particolare (GDPR art. 9). <span class="tag doc">ufficiale</span></li>
+        <li>L'art. 9.2.d copre solo iscritti, ex iscritti e persone in contatto regolare. Per un albo aperto agli indipendenti serve probabilmente il consenso esplicito. <span class="tag inf">ipotesi</span></li>
+        <li>Il Garante nel 2014 ha stabilito che la comunicazione dei dati a terzi richiede il consenso scritto. <span class="tag doc">ufficiale</span></li>
+        <li>Il trattamento su larga scala di dati particolari richiede una valutazione d'impatto (art. 35) e un registro (art. 30). Il fornitore va nominato responsabile (art. 28). <span class="tag doc">ufficiale</span></li>
+        <li>L'albo non va pubblicato online: lo disse il Garante nel 2012 per le primarie del centrosinistra. <span class="tag sec">stampa</span></li>
+      </ul></div>
+      <div class="kvc"><h4>Cosa è già andato storto</h4><ul>
+        <li>Rousseau 2019: sanzione di 50.000 euro. <span class="tag doc">ufficiale</span></li>
+        <li>Nella tabella dei voti comparivano cellulare, ID utente ed espressione di voto.</li>
+        <li>I risultati erano visibili tra l'apertura delle urne e la certificazione.</li>
+        <li>Mancava un audit sul database e le utenze di amministrazione erano condivise.</li>
+        <li>Il Garante scrisse che la piattaforma non aveva le proprietà richieste a un sistema di voto elettronico e prescrisse audit, credenziali esclusive e valutazione d'impatto.</li>
+      </ul></div>
+      <div class="kvc"><h4>Cosa prevediamo</h4><ul>
+        <li>Informativa unica e consenso esplicito, separati dalla firma della Carta dei valori.</li>
+        <li>Valutazione d'impatto e registro dei trattamenti completati prima del 7 dicembre.</li>
+        <li>Fornitore della piattaforma nominato responsabile per iscritto.</li>
+        <li>Identità e voto separati: il registro unico contiene solo "ha votato", mai il voto.</li>
+        <li>Voto online cifrato, con ricevuta senza il contenuto e traccia verificabile, come nella regola DNC 2.G.</li>
+        <li>Credenziali nominative per chi amministra, e risultati invisibili fino alla chiusura.</li>
+        <li>Audit di sicurezza indipendente concluso entro il 15 gennaio.</li>
+        <li>Albo non pubblico, e cancellazione dei dati a tempi fissati prima, dopo i ricorsi.</li>
+      </ul><span class="tag inf">ipotesi</span></div>
+    </div>
+    <div class="callout">Nello scenario B gli iscritti ai partiti entrano nell'albo senza fare nulla. Per questo i partiti devono dare informativa e raccogliere il consenso prima di consegnare gli elenchi al comitato, entro il conteggio del 31 dicembre. È la conseguenza più concreta della regola del 2014 sulle scelte già fatte. <span class="tag inf">ipotesi</span></div>
+    <div class="miles" style="--sc:var(--red)">
+      <div class="mile"><b>30 nov</b><span>Regolamento e informativa approvati</span></div>
+      <div class="mile"><b>7 dic</b><span>Valutazione d'impatto, contratti e responsabile del trattamento</span></div>
+      <div class="mile"><b>31 dic</b><span>Consensi raccolti dai partiti per gli elenchi</span></div>
+      <div class="mile"><b>15 gen</b><span>Audit di sicurezza indipendente concluso</span></div>
+      <div class="mile"><b>Dopo i ricorsi</b><span>Cancellazione dei dati nei tempi fissati</span></div>
+    </div>
+    <p class="cap">Non è un parere legale. Le date sono proposte mie e vanno validate con un legale e con un responsabile della protezione dei dati.</p>
+  </article>
+
+  <article class="detail" id="scala">
+    <div class="dh"><span class="dn">3</span><h3>Reggere il numero di elettori</h3></div>
+    <p class="lead">Nelle primarie del passato la partecipazione è andata da poche decine di migliaia di voti in una città a milioni di voti in tutta Italia. Albo, verifica, SPID, piattaforma e seggi vanno dimensionati prima di sapere quanti saranno.</p>
+    <div class="bench" style="border:0;padding:0">
+      <div class="b-row"><div>Unione 2005</div><div class="b-line"><div class="b-bar mine" style="width:100%;--sc:var(--red)"></div><span class="b-val">4.290.388</span></div></div>
+      <div class="b-row"><div>Italia Bene Comune 2012</div><div class="b-line"><div class="b-bar mine" style="width:72.4%;--sc:var(--red)"></div><span class="b-val">3.107.568</span></div></div>
+      <div class="b-row"><div>Milano 2016</div><div class="b-line"><div class="b-bar mine" style="width:1.4%;--sc:var(--a)"></div><span class="b-val">60.900</span></div></div>
+    </div>
+    <p class="cap">Votanti dei tre precedenti <span class="tag sec">stampa</span>. Rispetto a Milano 2016 sono circa 51 volte (2012) e 70 volte (2005), rapporti calcolati.</p>
+    <div class="kv">
+      <div class="kvc"><h4>Verifica degli elettori</h4><ul>
+        <li>Liberali canadesi 2025: circa 400.000 registrati, 137.000 verificati, 115.000 votanti. Si perde quasi il 66% alla verifica (calcolato). <span class="tag sec">stampa</span></li>
+        <li>Primaire populaire 2022: 120.000 verificati su 300.000 iscritti a pochi giorni dal voto. <span class="tag sec">stampa</span></li>
+        <li>Nello scenario B gli iscritti ai partiti sono già censiti, quindi la verifica di massa pesa soprattutto sugli indipendenti. <span class="tag inf">ipotesi</span></li>
+      </ul></div>
+      <div class="kvc"><h4>SPID e CIE</h4><ul>
+        <li>Nel 2019 le tariffe per i privati erano a zero per l'autenticazione fino a 1.000 utenti unici per gestore, poi 0,4 euro per autenticazione. Probabilmente superate, da chiedere all'aggregatore. <span class="tag sec">stampa</span></li>
+        <li>Il costo cresce con il numero di accessi: servono preventivi per più ipotesi di partecipazione. <span class="tag inf">ipotesi</span></li>
+      </ul></div>
+      <div class="kvc"><h4>Seggi</h4><ul>
+        <li>Milano 2016: 150 seggi per 60.900 votanti, cioè 406 voti per seggio (calcolato). <span class="tag sec">stampa</span></li>
+        <li>Con lo stesso rapporto, 3.107.568 voti richiederebbero circa 7.654 seggi. È un'estrapolazione mia. <span class="tag inf">ipotesi</span></li>
+        <li>La primaria francese del 2017 ebbe 7.530 seggi e servirono tra 35.000 e 40.000 volontari. <span class="tag sec">stampa</span></li>
+        <li>L'Unione 2005 fissava almeno un seggio per provincia più uno ogni 10.000 voti validi del 2001 (art. 7.3). <span class="tag doc">ufficiale</span></li>
+      </ul></div>
+      <div class="kvc"><h4>Piattaforma e assistenza</h4><ul>
+        <li>Il voto online dura circa nove giorni, con picchi vicino alla chiusura. <span class="tag inf">ipotesi</span></li>
+        <li>Labour 2015: il sito andò in crash alla chiusura delle iscrizioni e la scadenza slittò di tre ore. <span class="tag sec">stampa</span></li>
+        <li>Liberali canadesi 2025: l'app di verifica ebbe problemi. <span class="tag sec">stampa</span></li>
+      </ul></div>
+    </div>
+    <div class="callout">Cosa prevediamo: tre ipotesi di partecipazione, bassa, media e alta, su cui dimensionare tutto. Test di carico della piattaforma prima del 22 gennaio, assistenza telefonica, seggi come ripiego e preventivi SPID per ciascuna ipotesi. <span class="tag inf">ipotesi</span></div>
+    <div class="kvc"><h4>Da decidere</h4><ul>
+      <li>Quale partecipazione usare come riferimento per dimensionare.</li>
+      <li>Il budget per piattaforma, assistenza e seggi.</li>
+      <li>Chi gestisce i seggi nelle diverse città.</li>
+    </ul></div>
+  </article>
+
+  <h3>Ancora aperto</h3>
+  <p class="cap">Domande che nascono dalle scelte fatte. Le ho formulate io <span class="tag inf">ipotesi</span>.</p>
   <div class="qs">
     <div class="qc"><span class="qn">1</span>Quanti seggi servono e chi li gestisce nelle diverse città?</div>
     <div class="qc"><span class="qn">2</span>Quale forma di voto: preferenze in ordine oppure un solo nome?</div>
-    <div class="qc"><span class="qn">3</span>Quota di 2 euro oppure voto gratuito?</div>
-    <div class="qc"><span class="qn">4</span>A che ora aprono e chiudono i seggi sabato 30 e domenica 31 gennaio?</div>  </div>
+    <div class="qc"><span class="qn">3</span>A che ora aprono e chiudono i seggi sabato 30 e domenica 31 gennaio?</div>
+    <div class="qc"><span class="qn">4</span>Quali documenti entrano nell'elenco chiuso ammesso ai seggi?</div>
+    <div class="qc"><span class="qn">5</span>Come si verifica la residenza online, e con quali attributi?</div>
+  </div>
 </section>
 
 <section id="fonti">
@@ -544,6 +670,12 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
       <li><a href="https://garanteprivacy.it/garante/doc.jsp?ID=9101974" target="_blank" rel="noopener">Garante Privacy, Rousseau 2019</a> (testo ufficiale)</li>
       <li><a href="https://www.politis.fr/articles/2022/01/primaire-populaire-une-consultation-en-forme-depreuve-de-force-44024/" target="_blank" rel="noopener">Politis, Primaire populaire</a> (stampa)</li>
       <li><a href="https://amp.cbc.ca/lite/story/1.7475577" target="_blank" rel="noopener">CBC, liberali canadesi 2025</a> (stampa)</li>
+      <li><a href="https://www.studiocerbone.com/?p=467780" target="_blank" rel="noopener">Decreto ministeriale 8 settembre 2022, sintesi</a> (stampa)</li>
+      <li><a href="https://www.agid.gov.it/sites/default/files/repository_files/regole_tecniche/tabella_attributi_idp.pdf" target="_blank" rel="noopener">AgID, tabella attributi SPID</a> (testo ufficiale)</li>
+      <li><a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/3013267" target="_blank" rel="noopener">Garante Privacy, provvedimento 107/2014</a> (testo ufficiale)</li>
+      <li><a href="https://www.publicsenat.fr/actualites/politique/primaire-de-gauche-7530-bureaux-de-vote-pour-15-a-2-millions-d-electeurs-52517" target="_blank" rel="noopener">Public Sénat, primaria francese 2017</a> (stampa)</li>
+      <li><a href="https://www.agendadigitale.eu/cittadinanza-digitale/spid-tariffe-migliori-per-i-fornitori-di-servizi-privati-ecco-come-saranno-calcolate/" target="_blank" rel="noopener">Agenda Digitale, tariffe SPID per privati</a> (stampa)</li>
+      <li><a href="https://prefettura.interno.gov.it/it/prefetture/bolzano/notizie/disposizioni-urgenti-garantire-lefficacia-documento-identita" target="_blank" rel="noopener">Prefettura di Bolzano, D.L. 108/2026</a> (stampa)</li>
     </ul>
   </details>
   <footer>Bozza di lavoro dell'11 novembre 2026. I giorni tra le date sono calcolati con script Python. I punti marcati come ipotesi vanno validati con un legale e con i fornitori prima di una proposta formale.</footer>
@@ -695,7 +827,7 @@ function phases(){
   el:A?(ins?'Legge regole e date, e controlla di essere iscritto al 31 dicembre.':'Legge regole e date, e scopre di essere fuori dall\'elettorato.'):(ins?'Legge regole e date, e scopre di essere già nell\'albo come iscritto.':'Legge regole e date, controlla i requisiti e si prepara a iscriversi.'),
   who:'Comitato promotore e partiti',
   sys:'Pubblica regolamento, Carta dei valori e calendario entro il 30 novembre. '+(A?'I partiti certificano l\'elenco degli iscritti al 31 dicembre.':'I partiti consegnano l\'elenco degli iscritti e il comitato apre l\'albo agli indipendenti.'),
-  rEl:'',rSy:'SPID e CIE non provano la residenza, serve un controllo a parte.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
+  rEl:'',rSy:'SPID non prova la residenza. La CIE potrebbe restituirla da ANPR, da verificare.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
   more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale). SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano, 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
  if(out){
   const off=(i,t,q,who)=>({i,t,q,who,off:true,el:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione per questo elettore.',rEl:'Chi è escluso può contestare.',rSy:'',prec:'Lo scenario B evita il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello, testo ufficiale).'});
