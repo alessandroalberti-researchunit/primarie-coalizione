@@ -131,8 +131,20 @@ section{padding-block:72px 0;display:grid;gap:24px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{display:inline-flex;align-items:center;gap:6px;font:500 .84rem/1 var(--f-ui);background:var(--soft);padding:7px 10px}
 .chip b{font-weight:700}
-.sc button.pick{font:600 .92rem/1 var(--f-ui);background:var(--sc);color:var(--on);border:0;padding:13px;cursor:pointer;min-height:46px}
-.sc.on button.pick{background:var(--soft);color:var(--ink)}
+.sc[data-pick],.w[data-pick]{cursor:pointer;transition:border-color .15s}
+.sc[data-pick]:hover,.w[data-pick]:hover{border-color:var(--sc)}
+.sc[data-pick]:focus-visible,.w[data-pick]:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.pickl{font:600 .92rem/1 var(--f-ui);background:var(--sc);color:var(--on);padding:14px;text-align:center;min-height:46px;display:flex;align-items:center;justify-content:center}
+.sc.on .pickl{background:var(--soft);color:var(--ink)}
+.vflow{display:grid;gap:4px}
+.vn{display:flex;align-items:center;gap:12px;background:var(--soft);padding:11px 14px;font:500 .94rem/1.25 var(--f-ui)}
+.vn .ic{width:1.5em;height:1.5em}
+.vn.k{background:var(--ink);color:var(--bg)}
+.vd{display:flex;justify-content:center;color:var(--muted);line-height:0}
+.vd .ic{transform:rotate(90deg);width:1.3em;height:1.3em}
+.vpair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vcol{display:grid;gap:4px;align-content:start}
+.vpair .vn{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 10px}
 .lights-wrap{overflow-x:auto;padding:8px}
 .lights{width:100%;border-collapse:separate;border-spacing:6px;table-layout:fixed;min-width:560px}
 .lights th{font:700 .85rem/1.2 var(--f-ui);text-transform:uppercase;letter-spacing:.06em;text-align:center;padding:4px}
@@ -350,7 +362,8 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
 <section id="scenari">
   <div class="head"><span class="kick">Proposte</span><h2>Tre modi di decidere chi vota</h2>
     <p class="lead">La domanda centrale è chi può votare e come si entra nell'elettorato. Le tre risposte cambiano i tempi, i controlli da fare e quanto è aperta la primaria.</p>
-    <p class="lead">In tutti e tre il voto è ibrido: online dal 22 gennaio con SPID o CIE, seggi sabato 30 e domenica 31, un solo registro dei votanti per evitare il doppio voto.</p></div>
+    <p class="lead">In tutti e tre il voto è ibrido: online dal 22 gennaio con SPID o CIE, seggi sabato 30 e domenica 31, un solo registro dei votanti per evitare il doppio voto.</p>
+    <p class="cap">Clicca su una scheda per sceglierla: calendario e percorso dell'elettore mostrano quello scenario. Puoi passare da uno scenario all'altro cliccando un'altra scheda.</p></div>
   <div class="scs" id="scCards"></div>
   <div class="lights-wrap" role="region" aria-label="Confronto degli scenari" tabindex="0">
     <table class="lights">
@@ -578,24 +591,22 @@ window.addEventListener('resize',updSlider);updSlider();
 
 /* scenari */
 function flowHTML(k){
- const node=(i,t,kk)=>`<div class="node ${kk?'k':''}">${ic(i)}${t}</div>`,ar=`<span class="arr">${ic('arrow')}</span>`;
+ const node=(i,t,kk)=>`<div class="vn ${kk?'k':''}">${ic(i)}<span>${t}</span></div>`,dn=`<span class="vd">${ic('arrow')}</span>`;
  if(k==='C'){
-  const lane=(a,b)=>`<div class="flow">${node(a[0],a[1])}${ar}${node(b[0],b[1])}${ar}${node('clip','Registro unico')}</div>`;
-  return `<div class="stack">${lane(['building','Iscritti'],['clip','Liste partiti'])}${lane(['people','Non iscritti'],['clip','Albo comitato'])}<div class="flow">${node('idcard','Verifica ID')}${ar}${node('ballot','Voto',true)}</div></div>`;
+  return `<div class="vflow"><div class="vpair"><div class="vcol">${node('building','Iscritti ai partiti')}${dn}${node('clip','Liste dei partiti')}</div><div class="vcol">${node('people','Non iscritti')}${dn}${node('clip','Albo del comitato')}</div></div>${dn}${node('clip','Registro unico dei votanti')}${dn}${node('idcard','Verifica ID')}${dn}${node('ballot','Voto',true)}</div>`;
  }
- const mid=k==='A'?['clip','Liste dei partiti']:['clip','Albo del comitato'];
- const first=k==='A'?['building','Iscritti']:['people','Chiunque'];
- return `<div class="flow">${node(first[0],first[1])}${ar}${node(mid[0],mid[1])}${ar}${node('idcard',k==='A'?'Conferma ID':'Verifica ID')}${ar}${node('ballot','Voto',true)}</div>`;
+ const mid=k==='A'?'Liste dei partiti':'Albo del comitato',first=k==='A'?['building','Iscritti ai partiti']:['people','Chiunque'];
+ return `<div class="vflow">${node(first[0],first[1])}${dn}${node('clip',mid)}${dn}${node('idcard',k==='A'?'Conferma ID':'Verifica ID')}${dn}${node('ballot','Voto',true)}</div>`;
 }
 function renderCards(){
  document.getElementById('scCards').innerHTML=Object.entries(SC).map(([k,s])=>`
- <article class="sc ${state.sc===k?'on':''}" style="--sc:${s.css}">
+ <article class="sc ${state.sc===k?'on':''}" style="--sc:${s.css}" data-pick="${k}" role="button" tabindex="0" aria-pressed="${state.sc===k}" aria-label="Scenario ${k}: ${s.title}">
   <div class="ttl"><span class="letter">${k}</span><h3>${s.title}</h3></div>
   <p class="d">${s.desc}</p>
   <div class="chips">${s.who.map(w=>`<span class="chip">${ic(w[0])}${w[1]}</span>`).join('')}</div>
   ${flowHTML(k)}
   <div class="chips">${s.dates.map(d=>`<span class="chip"><b>${d[0]}</b>${d[1]}</span>`).join('')}</div>
-  <button type="button" class="pick" data-pick="${k}">${state.sc===k?'Scenario attivo':'Mostra nel calendario e nel percorso'}</button>
+  <div class="pickl">${state.sc===k?'Scenario attivo':'Clicca per vedere calendario e percorso'}</div>
  </article>`).join('');
 }
 const LIGHTS=[
@@ -626,7 +637,7 @@ const WHAT={
 const WICON=['people','building','usercheck','idcard'];
 function renderWhat(){
  document.getElementById('what').innerHTML=Object.entries(WHAT).map(([k,rows])=>`
- <article class="w ${state.sc===k?'on':''}" style="--sc:${SC[k].css}">
+ <article class="w ${state.sc===k?'on':''}" style="--sc:${SC[k].css}" data-pick="${k}" role="button" tabindex="0" aria-pressed="${state.sc===k}" aria-label="Scenario ${k}: ${SC[k].title}">
   <h3><span>Scenario ${k}, ${SC[k].title.toLowerCase()}</span>${state.sc===k?'<span class="on-b">Attivo</span>':''}</h3>
   <dl>${rows.map((r,i)=>`<div><dt>${ic(WICON[i])}${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl></article>`).join('');
 }
@@ -738,7 +749,13 @@ function refresh(){
  document.querySelectorAll('.sc-name').forEach(e=>e.textContent=SC[state.sc].name);
  renderCards();renderWhat();renderCal();renderBench();renderJourney();
 }
-function pickScenario(k){state.sc=k;refresh();toast(`Scenario ${SC[k].name}: aggiornati calendario, percorso e confronto`);}
+function pickScenario(k){
+ const a=document.activeElement,par=a&&a.closest?a.closest('#scCards,#what'):null;
+ state.sc=k;refresh();
+ if(par){const el=document.getElementById(par.id).querySelector(`[data-pick="${k}"]`);if(el)el.focus();}
+ toast(`Scenario ${SC[k].name}: aggiornati calendario, percorso e confronto`);
+}
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-pick]')){e.preventDefault();pickScenario(e.target.dataset.pick);}});
 document.addEventListener('click',e=>{
  const s=e.target.closest('[data-scseg] button');if(s){pickScenario(s.dataset.k);return;}
  const c=e.target.closest('[data-pick]');if(c){pickScenario(c.dataset.pick);}
