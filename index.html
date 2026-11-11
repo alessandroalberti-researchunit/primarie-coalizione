@@ -215,6 +215,24 @@ details p{padding-top:4px;color:var(--muted)}
 .fb.d{background:var(--red);color:#fff} .fb.e{background:var(--b);color:#fff}
 .fr{display:grid;gap:3px;margin-top:8px}
 
+/* slider casi */
+.slider{display:grid;gap:14px}
+.slider-bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.slcount{font:700 1rem/1 var(--f-ui);letter-spacing:.08em;text-transform:uppercase}
+.slbtns{display:flex;gap:8px}
+.slbtns button{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);border:0;cursor:pointer}
+.slbtns button:disabled{opacity:.3;cursor:default}
+.track{position:relative;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 20px;scrollbar-width:thin;scrollbar-color:var(--red) var(--soft)}
+.track:focus-visible{outline:3px solid var(--red);outline-offset:4px}
+.lc{flex:0 0 min(88vw,580px);scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-top:8px solid var(--red);padding:clamp(20px,3vw,34px);display:grid;gap:16px;align-content:start}
+.lc .t{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.lc .t .n{display:flex;gap:12px;align-items:center;font:700 1.15rem/1.25 var(--f-ui)}
+.lc .t .n .ic{width:1.8em;height:1.8em;color:var(--blue)}
+.lc .no{font:800 1rem/1 var(--f-head);color:var(--muted);letter-spacing:.1em}
+.lc .big{font:800 clamp(4.5rem,13vw,7.5rem)/.9 var(--f-head);color:var(--red);text-transform:uppercase}
+.lc .u{font:500 1.15rem/1.35 var(--f-ui);color:var(--ink)}
+.lc .m{font:400 1.25rem/1.5 var(--f-body);padding-top:16px;border-top:1px solid var(--line)}
+.lc .lab{display:block;font:700 .75rem/1 var(--f-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--red-d);margin-bottom:8px}
 /* vincoli */
 .tiles{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .tile{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;gap:12px;align-items:flex-start}
@@ -328,13 +346,6 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
     </div>
     <p class="cap">Le cariche di comitato, coordinamento e garanti sono incompatibili tra loro e con la candidatura. Lo schema segue il regolamento di Roma 2016 <span class="tag doc">ufficiale</span></p>
   </div></section>
-
-<section id="casi">
-  <div class="head"><span class="kick">Casi d'uso</span><h2>12 precedenti, un numero ciascuno</h2>
-    <p class="lead">Abbiamo letto regolamenti e cronache di dodici esperienze tra Regno Unito, Canada, Stati Uniti, Germania, Spagna, Portogallo, Australia, Francia e Italia. Ogni scheda mette in evidenza il dato che conta e dice cosa insegna a Milano.</p>
-    <p class="cap">L'etichetta in alto a destra dice da dove viene il dato: testo ufficiale letto, stampa o commento, oppure una mia ipotesi.</p></div>
-  <div class="cases" id="cases"></div>
-</section>
 
 <section id="scenari">
   <div class="head"><span class="kick">Proposte</span><h2>Tre modi di decidere chi vota</h2>
@@ -461,6 +472,25 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
     <div class="qc"><span class="qn">2</span>Quale forma di voto per ciascuna scheda: preferenze in ordine, ballottaggio o un solo nome?</div>
     <div class="qc"><span class="qn">3</span>Quota di 2 euro oppure voto gratuito?</div>
     <div class="qc"><span class="qn">4</span>A che ora aprono e chiudono i seggi sabato 30 e domenica 31 gennaio?</div>  </div>
+</section>
+
+<section id="casi">
+  <div class="head"><span class="kick">Precedenti dal mondo</span><h2>Casi d'uso: 12 lezioni da imparare</h2>
+    <p class="lead">Abbiamo letto regolamenti e cronache di dodici esperienze tra Regno Unito, Canada, Stati Uniti, Germania, Spagna, Portogallo, Australia, Francia e Italia. Ogni scheda mette in grande il dato che conta e ne ricava una lezione.</p>
+    <p class="cap">Scorri le schede con le frecce o con il dito. L'etichetta in alto a destra dice da dove viene il dato: testo ufficiale letto, stampa o commento, oppure una mia ipotesi.</p></div>
+  <div class="slider" role="region" aria-roledescription="carosello" aria-label="Dodici casi, una lezione ciascuno">
+    <div class="slider-bar">
+      <span class="slcount" id="slCount" aria-live="polite">1 di 12</span>
+      <div class="slbtns">
+        <button type="button" id="slPrev" aria-label="Caso precedente"><svg class="ic" style="transform:rotate(180deg)" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button type="button" id="slNext" aria-label="Caso successivo"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <div class="track" id="cases" tabindex="0" aria-label="Schede dei casi"></div>
+  </div>
+</section>
+
+<section id="fonti">
   <details>
     <summary>Fonti consultate</summary>
     <ul class="src">
@@ -535,7 +565,16 @@ const CASES=[
  ['Primaire populaire 2022','laptop','40%','verificati a pochi giorni dal voto','Una verifica pesante fa perdere elettori.','sec'],
  ['ALP Australia, cl. 42','usercheck','1 firma','per votare senza essere iscritti','Dichiarazione di sostegno e di non appartenenza ad altri partiti.','doc']
 ];
-document.getElementById('cases').innerHTML=CASES.map(c=>`<article class="case"><div class="t"><span class="n">${ic(c[1])}${c[0]}</span>${tg(c[5])}</div><div class="big">${c[2]}</div><div class="u">${c[3]}</div><div class="m">${c[4]}</div></article>`).join('');
+const trk=document.getElementById('cases');
+trk.innerHTML=CASES.map((c,i)=>`<article class="lc" aria-label="Caso ${i+1} di ${CASES.length}: ${c[0]}"><div class="t"><span class="n">${ic(c[1])}${c[0]}</span>${tg(c[5])}</div><div class="big">${c[2]}</div><div class="u">${c[3]}</div><div class="m"><span class="lab">La lezione</span>${c[4]}</div><div class="no">${String(i+1).padStart(2,'0')} / ${CASES.length}</div></article>`).join('');
+const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function curIdx(){const x=trk.scrollLeft;let b=0,bd=1e9;[...trk.children].forEach((c,i)=>{const d=Math.abs(c.offsetLeft-x);if(d<bd){bd=d;b=i;}});return b;}
+function goCase(i){i=Math.max(0,Math.min(trk.children.length-1,i));trk.scrollTo({left:trk.children[i].offsetLeft,behavior:reduceMotion?'auto':'smooth'});}
+function updSlider(){const i=curIdx();document.getElementById('slCount').textContent=`${i+1} di ${CASES.length}`;document.getElementById('slPrev').disabled=i===0;const atEnd=trk.scrollLeft+trk.clientWidth>=trk.scrollWidth-4;document.getElementById('slNext').disabled=atEnd;}
+let slRaf;trk.addEventListener('scroll',()=>{cancelAnimationFrame(slRaf);slRaf=requestAnimationFrame(updSlider);});
+document.getElementById('slPrev').addEventListener('click',()=>goCase(curIdx()-1));
+document.getElementById('slNext').addEventListener('click',()=>goCase(curIdx()+1));
+window.addEventListener('resize',updSlider);updSlider();
 
 /* scenari */
 function flowHTML(k){
