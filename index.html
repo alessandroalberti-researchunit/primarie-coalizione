@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Le primarie del centrosinistra: due scenari su chi vota e come si entra, calendario, percorso dell'elettore e casi di studio. Bozza di lavoro.">
+<meta name="description" content="Le primarie del centrosinistra: due scenari su chi vota e come si entra, calendario, percorso dell'elettore e del sistema, casi di studio. Bozza di lavoro.">
 <style>html{padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 <title>Le primarie del centrosinistra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -196,12 +196,12 @@ section{padding-block:72px 0;display:grid;gap:24px}
 /* journey */
 .jtools{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:flex-end}
 .jtools .lbl{display:block;font:700 .75rem/1 var(--f-ui);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
-.strip{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;padding:16px 10px}
+.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:16px 10px}
 .st{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;text-decoration:none;color:var(--ink);font:600 .78rem/1.15 var(--f-ui);min-width:0}
 .st .c{width:48px;height:48px;border-radius:50%;border:2px solid var(--sc);color:var(--sc);display:flex;align-items:center;justify-content:center;position:relative;background:var(--surface)}
 .st .nn{position:absolute;top:-8px;right:-8px;width:21px;height:21px;border-radius:50%;background:var(--sc);color:var(--on);font:700 .72rem/21px var(--f-ui);text-align:center}
 .st.off{opacity:.4}
-@media (max-width:760px){.strip{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:16px}}
+@media (max-width:760px){.strip{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px}}
 .journey{display:grid;gap:18px}
 .step{border-left:6px solid var(--sc);padding:18px;display:grid;gap:12px;min-width:0;scroll-margin-top:24px}
 .step.off{opacity:.55;border-left-color:var(--line)}
@@ -245,6 +245,27 @@ details p{padding-top:4px;color:var(--muted)}
 .lc .u{font:500 1.15rem/1.35 var(--f-ui);color:var(--ink)}
 .lc .m{font:400 1.25rem/1.5 var(--f-body);padding-top:16px;border-top:1px solid var(--line)}
 .lc .lab{display:block;font:700 .75rem/1 var(--f-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--red-d);margin-bottom:8px}
+/* journey a due corsie */
+.lane-heads{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lh{display:flex;gap:14px;align-items:center;padding:16px 18px}
+.lh .ic{width:2.2em;height:2.2em}
+.lh.el{background:var(--ink);color:var(--bg)}
+.lh.sy{background:var(--blue);color:var(--on)}
+.lh b{display:block;font:800 1.7rem/1 var(--f-head);text-transform:uppercase}
+.lh span{font:400 .9rem/1.25 var(--f-ui)}
+.phase{border:1px solid var(--line);border-left:6px solid var(--sc);background:var(--surface);padding:18px;display:grid;gap:14px;scroll-margin-top:24px}
+.phase.off{opacity:.55;border-left-color:var(--line)}
+.ph-top{display:flex;gap:14px;align-items:center}
+.ph-top .n{font:600 .72rem/1 var(--f-ui);color:var(--muted);letter-spacing:.12em}
+.ph-top h3{font-size:1.9rem}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lane{padding:14px 16px;display:grid;gap:10px;align-content:start}
+.lane.el{background:var(--soft);border-top:4px solid var(--ink)}
+.lane.sy{background:var(--tint);border-top:4px solid var(--blue)}
+.lane-tag{font:700 .75rem/1 var(--f-ui);letter-spacing:.12em;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+.who-chip{font:600 .85rem/1.25 var(--f-ui);background:var(--surface);padding:6px 10px;width:fit-content;max-width:100%}
+.lane p{font-size:1.05rem}
+@media (max-width:760px){.lane-heads,.lanes{grid-template-columns:1fr}}
 /* vincoli */
 .tiles{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .tile{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;gap:12px;align-items:flex-start}
@@ -422,9 +443,9 @@ footer{padding-block:32px 0;color:var(--muted);font:400 .9rem/1.5 var(--f-ui);ma
 </section>
 
 <section id="journey">
-  <div class="head"><span class="kick">Voter journey</span><h2>Il percorso dell'elettore</h2>
-    <p class="lead">Segui un elettore dalla prima informazione al ricorso. Ogni tappa mostra la domanda che si pone, cosa fa lui, cosa fa il sistema e il rischio principale.</p>
-    <p class="lead">Scegli lo scenario, se l'elettore è iscritto a un partito o no e se vota online o al seggio: le tappe cambiano di conseguenza.</p></div>
+  <div class="head"><span class="kick">Voter journey</span><h2>Il percorso dell'elettore e quello del sistema</h2>
+    <p class="lead">Cinque fasi e due percorsi paralleli. A sinistra c'è il voter journey, cioè cosa fa l'elettore. A destra c'è il system journey, cioè cosa fanno comitato, partiti, piattaforma e seggi, con l'indicazione di chi fa che cosa.</p>
+    <p class="lead">Scegli lo scenario, se l'elettore è iscritto a un partito o no e se vota online o al seggio: le fasi cambiano di conseguenza.</p></div>
   <div class="jtools">
     <div><span class="lbl">Scenario</span><div class="seg" data-scseg></div></div>
     <div><span class="lbl">Elettore</span><div class="seg neutral" id="pSeg">
@@ -660,63 +681,58 @@ function renderBench(){
 }
 
 /* journey */
-function stages(){
- const {sc,p,ch}=state,ins=p==='iscritto',on=ch==='online',out=(sc==='A'&&!ins);
- const S=[];
- S.push({i:'megaphone',t:'Scopre le primarie',q:'Mi riguarda?',
-  tu:'Legge regole, date e candidati sul sito.',sys:'Pubblica regolamento e Carta dei valori entro il 30 novembre.',
-  risk:'Se arriva tardi, la finestra di iscrizione si accorcia.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
-  more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale).'});
- S.push({i:'usercheck',t:'Può votare?',q:'Posso votare io?',
-  tu: sc==='A'?(ins?'Controlla di essere iscritto al 31 dicembre.':'Scopre di essere fuori dall\'elettorato.'):(ins?'Scopre di essere già nell\'albo come iscritto al partito.':'Controlla i requisiti e si prepara a iscriversi all\'albo.'),
-  sys: sc==='A'?'Il partito certifica l\'elenco degli iscritti al 31 dicembre.':'Due flussi: iscritti inseriti dai partiti e iscrizione diretta degli indipendenti.',
-  risk:'SPID e CIE non provano la residenza.',prec:'Milano 2016: residenti, 16 anni',tag:'sec',
-  more:'SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano (non basta il domicilio), 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
+function phases(){
+ const {sc,p,ch}=state,ins=p==='iscritto',on=ch==='online',A=sc==='A',out=(A&&!ins);
+ const P=[];
+ P.push({i:'megaphone',t:'Informazione e requisiti',q:'Mi riguarda? Posso votare io?',
+  el:A?(ins?'Legge regole e date, e controlla di essere iscritto al 31 dicembre.':'Legge regole e date, e scopre di essere fuori dall\'elettorato.'):(ins?'Legge regole e date, e scopre di essere già nell\'albo come iscritto.':'Legge regole e date, controlla i requisiti e si prepara a iscriversi.'),
+  who:'Comitato promotore e partiti',
+  sys:'Pubblica regolamento, Carta dei valori e calendario entro il 30 novembre. '+(A?'I partiti certificano l\'elenco degli iscritti al 31 dicembre.':'I partiti consegnano l\'elenco degli iscritti e il comitato apre l\'albo agli indipendenti.'),
+  risk:'SPID e CIE non provano la residenza, serve un controllo a parte.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
+  more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale). SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano, 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
  if(out){
-  const off=(i,t,q)=>({i,t,q,off:true,tu:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione.',risk:'Chi è escluso può contestare.',prec:'Lo scenario B evita il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello, testo ufficiale).'});
-  S.push(off('clip','Si iscrive','Quanto mi costa?'),off('shield','Firma e consenso','Mi fido?'),off('idcard','Dimostra chi è','È semplice?'),off('key','Credenziali','Come voto?'),off('ballot','Vota','È segreto?'),off('scale','Risultato','Posso fidarmi?'));
-  return S;
+  const off=(i,t,q,who)=>({i,t,q,who,off:true,el:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione per questo elettore.',risk:'Chi è escluso può contestare.',prec:'Lo scenario B evita il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello, testo ufficiale).'});
+  P.push(off('clip','Iscrizione e consenso','Quanto mi costa?','Partiti'),off('idcard','Identità e accesso','È semplice?','Piattaforma e seggi'),off('ballot','Voto','È segreto?','Piattaforma e seggi'),off('scale','Risultato e ricorsi','Posso fidarmi?','Coordinamento e garanti'));
+  return P;
  }
- S.push({i:'clip',t:ins?(sc==='A'?'Conferma il voto':'È già nell\'albo'):'Si iscrive all\'albo',q:'Quanto mi costa?',
-  tu: ins?(sc==='A'?'Conferma che vota e il canale entro il 15 gennaio.':'Non deve fare nulla e non paga quota: è già nell\'albo.'):'Si iscrive direttamente all\'albo dal 7 dicembre al 10 gennaio.',
-  sys: sc==='A'?'Elimina i doppi iscritti, un voto a testa.':'Fonde le liste dei partiti e le iscrizioni dirette in un albo unico.',
-  risk: (sc==='A'||ins)?'Liste dei partiti di qualità ignota.':'Verifica di massa: 40% verificato in Francia.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
-  more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (testo ufficiale). Milano 2016: albo entro il 7° giorno prima (stampa). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (stampa).'});
- S.push({i:'shield',t:'Firma e consenso',q:'Mi fido di chi usa i miei dati?',
-  tu: ins?'Dà il consenso a passare i dati al comitato.':'Firma la Carta dei valori, dà il consenso e versa 2 euro.',
-  sys:'Informativa, valutazione d\'impatto, albo non pubblico.',
-  risk:'Serve il consenso esplicito, non basta l\'art. 9.2.d.',prec:'Roma 2016 art. 13: firma, 2 €, consenso',tag:'doc',
-  more:'Labour 2020 esclude chi ha sostenuto altri partiti negli ultimi 2 anni (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
- S.push({i:'idcard',t:'Dimostra chi è',q:'È semplice o un ostacolo?',
-  tu: on?'Entra con SPID o CIE e dichiara la residenza.':'Mostra CIE, passaporto o patente al seggio.',
-  sys: on?'L\'aggregatore SPID verifica l\'identità.':'Il presidente verifica documento ed elenco.',
-  risk: on?'Senza SPID o CIE si resta fuori dall\'online.':'Carta cartacea valida solo fino al 31 gennaio.',prec: on?'Canada 2025: app con problemi':'Italia 2012: documento e certificato',tag:'doc',
-  more: on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale).':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati, quindi il regolamento deve fissare un elenco chiuso di documenti (ipotesi mia).'});
- S.push({i:'key',t:on?'Riceve le credenziali':'Sa dove votare',q:'Come voto e quando?',
-  tu: on?'Riceve un link e un PIN dal 22 gennaio.':'Riceve il seggio e l\'orario: 30 o 31 gennaio.',
-  sys: on?'Lo segna sul canale online.':'Lo mette nell\'elenco del seggio, online spento.',
-  risk:'Doppio voto tra online e seggio.',prec:'SPD 2019: link monouso e PIN',tag:'doc',
-  more:'SPD 2019: scelta del canale in registrazione. Italia Bene Comune 2012: cedolino per ogni giornata, trattenuto al seggio (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero (ipotesi mia).'});
- S.push({i:'ballot',t:'Vota',q:'Il mio voto è segreto e conta?',
-  tu: on?'Compila le schede, controlla, invia.':'Ritira le schede, vota in cabina, firma.',
-  sys: on?'Cifra il voto, separa identità e voto.':'Urna sigillata e verbale firmato.',
+ P.push({i:'clip',t:'Iscrizione e consenso',q:'Quanto mi costa? Mi fido di chi usa i miei dati?',
+  el:A?'Conferma che vota e il canale entro il 15 gennaio, e dà il consenso al passaggio dei dati al comitato.':(ins?'Non deve iscriversi e non paga quota. Dà il consenso al passaggio dei dati dal partito al comitato.':'Si iscrive all\'albo dal 7 dicembre al 10 gennaio, firma la Carta dei valori, dà il consenso e versa 2 euro.'),
+  who:'Partiti e coordinamento organizzativo',
+  sys:A?'Elimina i doppi iscritti e assegna un voto a testa. Informativa, valutazione d\'impatto, albo non pubblico.':'Fonde le liste dei partiti e le iscrizioni dirette in un albo unico. Informativa, valutazione d\'impatto, albo non pubblico.',
+  risk:(A||ins)?'Liste dei partiti di qualità ignota.':'Verifica di massa: 40% verificato in Francia. Serve il consenso esplicito.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
+  more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (testo ufficiale). Milano 2016: albo entro il 7° giorno prima (stampa). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (stampa). Roma 2016 art. 13: firma, almeno 2 euro e consenso all\'albo (testo ufficiale). Labour 2020 esclude chi ha sostenuto altri partiti negli ultimi 2 anni (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
+ P.push({i:'idcard',t:'Identità e accesso',q:'È semplice o un ostacolo?',
+  el:on?'Entra con SPID o CIE e riceve link e PIN dal 22 gennaio.':'Mostra CIE, passaporto o patente al seggio, il 30 o il 31 gennaio.',
+  who:on?'Aggregatore SPID e piattaforma di voto':'Presidente di seggio',
+  sys:on?'Verifica l\'identità e segna l\'elettore sul canale online nel registro unico.':'Verifica documento ed elenco e spegne il canale online per quell\'elettore.',
+  risk:on?'Senza SPID o CIE si resta fuori dall\'online. Doppio voto tra canali.':'Carta cartacea valida solo fino al 31 gennaio. Doppio voto tra canali.',prec:on?'Canada 2025: app con problemi':'Italia 2012: documento e certificato',tag:'doc',
+  more:(on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale). ':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati, quindi il regolamento deve fissare un elenco chiuso di documenti (ipotesi mia). ')+'SPD 2019: scelta del canale in registrazione, link monouso e PIN. Italia Bene Comune 2012: cedolino per ogni giornata, trattenuto al seggio (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero (ipotesi mia).'});
+ P.push({i:'ballot',t:'Voto',q:'Il mio voto è segreto e conta?',
+  el:on?'Compila le schede, controlla, invia.':'Ritira le schede, vota in cabina, firma.',
+  who:on?'Piattaforma di voto':'Seggio',
+  sys:on?'Cifra il voto, separa identità e voto, rilascia una ricevuta.':'Urna sigillata e verbale firmato dal seggio.',
   risk:'Più schede a testa: conteggio su carta più lungo.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
   more:'Regola DNC 2.G: l\'elettore verifica e corregge prima dell\'invio e il sistema produce una traccia cartacea (testo ufficiale). Rousseau 2019: sanzione del Garante di 50.000 euro per mancata separazione tra identità e voto (testo ufficiale).'});
- S.push({i:'scale',t:'Risultato e ricorsi',q:'Posso fidarmi del risultato?',
-  tu:'Riceve la conferma e segue lo scrutinio.',sys:'Scrutinio, audit indipendente, proclamazione dei garanti.',
+ P.push({i:'scale',t:'Risultato e ricorsi',q:'Posso fidarmi del risultato?',
+  el:'Riceve la conferma di voto e segue lo scrutinio.',
+  who:'Coordinamento organizzativo e garanti',
+  sys:'Scrutinio, audit indipendente, proclamazione dei garanti. Reclami entro 24 ore.',
   risk:'Senza audit indipendente il risultato è contestabile.',prec:'Roma 2016: reclami in 24 ore',tag:'doc',
   more:'Roma 2016 art. 19: reclami sul voto entro 24 ore, decisione entro 24 ore, 48 ore per il risultato (testo ufficiale). I candidati accettano l\'esito con una clausola compromissoria. Nel 2023 lo SNP rifiutò un revisore indipendente (stampa).'});
- return S;
+ return P;
 }
 function renderJourney(){
- const col=SC[state.sc].css,st=stages();
- document.getElementById('strip').style.setProperty('--sc',col);
- document.getElementById('strip').innerHTML=st.map((s,i)=>`<a class="st ${s.off?'off':''}" href="#step-${i+1}"><span class="c">${ic(s.i)}<span class="nn">${i+1}</span></span>${s.t}</a>`).join('');
+ const col=SC[state.sc].css,P=phases();
+ const strip=document.getElementById('strip');strip.style.setProperty('--sc',col);
+ strip.innerHTML=P.map((s,i)=>`<a class="st ${s.off?'off':''}" href="#fase-${i+1}"><span class="c">${ic(s.i)}<span class="nn">${i+1}</span></span>${s.t}</a>`).join('');
  const j=document.getElementById('journey');j.style.setProperty('--sc',col);
- j.innerHTML=st.map((s,i)=>`<article class="step ${s.off?'off':''}" id="step-${i+1}">
-  <div class="s-top"><div class="s-ic">${ic(s.i)}</div><div><div class="n">TAPPA ${i+1} DI 8</div><h3>${s.t}</h3></div></div>
-  <div class="q">${s.q}</div>
-  <div class="rows"><div class="r2"><span class="who">Tu</span><span>${s.tu}</span></div><div class="r2"><span class="who sys">Sistema</span><span>${s.sys}</span></div></div>
+ j.innerHTML=`<div class="lane-heads"><div class="lh el">${ic('people')}<div><b>Voter journey</b><span>Cosa fa l'elettore</span></div></div><div class="lh sy">${ic('building')}<div><b>System journey</b><span>Cosa fanno comitato, partiti, piattaforma e seggi</span></div></div></div>`+
+ P.map((s,i)=>`<article class="phase ${s.off?'off':''}" id="fase-${i+1}">
+  <div class="ph-top"><div class="s-ic">${ic(s.i)}</div><div><div class="n">FASE ${i+1} DI ${P.length}</div><h3>${s.t}</h3></div></div>
+  <div class="lanes">
+   <div class="lane el"><div class="lane-tag">${ic('people')}Elettore</div><div class="q">${s.q}</div><p>${s.el}</p></div>
+   <div class="lane sy"><div class="lane-tag">${ic('building')}Sistema</div><div class="who-chip">Chi: ${s.who}</div><p>${s.sys}</p></div>
+  </div>
   <div class="s-foot"><span class="risk">${ic('alert')}${s.risk}</span><span class="prec">${tg(s.tag)} ${s.prec}</span></div>
   <details><summary>Dettagli e fonti</summary><p>${s.more}</p></details></article>`).join('');
 }
