@@ -539,8 +539,8 @@ tick();setInterval(tick,1000);
 
 const SC={
  A:{name:'A Partiti',short:'Partiti',css:'var(--a)',title:'Basta il partito',
-    desc:'Votano solo gli iscritti ai partiti della coalizione. Ogni partito certifica il proprio elenco a una data fissa e il comitato lo usa come registro.',
-    who:[['building','Iscritti ai partiti']],dates:[['30 nov','blocco elenco'],['10 gen','conferma canale']]},
+    desc:'Votano solo gli iscritti ai partiti della coalizione. Ogni partito certifica il proprio elenco degli iscritti al 31 dicembre, e il comitato lo usa come registro. Entro il 15 gennaio ogni iscritto conferma che vota.',
+    who:[['building','Iscritti ai partiti']],dates:[['31 dic','conteggio iscritti'],['15 gen','voto confermato']]},
  B:{name:'B Comitato',short:'Comitato',css:'var(--b)',title:'Serve il comitato',
     desc:'Tutti si iscrivono all\'albo del comitato, anche gli iscritti ai partiti. Si firma la Carta dei valori, si versano 2 euro e si verifica l\'identità.',
     who:[['people','Chiunque si registra'],['building','Anche gli iscritti']],dates:[['7 dic 10 gen','iscrizione all\'albo']]},
@@ -610,9 +610,9 @@ document.getElementById('lightsBody').innerHTML=LIGHTS.map(r=>`<tr><td class="r"
 
 /* cosa cambia */
 const WHAT={
- A:[['Chi vota','Solo gli iscritti ai partiti della coalizione, secondo l\'elenco bloccato il 30 novembre.'],
-    ['Se sei iscritto a un partito','Non devi iscriverti a nulla. Confermi canale e identità entro il 10 gennaio e voti.'],
-    ['Se non sei iscritto','Non puoi votare. Iscriversi a un partito dopo il 30 novembre non cambia la situazione.'],
+ A:[['Chi vota','Solo gli iscritti ai partiti della coalizione, contati al 31 dicembre.'],
+    ['Se sei iscritto a un partito','Non devi iscriverti a nulla. Entro il 15 gennaio confermi che voti e scegli il canale.'],
+    ['Se non sei iscritto','Non puoi votare. Iscriversi a un partito dopo il 31 dicembre non cambia la situazione.'],
     ['Cosa serve','Essere nell\'elenco del partito. SPID o CIE per il voto online, un documento al seggio.']],
  B:[['Chi vota','Chiunque si registra all\'albo del comitato. Si è residenti in Italia, con almeno 16 anni.'],
     ['Se sei iscritto a un partito','Ti registri all\'albo come tutti gli altri. La tessera di partito non dà una corsia a parte.'],
@@ -633,12 +633,12 @@ function renderWhat(){
 
 /* calendario */
 const MILES={
- A:[['30 nov','Regole e blocco degli iscritti'],['15 dic','Liste certificate dai partiti'],['10 gen','Conferma del canale'],['22 gen','Voto online, poi seggi 30 e 31']],
+ A:[['30 nov','Regole e garanti'],['31 dic','Conteggio degli iscritti'],['15 gen','Voto confermato dagli iscritti'],['22 gen','Voto online, poi seggi 30 e 31']],
  B:[['30 nov','Regole e garanti'],['7 dic','Apre l\'albo'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 e 31']],
  C:[['30 nov','Blocco degli iscritti'],['7 dic','Apre l\'albo dei non iscritti'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 e 31']]
 };
 const ROWS={
- A:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Liste dei partiti','building','2026-11-30','2026-12-15'],['Conferma canale','usercheck','2026-12-15','2027-01-10']],
+ A:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Conteggio iscritti','building','2026-12-31','2026-12-31'],['Conferma del voto','usercheck','2027-01-01','2027-01-15']],
  B:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Albo aperto','clip','2026-12-07','2027-01-10'],['Verifica ID','idcard','2027-01-10','2027-01-22']],
  C:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Liste dei partiti','building','2026-11-30','2026-12-15'],['Albo non iscritti','clip','2026-12-07','2027-01-10'],['Verifica ID','idcard','2026-12-15','2027-01-22']]
 };
@@ -658,7 +658,8 @@ function renderCal(){
 const BENCH=[['Labour 2020',77,'doc'],['Liberali canadesi 2025',41,'doc'],['SPD 2019',36,'doc'],['PS Portogallo 2026',22,'doc'],['Milano 2016',7,'sec'],['Italia Bene Comune 2012',0,'doc']];
 function renderBench(){
  const rows=BENCH.map(b=>({n:b[0],v:b[1],t:b[2]}));
- rows.push({n:'Scenario A, blocco elenco',v:62,t:'inf',m:1,on:state.sc==='A'});
+ rows.push({n:'Scenario A, conteggio iscritti',v:31,t:'inf',m:1,on:state.sc==='A'});
+ rows.push({n:'Scenario A, voto confermato',v:16,t:'inf',m:1,on:state.sc==='A'});
  rows.push({n:'Scenari B e C, chiusura albo',v:21,t:'inf',m:1,on:state.sc!=='A'});
  rows.sort((a,b)=>b.v-a.v);
  document.getElementById('bench').innerHTML=rows.map(r=>`<div class="b-row"><div style="${r.m?'font-weight:700':''}">${r.n}</div><div class="b-line"><div class="b-bar ${r.m?'mine':''}" style="width:${Math.max(r.v/77*100,0.8)}%;${r.m?`--sc:${SC[state.sc].css};${r.on?'':'opacity:.4'}`:''}"></div><span class="b-val">${r.v} gg ${tg(r.t)}</span></div></div>`).join('');
@@ -673,8 +674,8 @@ function stages(){
   risk:'Se arriva tardi, la finestra di iscrizione si accorcia.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
   more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale).'});
  S.push({i:'usercheck',t:'Può votare?',q:'Posso votare io?',
-  tu: sc==='A'?(ins?'Controlla di essere iscritto al 30 novembre.':'Scopre di essere fuori dall\'elettorato.'):sc==='B'?'Controlla età e dove vive.':(ins?'Controlla di essere nell\'elenco del partito.':'Controlla i requisiti e si prepara all\'albo.'),
-  sys: sc==='A'?'Il partito certifica l\'elenco entro il 15 dicembre.':sc==='B'?'Nessuna lista di partito.':'Due flussi: liste dei partiti e albo.',
+  tu: sc==='A'?(ins?'Controlla di essere iscritto al 31 dicembre.':'Scopre di essere fuori dall\'elettorato.'):sc==='B'?'Controlla età e dove vive.':(ins?'Controlla di essere nell\'elenco del partito.':'Controlla i requisiti e si prepara all\'albo.'),
+  sys: sc==='A'?'Il partito certifica l\'elenco degli iscritti al 31 dicembre.':sc==='B'?'Nessuna lista di partito.':'Due flussi: liste dei partiti e albo.',
   risk:'SPID e CIE non provano la residenza.',prec:'Milano 2016: residenti, 16 anni',tag:'sec',
   more:'SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano (non basta il domicilio), 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
  if(out){
@@ -683,7 +684,7 @@ function stages(){
   return S;
  }
  S.push({i:'clip',t:ins&&sc!=='B'?'Conferma iscrizione':'Si registra',q:'Quanto mi costa?',
-  tu: ins&&sc!=='B'?'Conferma il canale entro il 10 gennaio.':'Si iscrive all\'albo dal 7 dicembre al 10 gennaio.',
+  tu: ins&&sc!=='B'?(sc==='A'?'Conferma che vota e il canale entro il 15 gennaio.':'Conferma il canale entro il 10 gennaio.'):'Si iscrive all\'albo dal 7 dicembre al 10 gennaio.',
   sys: sc==='A'?'Elimina i doppi iscritti, un voto a testa.':sc==='B'?'Costruisce un albo unico.':'Fonde liste e albo in un registro.',
   risk: sc==='A'?'Liste dei partiti di qualità ignota.':'Verifica di massa: 40% verificato in Francia.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
   more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (testo ufficiale). Milano 2016: albo entro il 7° giorno prima (stampa). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (stampa).'});
