@@ -547,8 +547,8 @@ const SC={
     desc:'Votano solo gli iscritti ai partiti della coalizione. Ogni partito certifica il proprio elenco degli iscritti al 31 dicembre, e il comitato lo usa come registro. Entro il 15 gennaio ogni iscritto conferma che vota.',
     who:[['building','Iscritti ai partiti']],dates:[['31 dic','conteggio iscritti'],['15 gen','voto confermato']]},
  B:{name:'B Albo unico',short:'Albo unico',css:'var(--b)',title:'Albo unico, iscritti inclusi',
-    desc:'Gli iscritti ai partiti entrano automaticamente nell\'albo degli elettori, contati al 31 dicembre, ed entro il 15 gennaio confermano che votano. Chi non ha tessere può iscriversi direttamente all\'albo come indipendente, dal 7 dicembre al 10 gennaio.',
-    who:[['building','Iscritti: già nell\'albo'],['people','Indipendenti: si iscrivono']],dates:[['7 dic 10 gen','iscrizione indipendenti'],['31 dic','conteggio iscritti'],['15 gen','iscritti confermano']]}
+    desc:'Gli iscritti ai partiti, contati al 31 dicembre, entrano automaticamente nell\'albo degli elettori e non devono fare nulla. Chi non ha tessere può iscriversi direttamente all\'albo come indipendente, dal 7 dicembre al 10 gennaio.',
+    who:[['building','Iscritti: già nell\'albo'],['people','Indipendenti: si iscrivono']],dates:[['31 dic','conteggio iscritti'],['7 dic 10 gen','iscrizione indipendenti']]}
 };
 const state={sc:'B',p:'non',ch:'online'};
 
@@ -615,7 +615,7 @@ const WHAT={
     ['Se non sei iscritto','Non puoi votare. Iscriversi a un partito dopo il 31 dicembre non cambia la situazione.'],
     ['Cosa serve','Essere nell\'elenco del partito. SPID o CIE per il voto online, un documento al seggio.']],
  B:[['Chi vota','Gli iscritti ai partiti, contati al 31 dicembre, e gli indipendenti iscritti all\'albo.'],
-    ['Se sei iscritto a un partito','Sei già nell\'albo, senza fare nulla. Entro il 15 gennaio confermi che voti e scegli il canale, senza quota.'],
+    ['Se sei iscritto a un partito','Sei già nell\'albo, senza fare nulla e senza quota. Quando si vota ti identifichi e scegli il canale.'],
     ['Se non sei iscritto','Ti iscrivi direttamente all\'albo dal 7 dicembre al 10 gennaio, come indipendente.'],
     ['Cosa serve','Per gli iscritti l\'elenco del partito. Per gli indipendenti Carta dei valori, 2 euro e verifica con SPID, CIE o documento.']]
 };
@@ -630,11 +630,11 @@ function renderWhat(){
 /* calendario */
 const MILES={
  A:[['30 nov','Regole e garanti'],['31 dic','Conteggio degli iscritti'],['15 gen','Voto confermato dagli iscritti'],['22 gen','Voto online, poi seggi 30 e 31']],
- B:[['30 nov','Regole e garanti'],['7 dic','Apre l\'albo agli indipendenti'],['31 dic','Conteggio degli iscritti'],['10 gen','Chiude l\'albo'],['15 gen','Voto confermato dagli iscritti'],['22 gen','Voto online, poi seggi 30 e 31']]
+ B:[['30 nov','Regole e garanti'],['7 dic','Apre l\'albo agli indipendenti'],['31 dic','Conteggio degli iscritti'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 e 31']]
 };
 const ROWS={
  A:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Conteggio iscritti','building','2026-12-31','2026-12-31'],['Conferma del voto','usercheck','2027-01-01','2027-01-15']],
- B:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Albo indipendenti','clip','2026-12-07','2027-01-10'],['Conteggio iscritti','building','2026-12-31','2026-12-31'],['Conferma iscritti','usercheck','2027-01-01','2027-01-15'],['Verifica ID non iscritti','idcard','2027-01-10','2027-01-22']]
+ B:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Albo indipendenti','clip','2026-12-07','2027-01-10'],['Conteggio iscritti','building','2026-12-31','2026-12-31'],['Verifica ID indipendenti','idcard','2027-01-10','2027-01-22']]
 };
 const ROWS_CAND=[['Raccolta firme','flag','2026-12-01','2027-01-05'],['Ammissione e ricorsi','scale','2027-01-05','2027-01-12']];
 const ROWS_END=[['Voto online','laptop','2027-01-22','2027-01-31','ink'],['Seggi','pin','2027-01-30','2027-01-31','ink'],['Ricorsi','scale','2027-01-31','2027-02-02','ink']];
@@ -653,7 +653,7 @@ const BENCH=[['Labour 2020',77,'doc'],['Liberali canadesi 2025',41,'doc'],['SPD 
 function renderBench(){
  const rows=BENCH.map(b=>({n:b[0],v:b[1],t:b[2]}));
  rows.push({n:'Scenari A e B, conteggio iscritti',v:31,t:'inf',m:1,on:true});
- rows.push({n:'Scenari A e B, voto confermato',v:16,t:'inf',m:1,on:true});
+ rows.push({n:'Scenario A, voto confermato',v:16,t:'inf',m:1,on:state.sc==='A'});
  rows.push({n:'Scenario B, chiusura albo indipendenti',v:21,t:'inf',m:1,on:state.sc==='B'});
  rows.sort((a,b)=>b.v-a.v);
  document.getElementById('bench').innerHTML=rows.map(r=>`<div class="b-row"><div style="${r.m?'font-weight:700':''}">${r.n}</div><div class="b-line"><div class="b-bar ${r.m?'mine':''}" style="width:${Math.max(r.v/77*100,0.8)}%;${r.m?`--sc:${SC[state.sc].css};${r.on?'':'opacity:.4'}`:''}"></div><span class="b-val">${r.v} gg ${tg(r.t)}</span></div></div>`).join('');
@@ -677,10 +677,10 @@ function stages(){
   S.push(off('clip','Si iscrive','Quanto mi costa?'),off('shield','Firma e consenso','Mi fido?'),off('idcard','Dimostra chi è','È semplice?'),off('key','Credenziali','Come voto?'),off('ballot','Vota','È segreto?'),off('scale','Risultato','Posso fidarmi?'));
   return S;
  }
- S.push({i:'clip',t:ins?'Conferma iscrizione':'Si iscrive all\'albo',q:'Quanto mi costa?',
-  tu: ins?'Conferma che vota e il canale entro il 15 gennaio.':'Si iscrive direttamente all\'albo dal 7 dicembre al 10 gennaio.',
+ S.push({i:'clip',t:ins?(sc==='A'?'Conferma il voto':'È già nell\'albo'):'Si iscrive all\'albo',q:'Quanto mi costa?',
+  tu: ins?(sc==='A'?'Conferma che vota e il canale entro il 15 gennaio.':'Non deve fare nulla e non paga quota: è già nell\'albo.'):'Si iscrive direttamente all\'albo dal 7 dicembre al 10 gennaio.',
   sys: sc==='A'?'Elimina i doppi iscritti, un voto a testa.':'Fonde le liste dei partiti e le iscrizioni dirette in un albo unico.',
-  risk: sc==='A'?'Liste dei partiti di qualità ignota.':'Verifica di massa: 40% verificato in Francia.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
+  risk: (sc==='A'||ins)?'Liste dei partiti di qualità ignota.':'Verifica di massa: 40% verificato in Francia.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
   more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (testo ufficiale). Milano 2016: albo entro il 7° giorno prima (stampa). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (stampa).'});
  S.push({i:'shield',t:'Firma e consenso',q:'Mi fido di chi usa i miei dati?',
   tu: ins?'Dà il consenso a passare i dati al comitato.':'Firma la Carta dei valori, dà il consenso e versa 2 euro.',
