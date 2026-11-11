@@ -220,6 +220,13 @@ details p{padding-top:4px;color:var(--muted)}
 .fb.d{background:var(--red);color:#fff} .fb.e{background:var(--b);color:#fff}
 .fr{display:grid;gap:3px;margin-top:8px}
 
+/* decisioni */
+.decs{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.dec{background:var(--surface);border:3px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--shadow);padding:14px;display:grid;gap:8px;align-content:start}
+.dec .ok{width:38px;height:38px;border-radius:50%;background:var(--ok-bg);color:var(--ok);display:flex;align-items:center;justify-content:center;border:3px solid var(--ok)}
+.dec .ok .ic{width:1.3em;height:1.3em;stroke-width:3}
+.dec b{font:700 1.15rem/1.2 var(--f-head)}
+.dec span.d{font-size:.95rem;color:var(--muted)}
 /* vincoli */
 .tiles{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
 .tile{padding:14px;display:flex;gap:12px;align-items:flex-start}
@@ -297,7 +304,7 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
 
   <div class="hero-in">
     <h1>Le primarie del <em>centrosinistra</em></h1>
-    <p class="sub">Scegliere insieme il candidato sindaco di Milano e il candidato di coalizione, con voto online e ai seggi.</p>
+    <p class="sub">Scegliere insieme il candidato sindaco di Milano e il candidato di coalizione, con due schede nello stesso voto, online e ai seggi.</p>
     <div class="count" role="timer" aria-label="Tempo che manca al voto">
       <div class="lab">Mancano al voto</div>
       <div class="days"><span id="cdDays">0</span><small>giorni</small></div>
@@ -306,7 +313,7 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
         <div class="unit"><b id="cdM">00</b><span>minuti</span></div>
         <div class="unit"><b id="cdS">00</b><span>secondi</span></div>
       </div>
-      <p class="note">Calcolato fino a domenica 31 gennaio 2027, ore 20, chiusura del voto. È una data ipotizzata.</p>
+      <p class="note">Il voto chiude domenica 31 gennaio 2027. Il conto arriva alle ore 20, un orario di chiusura che ho ipotizzato io.</p>
     </div>
     <svg class="crowd" viewBox="0 0 420 96" aria-hidden="true" focusable="false">
       <g stroke="#0F1B3D" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
@@ -366,6 +373,36 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
   </div>
 </section>
 
+<section id="decisioni">
+  <div class="head"><span class="kick">Già deciso</span><h2>Quattro scelte fatte</h2>
+    <p class="lead">Queste scelte fissano la cornice. Le sezioni che seguono partono da qui e mostrano le opzioni ancora aperte.</p></div>
+  <div class="decs">
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Due schede nello stesso voto</b><span class="d">Una per il candidato sindaco di Milano, una per il candidato di coalizione nazionale.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Voto domenica 31 gennaio 2027</b><span class="d">È il giorno in cui il voto chiude. Il countdown in alto conta fino a lì.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Regole scritte dal comitato promotore dei partiti</b><span class="d">Il comitato nomina il coordinamento organizzativo e i garanti, sul modello di Roma 2016.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>2.500 firme per Milano, 10.000 per la scheda nazionale</b><span class="d">È la soglia per candidarsi. Roma 2016 chiedeva tra 2.000 e 2.500, l'Unione 2005 almeno 10.000.</span></div>
+  </div>
+  <div class="panel">
+    <h3><svg class="ic"><use href="#i-flag"/></svg>Chi governa il processo</h3>
+    <div class="stack">
+      <div class="flow">
+        <div class="node"><svg class="ic"><use href="#i-building"/></svg>Partiti della coalizione</div>
+        <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
+        <div class="node k"><svg class="ic"><use href="#i-flag"/></svg>Comitato promotore<br>scrive il regolamento</div>
+        <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
+        <div class="node"><svg class="ic"><use href="#i-clip"/></svg>Coordinamento organizzativo<br>fino a 10 persone</div>
+        <div class="node"><svg class="ic"><use href="#i-euro"/></svg>Tesoriere</div>
+      </div>
+      <div class="flow">
+        <div class="node k" style="visibility:hidden" aria-hidden="true"><svg class="ic"><use href="#i-flag"/></svg>Comitato</div>
+        <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
+        <div class="node"><svg class="ic"><use href="#i-scale"/></svg>Collegio dei garanti<br>5 persone: ricorsi e risultato</div>
+      </div>
+    </div>
+    <p class="cap">Le cariche di comitato, coordinamento e garanti sono incompatibili tra loro e con la candidatura. Lo schema segue il regolamento di Roma 2016 <span class="tag doc">ufficiale</span></p>
+  </div>
+</section>
+
 <section id="casi">
   <div class="head"><span class="kick">Casi d'uso</span><h2>12 precedenti, un numero ciascuno</h2>
     <p class="lead">Abbiamo letto regolamenti e cronache di dodici esperienze tra Regno Unito, Canada, Stati Uniti, Germania, Spagna, Portogallo, Australia, Francia e Italia. Ogni scheda mette in evidenza il dato che conta e dice cosa insegna a Milano.</p>
@@ -396,7 +433,7 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
 <section id="calendario">
   <div class="head"><span class="kick">Tempistiche</span><h2>Calendario dello scenario <span class="sc-name"></span></h2>
     <p class="lead">Le fasi in ordine, da oggi al voto: regole, iscrizione o conferma, verifica dell'identità, voto online, seggi, ricorsi. Le barre cambiano con lo scenario scelto.</p>
-    <p class="cap">Le date sono ipotesi mie <span class="tag inf">ipotesi</span> da concordare con il comitato. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
+    <p class="cap">Il giorno del voto è deciso. Le altre date sono ipotesi mie <span class="tag inf">ipotesi</span> da concordare con il comitato. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
   <div class="miles" id="miles"></div>
   <div class="gantt" id="gantt"></div>
   <h3>Quanto prima del voto si chiudono le iscrizioni</h3>
@@ -406,7 +443,27 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
 
 <section id="voto">
   <div class="head"><span class="kick">Modalità di voto</span><h2>Come si segna la scheda</h2>
-    <p class="lead">Il voto sceglie la persona che guida il comitato di coalizione. Le tre forme cambiano quante volte si vota e quanto è facile contare. Con poco più di due mesi a disposizione conta soprattutto evitare un secondo turno.</p></div>
+    <p class="lead">Il voto è unico e ha due schede: una per il candidato sindaco di Milano e una per il candidato di coalizione. Per ciascuna scheda resta da scegliere una delle tre forme qui sotto, che cambiano quante volte si vota e quanto è facile contare. Con poco più di due mesi conta soprattutto evitare un secondo turno.</p></div>
+  <div class="two">
+    <div class="panel">
+      <h3><svg class="ic"><use href="#i-ballot"/></svg>Scheda 1: candidato sindaco di Milano</h3>
+      <div class="paper" aria-label="Esempio della scheda per Milano">
+        <div class="row">Candidata A <span class="box"></span></div>
+        <div class="row">Candidato B <span class="box"></span></div>
+        <div class="row">Candidata C <span class="box"></span></div>
+      </div>
+      <p class="cap">Candidarsi richiede 2.500 firme.</p>
+    </div>
+    <div class="panel">
+      <h3><svg class="ic"><use href="#i-ballot"/></svg>Scheda 2: candidato di coalizione</h3>
+      <div class="paper" aria-label="Esempio della scheda nazionale">
+        <div class="row">Candidata D <span class="box"></span></div>
+        <div class="row">Candidato E <span class="box"></span></div>
+        <div class="row">Candidata F <span class="box"></span></div>
+      </div>
+      <p class="cap">Candidarsi richiede 10.000 firme. Chi può votare questa scheda è ancora da decidere.</p>
+    </div>
+  </div>
   <div class="ballots">
     <div class="ballot">
       <h3>V1 Preferenze in ordine</h3>
@@ -488,12 +545,13 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
     <div class="tile"><svg class="ic"><use href="#i-euro"/></svg><div><b>Quota di 2 euro: trasparenza da verificare</b><span class="tag inf">ipotesi</span></div></div>
     <div class="tile"><svg class="ic"><use href="#i-file"/></svg><div><b>Manca il PDF ufficiale di Milano 2016</b><span class="tag sec">stampa</span></div></div>
   </div>
-  <h3>Quattro decisioni per il comitato</h3>
+  <h3>Ancora aperto, dopo le scelte fatte</h3>
+  <p class="cap">Sono domande che nascono dalle quattro decisioni. Le ho formulate io <span class="tag inf">ipotesi</span>.</p>
   <div class="qs">
-    <div class="qc"><span class="qn">1</span>Una sola primaria per Milano e coalizione, o due schede?</div>
-    <div class="qc"><span class="qn">2</span>Voto il 31 gennaio o una settimana prima?</div>
-    <div class="qc"><span class="qn">3</span>Chi scrive il regolamento e nomina i garanti?</div>
-    <div class="qc"><span class="qn">4</span>Quante firme per candidarsi? Roma 2016: tra 2.000 e 2.500.</div>
+    <div class="qc"><span class="qn">1</span>Chi può votare la scheda di coalizione nazionale: solo i residenti a Milano o anche altri?</div>
+    <div class="qc"><span class="qn">2</span>Quale forma di voto per ciascuna scheda: preferenze in ordine, ballottaggio o un solo nome?</div>
+    <div class="qc"><span class="qn">3</span>Quota di 2 euro oppure voto gratuito?</div>
+    <div class="qc"><span class="qn">4</span>A che ora aprono e chiudono i seggi sabato 30 e domenica 31 gennaio?</div>
   </div>
   <details>
     <summary>Fonti consultate</summary>
@@ -637,11 +695,12 @@ const ROWS={
  B:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Albo aperto','clip','2026-12-07','2027-01-10'],['Verifica ID','idcard','2027-01-10','2027-01-22']],
  C:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Liste dei partiti','building','2026-11-30','2026-12-15'],['Albo non iscritti','clip','2026-12-07','2027-01-10'],['Verifica ID','idcard','2026-12-15','2027-01-22']]
 };
+const ROWS_CAND=[['Raccolta firme','flag','2026-12-01','2027-01-05'],['Ammissione e ricorsi','scale','2027-01-05','2027-01-12']];
 const ROWS_END=[['Voto online','laptop','2027-01-22','2027-01-31','ink'],['Seggi','pin','2027-01-30','2027-01-31','ink'],['Ricorsi','scale','2027-01-31','2027-02-02','ink']];
 function renderCal(){
  const s=SC[state.sc];
- document.getElementById('miles').innerHTML=MILES[state.sc].map(m=>`<div class="mile" style="--sc:${s.css}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
- const rows=[...ROWS[state.sc],...ROWS_END],ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
+ document.getElementById('miles').innerHTML=(()=>{const a=[...MILES[state.sc]];a.splice(a.length-2,0,['5 gen','Deposito candidature: 2.500 e 10.000 firme']);return a})().map(m=>`<div class="mile" style="--sc:${s.css}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
+ const rows=[...ROWS[state.sc],...ROWS_CAND,...ROWS_END],ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
  let h=`<div class="g-axis">${ticks.map(t=>`<span style="left:${pct(t)}%">${fmt(t)}</span>`).join('')}</div>`;
  rows.forEach(r=>{
   const l=pct(r[2]),w=pct(r[3])-pct(r[2])+1.3,col=r[4]==='ink'?'var(--ink)':s.css;
@@ -670,7 +729,7 @@ function stages(){
   tu: sc==='A'?(ins?'Controlla di essere iscritto al 30 novembre.':'Scopre di essere fuori dall\'elettorato.'):sc==='B'?'Controlla residenza a Milano e 16 anni.':(ins?'Controlla di essere nell\'elenco del partito.':'Controlla i requisiti e si prepara all\'albo.'),
   sys: sc==='A'?'Il partito certifica l\'elenco entro il 15 dicembre.':sc==='B'?'Nessuna lista di partito.':'Due flussi: liste dei partiti e albo.',
   risk:'SPID e CIE non provano la residenza a Milano.',prec:'Milano 2016: residenti, 16 anni',tag:'sec',
-  more:'SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano (non basta il domicilio), 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
+  more:'SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano (non basta il domicilio), 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia). Resta da decidere chi può votare la scheda di coalizione nazionale.'});
  if(out){
   const off=(i,t,q)=>({i,t,q,off:true,tu:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione.',risk:'Chi è escluso può contestare.',prec:'Scenari B e C evitano il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello, testo ufficiale).'});
   S.push(off('clip','Si iscrive','Quanto mi costa?'),off('shield','Firma e consenso','Mi fido?'),off('idcard','Dimostra chi è','È semplice?'),off('key','Credenziali','Come voto?'),off('ballot','Vota','È segreto?'),off('scale','Risultato','Posso fidarmi?'));
@@ -697,9 +756,9 @@ function stages(){
   risk:'Doppio voto tra online e seggio.',prec:'SPD 2019: link monouso e PIN',tag:'doc',
   more:'SPD 2019: scelta del canale in registrazione. Italia Bene Comune 2012: cedolino per ogni giornata, trattenuto al seggio (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero (ipotesi mia).'});
  S.push({i:'ballot',t:'Vota',q:'Il mio voto è segreto e conta?',
-  tu: on?'Ordina i candidati, controlla, invia.':'Ritira la scheda, vota in cabina, firma.',
+  tu: on?'Compila le due schede, Milano e coalizione, controlla, invia.':'Ritira le due schede, vota in cabina, firma.',
   sys: on?'Cifra il voto, separa identità e voto.':'Urna sigillata e verbale firmato.',
-  risk:'Preferenze su carta: conteggio più lento.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
+  risk:'Due schede a testa: conteggio su carta più lungo.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
   more:'Regola DNC 2.G: l\'elettore verifica e corregge prima dell\'invio e il sistema produce una traccia cartacea (testo ufficiale). Rousseau 2019: sanzione del Garante di 50.000 euro per mancata separazione tra identità e voto (testo ufficiale).'});
  S.push({i:'scale',t:'Risultato e ricorsi',q:'Posso fidarmi del risultato?',
   tu:'Riceve la conferma e segue lo scrutinio.',sys:'Scrutinio, audit indipendente, proclamazione dei garanti.',
