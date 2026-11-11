@@ -3,135 +3,169 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Primarie di coalizione Milano 2027: casi di studio, tre scenari di elettorato, calendario e percorso dell'elettore. Bozza di lavoro.">
-<style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
-<title>Primarie di coalizione Milano 2027</title>
+<meta name="description" content="Le primarie del centrosinistra: casi di studio, tre scenari su chi vota e come si entra, calendario e percorso dell'elettore. Bozza di lavoro.">
+<style>html{padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+<title>Le primarie del centrosinistra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-/* Concetto: infografica civica. Icone a tratto, numeri grandi, tre colori scenario, semafori con simbolo oltre al colore */
+/* Concetto: volantino di comitato elettorale. Blu intenso, rosso, giallo, bordi spessi con ombra piena, festoni, gazebo, urna */
 :root{
-  --bg:#F3F6F7; --surface:#FFFFFF; --ink:#14222B; --muted:#4A5D6A; --line:#D3DCE1; --soft:#E8EEF1;
-  --a:#3A5FA6; --b:#0B6E6E; --c:#84479A;
-  --ok:#17794A; --ok-bg:#DCF1E5; --mid:#8A5A00; --mid-bg:#FBEBC8; --bad:#A92F2B; --bad-bg:#F8DEDB;
-  --doc-bg:#DDF0E6; --doc-fg:#0E5A34; --sec-bg:#FBEFD2; --sec-fg:#7A4A00; --inf-bg:#E9E4F6; --inf-fg:#4B2F8A;
-  --on:#FFFFFF;
+  --bg:#F4F7FF; --surface:#FFFFFF; --ink:#0F1B3D; --muted:#44527A; --line:#C9D3F0; --soft:#E8EDFB; --shadow:#0F1B3D;
+  --blue:#1737D6; --red:#E5102B; --yellow:#FFC72C; --pink:#E8307F;
+  --a:#1737D6; --b:#0A8F5B; --c:#C21F7A;
+  --ok:#0A7A48; --ok-bg:#D5F4E4; --mid:#7A5200; --mid-bg:#FFEDB8; --bad:#B50F24; --bad-bg:#FFD9DE;
+  --doc-bg:#D5F4E4; --doc-fg:#0A5C36; --sec-bg:#FFEDB8; --sec-fg:#6B4400; --inf-bg:#E7DDFB; --inf-fg:#43238F;
+  --on:#FFFFFF; --hero:#1737D6;
   --f-head:'Space Grotesk',system-ui,sans-serif; --f-body:'IBM Plex Sans',system-ui,sans-serif; --f-mono:'IBM Plex Mono',ui-monospace,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0E171C; --surface:#16232B; --ink:#E9EFF2; --muted:#A3B5C0; --line:#2B3C46; --soft:#1D2E38;
-    --a:#8FADEB; --b:#52BDB3; --c:#C995DB;
-    --ok:#7FDCA6; --ok-bg:#16382A; --mid:#F0C877; --mid-bg:#3B2E10; --bad:#F2A19C; --bad-bg:#40201E;
-    --doc-bg:#17382A; --doc-fg:#8FDDB0; --sec-bg:#3B2E10; --sec-fg:#F0C877; --inf-bg:#2B2347; --inf-fg:#C4B1F2;
-    --on:#0E171C; color-scheme:dark;
+    --bg:#0A1130; --surface:#141E4A; --ink:#F2F5FF; --muted:#AEBBE3; --line:#2B3A7A; --soft:#1C2960; --shadow:#000000;
+    --blue:#7C95FF; --a:#8EA4FF; --b:#4FD6A0; --c:#F08AC4;
+    --ok:#7FE3B0; --ok-bg:#12402E; --mid:#FFD76B; --mid-bg:#4A3808; --bad:#FFA3AD; --bad-bg:#521A22;
+    --doc-bg:#12402E; --doc-fg:#8FEBBB; --sec-bg:#4A3808; --sec-fg:#FFD76B; --inf-bg:#2C2250; --inf-fg:#CDBBFA;
+    --on:#0A1130; --hero:#0F1F96; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0E171C; --surface:#16232B; --ink:#E9EFF2; --muted:#A3B5C0; --line:#2B3C46; --soft:#1D2E38;
-  --a:#8FADEB; --b:#52BDB3; --c:#C995DB;
-  --ok:#7FDCA6; --ok-bg:#16382A; --mid:#F0C877; --mid-bg:#3B2E10; --bad:#F2A19C; --bad-bg:#40201E;
-  --doc-bg:#17382A; --doc-fg:#8FDDB0; --sec-bg:#3B2E10; --sec-fg:#F0C877; --inf-bg:#2B2347; --inf-fg:#C4B1F2;
-  --on:#0E171C; color-scheme:dark;
+  --bg:#0A1130; --surface:#141E4A; --ink:#F2F5FF; --muted:#AEBBE3; --line:#2B3A7A; --soft:#1C2960; --shadow:#000000;
+  --blue:#7C95FF; --a:#8EA4FF; --b:#4FD6A0; --c:#F08AC4;
+  --ok:#7FE3B0; --ok-bg:#12402E; --mid:#FFD76B; --mid-bg:#4A3808; --bad:#FFA3AD; --bad-bg:#521A22;
+  --doc-bg:#12402E; --doc-fg:#8FEBBB; --sec-bg:#4A3808; --sec-fg:#FFD76B; --inf-bg:#2C2250; --inf-fg:#CDBBFA;
+  --on:#0A1130; --hero:#0F1F96; color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
-a{color:var(--b)}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+body{--g:max(16px,env(safe-area-inset-left,0px));background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--f-body);padding-left:var(--g);padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--hero)}
+a{color:var(--blue);font-weight:600}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;box-shadow:0 0 0 6px var(--ink)}
 .wrap{max-width:1100px;margin:0 auto}
-h1,h2,h3,h4{font-family:var(--f-head);line-height:1.12;text-wrap:balance;margin:0}
-h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:700;letter-spacing:-.025em}
-h2{font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:600;letter-spacing:-.015em}
-h3{font-size:1.2rem;font-weight:600}
+h1,h2,h3,h4{font-family:var(--f-head);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.9rem,4.4vw,2.8rem);font-weight:700;letter-spacing:-.02em}
+h3{font-size:1.25rem;font-weight:700}
 p{margin:0}
-.ic{width:1.5em;height:1.5em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.eyebrow{font:500 .8rem/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.sub{color:var(--muted);font-size:1.05rem;max-width:56ch}
-.tag{display:inline-block;font:500 .68rem/1 var(--f-mono);letter-spacing:.05em;padding:3px 6px;border-radius:3px;vertical-align:middle;white-space:nowrap}
+.ic{width:1.5em;height:1.5em;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.kick{display:inline-block;width:fit-content;background:var(--yellow);color:#0F1B3D;font:700 .85rem/1 var(--f-head);letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border:3px solid #0F1B3D;border-radius:6px;transform:rotate(-1.5deg);box-shadow:3px 3px 0 var(--shadow)}
+.lead{font-size:1.12rem;max-width:68ch;color:var(--ink)}
+.tag{display:inline-block;font:500 .66rem/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:4px 7px;border-radius:4px;vertical-align:middle;white-space:nowrap}
 .tag.doc{background:var(--doc-bg);color:var(--doc-fg)} .tag.sec{background:var(--sec-bg);color:var(--sec-fg)} .tag.inf{background:var(--inf-bg);color:var(--inf-fg)}
-section{padding-block:52px 4px;display:grid;gap:20px}
-.head{display:grid;gap:8px}
+section{padding-block:64px 4px;display:grid;gap:20px}
+.head{display:grid;gap:12px;justify-items:start}
+.cap{font-size:.95rem;color:var(--muted);max-width:75ch}
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--ink);color:var(--bg);border-radius:999px;padding:7px 14px;font-weight:600;font-size:.92rem;width:fit-content}
+.badge b{font-family:var(--f-head)}
 
 /* hero */
-.hero{padding-block:36px 8px;display:grid;gap:18px}
-.nums{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
-.num{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:2px}
-.num b{font:700 2.6rem/1 var(--f-head);letter-spacing:-.02em}
-.num span{color:var(--muted);font-size:.95rem}
-.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.88rem;color:var(--muted);align-items:center}
+.hero{position:relative;background:var(--hero);color:#fff;margin-inline:calc(-1*var(--g)) calc(-1*max(16px,env(safe-area-inset-right,0px)));overflow:hidden;border-bottom:6px solid var(--ink)}
+.bunting{display:block;width:100%;height:54px}
+.hero-in{max-width:1100px;margin:0 auto;padding:18px var(--g) 36px;display:grid;gap:22px;justify-items:center;text-align:center;position:relative}
+.hero h1{font-size:clamp(2.6rem,9vw,6.2rem);font-weight:700;letter-spacing:-.03em;line-height:.98;text-transform:uppercase;max-width:14ch;text-shadow:5px 5px 0 rgba(15,27,61,.55)}
+.hero h1 em{font-style:normal;color:var(--yellow)}
+.hero .sub{font-size:1.2rem;max-width:44ch;color:#EAF0FF}
+.count{background:#fff;color:var(--red);border:6px solid var(--red);border-radius:20px;padding:18px clamp(14px,4vw,34px) 20px;box-shadow:8px 8px 0 #0F1B3D;display:grid;gap:10px;justify-items:center;max-width:100%}
+.count .lab{font:700 .95rem/1.2 var(--f-head);letter-spacing:.12em;text-transform:uppercase;color:#0F1B3D}
+.count .days{font:700 clamp(5.5rem,22vw,11rem)/.9 var(--f-head);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.count .days small{font-size:.22em;letter-spacing:.04em;margin-left:.2em;text-transform:uppercase}
+.units{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.unit{background:var(--red);color:#fff;border-radius:10px;padding:8px 12px;min-width:84px;display:grid;gap:2px}
+.unit b{font:700 2rem/1 var(--f-head);font-variant-numeric:tabular-nums}
+.unit span{font:600 .72rem/1 var(--f-head);letter-spacing:.1em;text-transform:uppercase}
+.count .note{font-size:.85rem;color:#0F1B3D;max-width:46ch}
+.deco{position:absolute;bottom:0;pointer-events:none;display:none}
+.deco.l{left:max(8px,calc(50% - 600px))} .deco.r{right:max(8px,calc(50% - 600px))}
+@media (min-width:1000px){.deco{display:block}.deco.l{width:210px}.deco.r{width:170px}}
+.crowd{display:block;width:min(100%,420px);height:auto}
 
 /* barra scenario */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-block:1px solid var(--line);padding-block:10px;margin-top:20px;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
-.bar-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
-.seg{display:inline-flex;flex-wrap:wrap;gap:6px}
-.seg button{display:inline-flex;align-items:center;gap:8px;font:500 .95rem/1 var(--f-body);color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:10px 14px;cursor:pointer;min-height:44px}
-.seg button .l{font:700 1rem/1 var(--f-head)}
-.seg button[aria-pressed="true"]{color:var(--on);border-color:transparent}
-.seg button[data-k="A"][aria-pressed="true"]{background:var(--a)}
-.seg button[data-k="B"][aria-pressed="true"]{background:var(--b)}
-.seg button[data-k="C"][aria-pressed="true"]{background:var(--c)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--yellow);color:#0F1B3D;border-bottom:4px solid var(--ink);padding-block:10px;margin-inline:calc(-1*var(--g)) calc(-1*max(16px,env(safe-area-inset-right,0px)));padding-inline:var(--g) max(16px,env(safe-area-inset-right,0px))}
+.bar-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.bar .t{font:700 .95rem/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.06em}
+.bar .h{font-size:.9rem;font-weight:500;flex:1 1 220px;min-width:0}
+.seg{display:inline-flex;flex-wrap:wrap;gap:8px}
+.seg button{display:inline-flex;align-items:center;gap:8px;font:600 .98rem/1 var(--f-body);color:#0F1B3D;background:#fff;border:3px solid #0F1B3D;border-radius:10px;padding:10px 14px;cursor:pointer;min-height:46px;box-shadow:3px 3px 0 #0F1B3D}
+.seg button .l{font:700 1.1rem/1 var(--f-head)}
+.seg button[aria-pressed="true"]{color:#fff;transform:translate(2px,2px);box-shadow:1px 1px 0 #0F1B3D}
+.seg button[data-k="A"][aria-pressed="true"]{background:#1737D6}
+.seg button[data-k="B"][aria-pressed="true"]{background:#0A8F5B}
+.seg button[data-k="C"][aria-pressed="true"]{background:#C21F7A}
+.seg.neutral button{background:var(--surface);color:var(--ink);border-color:var(--ink);box-shadow:3px 3px 0 var(--shadow)}
 .seg.neutral button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-weight:600;box-shadow:4px 4px 0 var(--yellow);transition:opacity .2s,transform .2s;z-index:70;max-width:calc(100% - 32px);text-align:center;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
 
-/* confronto coalizione */
-.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:14px;min-width:0}
+/* schede e pannelli */
+.card,.panel,.case,.sc,.ballot,.step,.tile,.qc,.mile,.gantt,.bench,.lights-wrap{background:var(--surface);border:3px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--shadow)}
+.two{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
+.panel{padding:18px;display:grid;gap:14px;min-width:0;align-content:start}
 .panel h3{display:flex;align-items:center;gap:10px}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.node{display:inline-flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:var(--soft);border-radius:10px;padding:10px 12px;min-width:84px;font-size:.88rem;line-height:1.2;font-weight:500}
+.node{display:inline-flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:var(--soft);border-radius:10px;padding:10px 12px;min-width:84px;font-size:.88rem;line-height:1.2;font-weight:600}
 .node .ic{width:1.9em;height:1.9em}
-.node.k{background:var(--sc);color:var(--on)}
+.node.k{background:var(--red);color:#fff}
 .arr{color:var(--muted);display:inline-flex}
 .stack{display:grid;gap:8px}
-.cap{font-size:.92rem;color:var(--muted)}
 
 /* casi */
-.cases{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
-.case{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.cases{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.case{padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
 .case .t{display:flex;gap:8px;align-items:center;justify-content:space-between}
-.case .t span.n{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.98rem;line-height:1.2}
-.case .big{font:700 2.1rem/1 var(--f-head);letter-spacing:-.02em;color:var(--b)}
-.case .u{font-size:.85rem;color:var(--muted);line-height:1.3}
-.case .m{font-size:.92rem;line-height:1.35;padding-top:6px;border-top:1px dashed var(--line)}
+.case .t span.n{display:flex;gap:8px;align-items:center;font-weight:700;font-size:1rem;line-height:1.2}
+.case .big{font:700 2.4rem/1 var(--f-head);letter-spacing:-.02em;color:var(--red)}
+.case .u{font-size:.86rem;color:var(--muted);line-height:1.3}
+.case .m{font-size:.93rem;line-height:1.35;padding-top:8px;border-top:2px dashed var(--line)}
 
 /* scenari */
-.scs{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
-.sc{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:14px;align-content:start;min-width:0;border-top:8px solid var(--sc)}
-.sc.on{border-color:var(--sc)}
-.sc .ttl{display:flex;gap:12px;align-items:center}
-.sc .letter{width:46px;height:46px;border-radius:50%;background:var(--sc);color:var(--on);font:700 1.5rem/46px var(--f-head);text-align:center;flex:none}
+.scs{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.sc{padding:0 18px 18px;display:grid;gap:14px;align-content:start;min-width:0;overflow:hidden}
+.sc .band{background:var(--sc);color:#fff;margin:0 -18px;padding:14px 18px;display:flex;gap:12px;align-items:center}
+:root[data-theme="dark"] .sc .band{color:#0A1130}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sc .band{color:#0A1130}}
+.sc .letter{width:46px;height:46px;border-radius:50%;background:#fff;color:#0F1B3D;font:700 1.6rem/46px var(--f-head);text-align:center;flex:none;border:3px solid #0F1B3D}
+.sc.on{outline:5px solid var(--yellow);outline-offset:3px}
+.sc p.d{font-size:.96rem}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:6px;font:500 .85rem/1 var(--f-body);background:var(--soft);border-radius:999px;padding:7px 10px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 .85rem/1 var(--f-body);background:var(--soft);border-radius:999px;padding:7px 11px}
 .chip b{font-family:var(--f-mono);font-weight:500}
-.sc button.pick{font:600 .95rem/1 var(--f-body);background:var(--sc);color:var(--on);border:0;border-radius:8px;padding:12px;cursor:pointer;min-height:44px}
+.sc button.pick{font:700 .98rem/1 var(--f-body);background:var(--sc);color:#fff;border:3px solid var(--ink);border-radius:10px;padding:12px;cursor:pointer;min-height:46px}
+:root[data-theme="dark"] .sc button.pick{color:#0A1130}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sc button.pick{color:#0A1130}}
 .sc.on button.pick{background:var(--soft);color:var(--ink)}
-.lights{width:100%;border-collapse:separate;border-spacing:6px;table-layout:fixed}
-.lights th{font:500 .8rem/1.2 var(--f-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:center;padding:4px}
-.lights td.r{font-weight:500;font-size:.95rem;width:26%;padding-right:6px}
-.lights td{vertical-align:middle}
-.lt{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;padding:9px 6px;font-size:.88rem;font-weight:600;text-align:center;min-height:42px}
-.lt .ic{width:1.15em;height:1.15em;stroke-width:2.4}
+.lights-wrap{overflow-x:auto;padding:8px}
+.lights{width:100%;border-collapse:separate;border-spacing:6px;table-layout:fixed;min-width:560px}
+.lights th{font:700 .85rem/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.05em;text-align:center;padding:4px}
+.lights td.r{font-weight:600;font-size:.95rem;width:26%;padding-right:6px}
+.lt{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;padding:9px 6px;font-size:.88rem;font-weight:700;text-align:center;min-height:42px}
+.lt .ic{width:1.15em;height:1.15em;stroke-width:2.6}
 .lt.ok{background:var(--ok-bg);color:var(--ok)} .lt.mid{background:var(--mid-bg);color:var(--mid)} .lt.bad{background:var(--bad-bg);color:var(--bad)}
-.lights-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
-.lights{min-width:560px}
+/* cosa cambia */
+.what{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.w{background:var(--surface);border:3px solid var(--ink);border-top:10px solid var(--sc);border-radius:16px;padding:14px 16px;display:grid;gap:10px;box-shadow:5px 5px 0 var(--shadow)}
+.w.on{outline:5px solid var(--yellow);outline-offset:3px}
+.w h3{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.w .on-b{font:700 .72rem/1 var(--f-head);letter-spacing:.08em;text-transform:uppercase;background:var(--yellow);color:#0F1B3D;border-radius:4px;padding:5px 8px}
+.w dl{margin:0;display:grid;gap:10px}
+.w dt{font:700 .75rem/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.07em;color:var(--sc);display:flex;gap:6px;align-items:center}
+.w dd{margin:0;font-size:.96rem}
 
 /* calendario */
-.miles{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
-.mile{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--sc);border-radius:10px;padding:12px;display:grid;gap:4px}
-.mile b{font:700 1.7rem/1 var(--f-head)}
-.mile span{font-size:.9rem;color:var(--muted);line-height:1.25}
-.gantt{--lab:150px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:8px}
+.miles{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.mile{border-top:10px solid var(--sc);padding:12px 14px;display:grid;gap:4px}
+.mile b{font:700 2rem/1 var(--f-head)}
+.mile span{font-size:.92rem;color:var(--muted);line-height:1.25}
+.gantt{--lab:150px;padding:16px;display:grid;gap:8px}
 .g-axis{position:relative;height:20px;margin-left:var(--lab);font:500 .75rem/1 var(--f-mono);color:var(--muted)}
 .g-axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}
-.g-row{display:grid;grid-template-columns:var(--lab) 1fr;align-items:center;gap:0}
-.g-label{display:flex;gap:8px;align-items:center;font-size:.9rem;font-weight:500;padding-right:8px;min-width:0;line-height:1.2}
+.g-row{display:grid;grid-template-columns:var(--lab) 1fr;align-items:center}
+.g-label{display:flex;gap:8px;align-items:center;font-size:.9rem;font-weight:600;padding-right:8px;min-width:0;line-height:1.2}
 .g-track{position:relative;height:30px;background:var(--soft);border-radius:6px;overflow:hidden}
 .g-bit{position:absolute;top:4px;bottom:4px;border-radius:4px;background:var(--bc)}
-.g-bit.hatch{background-image:repeating-linear-gradient(45deg,transparent 0 5px,rgba(255,255,255,.4) 5px 8px)}
-.g-line{position:absolute;top:0;bottom:0;width:3px;background:var(--bad)}
+.g-bit.hatch{background-image:repeating-linear-gradient(45deg,transparent 0 5px,rgba(255,255,255,.45) 5px 8px)}
+.g-line{position:absolute;top:0;bottom:0;width:4px;background:var(--red)}
 @media (max-width:640px){.gantt{--lab:96px}.g-label{font-size:.78rem}.g-label .ic{display:none}}
-.bench{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.bench{display:grid;gap:8px;padding:16px}
 .b-row{display:grid;grid-template-columns:minmax(110px,200px) 1fr;gap:10px;align-items:center;font-size:.9rem}
 .b-bar{height:22px;border-radius:4px;background:var(--muted);min-width:3px}
 .b-bar.mine{background:var(--sc)}
@@ -139,62 +173,64 @@ section{padding-block:52px 4px;display:grid;gap:20px}
 .b-line{display:flex;align-items:center;min-width:0}
 
 /* voto */
-.ballots{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.ballot{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;align-content:start}
+.ballots{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.ballot{padding:16px;display:grid;gap:12px;align-content:start}
 .paper{background:var(--soft);border:2px solid var(--line);border-radius:6px;padding:10px;display:grid;gap:6px}
-.paper .row{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:7px 10px;font-size:.92rem}
-.paper .box{width:26px;height:26px;border:2px solid var(--ink);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font:700 .95rem/1 var(--f-head)}
-.paper .box.x{background:var(--ink);color:var(--bg)}
-.paper .two-rounds{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);flex-wrap:wrap}
-.fit{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.92rem}
-.fit .lt{min-height:34px;padding:6px 10px;justify-content:flex-start}
+.paper .row{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:2px solid var(--line);border-radius:4px;padding:7px 10px;font-size:.92rem}
+.paper .box{width:28px;height:28px;border:3px solid var(--ink);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font:700 1rem/1 var(--f-head)}
+.paper .box.x{background:var(--red);border-color:var(--red);color:#fff}
+.paper .rounds{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--muted);flex-wrap:wrap}
+.fit .lt{min-height:34px;padding:6px 10px;justify-content:flex-start;width:fit-content}
 
 /* journey */
-.jtools{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
-.jtools .lbl{display:block;font:500 .78rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.strip{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 10px}
-.st{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;text-decoration:none;color:var(--ink);font-size:.78rem;line-height:1.15;font-weight:500;min-width:0}
-.st .c{width:46px;height:46px;border-radius:50%;background:var(--sc);color:var(--on);display:flex;align-items:center;justify-content:center;position:relative}
-.st .c .ic{width:1.5em;height:1.5em}
+.jtools{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:flex-end}
+.jtools .lbl{display:block;font:700 .8rem/1 var(--f-head);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.strip{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;background:var(--surface);border:3px solid var(--ink);border-radius:16px;padding:14px 10px;box-shadow:5px 5px 0 var(--shadow)}
+.st{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;text-decoration:none;color:var(--ink);font-size:.8rem;line-height:1.15;font-weight:600;min-width:0}
+.st .c{width:48px;height:48px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;border:3px solid var(--ink)}
+:root[data-theme="dark"] .st .c{color:#0A1130}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .st .c{color:#0A1130}}
+.st .nn{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;background:var(--yellow);color:#0F1B3D;border:2px solid #0F1B3D;font:700 .72rem/18px var(--f-mono);text-align:center}
 .st.off{opacity:.4}
-.st .nn{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--bg);font:700 .7rem/20px var(--f-mono);text-align:center}
 @media (max-width:760px){.strip{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}}
-.journey{display:grid;gap:14px}
-.step{background:var(--surface);border:1px solid var(--line);border-left:8px solid var(--sc);border-radius:12px;padding:16px;display:grid;gap:12px;min-width:0;scroll-margin-top:90px}
+.journey{display:grid;gap:18px}
+.step{border-left:12px solid var(--sc);padding:16px;display:grid;gap:12px;min-width:0;scroll-margin-top:110px}
 .step.off{opacity:.55;border-left-color:var(--line)}
 .s-top{display:flex;gap:14px;align-items:center}
-.s-ic{width:52px;height:52px;border-radius:12px;background:var(--sc);color:var(--on);display:flex;align-items:center;justify-content:center;flex:none}
+.s-ic{width:54px;height:54px;border-radius:14px;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;border:3px solid var(--ink)}
+:root[data-theme="dark"] .s-ic{color:#0A1130}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .s-ic{color:#0A1130}}
 .s-ic .ic{width:1.8em;height:1.8em}
-.s-top h3{font-size:1.3rem}
+.s-top h3{font-size:1.4rem}
 .s-top .n{font:500 .78rem/1 var(--f-mono);color:var(--muted);letter-spacing:.06em}
-.q{background:var(--soft);border-radius:14px 14px 14px 2px;padding:8px 14px;font-weight:500;width:fit-content;max-width:100%}
+.q{background:var(--yellow);color:#0F1B3D;border:2px solid #0F1B3D;border-radius:16px 16px 16px 2px;padding:8px 14px;font-weight:700;width:fit-content;max-width:100%}
 .rows{display:grid;gap:8px}
 .r2{display:flex;gap:10px;align-items:flex-start}
-.who{flex:none;font:500 .72rem/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:4px;padding:5px 7px;min-width:78px;text-align:center}
+.who{flex:none;font:700 .72rem/1 var(--f-head);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:4px;padding:5px 7px;min-width:78px;text-align:center}
 .who.sys{background:var(--soft);color:var(--ink)}
 .s-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.risk{display:inline-flex;gap:8px;align-items:center;background:var(--bad-bg);color:var(--bad);border-radius:8px;padding:8px 12px;font-weight:600;font-size:.92rem;line-height:1.25}
+.risk{display:inline-flex;gap:8px;align-items:center;background:var(--bad-bg);color:var(--bad);border-radius:8px;padding:8px 12px;font-weight:700;font-size:.92rem;line-height:1.25}
 .prec{display:inline-flex;gap:6px;align-items:center;background:var(--soft);border-radius:8px;padding:8px 12px;font-size:.9rem}
 details{font-size:.95rem}
-details summary{cursor:pointer;color:var(--b);font-weight:600;padding:6px 0;min-height:32px}
+details summary{cursor:pointer;color:var(--blue);font-weight:700;padding:6px 0;min-height:32px}
 details p{padding-top:4px;color:var(--muted)}
-.funnel{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
-.fb{height:34px;border-radius:6px;background:var(--b);color:var(--on);display:flex;align-items:center;padding-left:10px;font:600 .88rem/1 var(--f-body);white-space:nowrap;min-width:90px}
-.fb.d{background:var(--c)} .fb.e{background:var(--a)}
+.funnel{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.fb{height:34px;border-radius:6px;background:var(--blue);color:var(--on);display:flex;align-items:center;padding-left:10px;font:700 .88rem/1 var(--f-body);white-space:nowrap;min-width:90px}
+:root:not([data-theme="dark"]) .fb{color:#fff}
+.fb.d{background:var(--red);color:#fff} .fb.e{background:var(--b);color:#fff}
 .fr{display:grid;gap:3px;margin-top:8px}
 
 /* vincoli */
-.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
-.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start}
-.tile .ic{width:2em;height:2em;color:var(--bad)}
-.tile b{display:block;font-weight:600;line-height:1.25;margin-bottom:4px}
-.tile .tag{margin-top:2px}
-.qs{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
-.qc{background:var(--surface);border:2px dashed var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:center;font-weight:600;line-height:1.3}
-.qc .qn{font:700 1.8rem/1 var(--f-head);color:var(--c)}
+.tiles{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.tile{padding:14px;display:flex;gap:12px;align-items:flex-start}
+.tile .ic{width:2em;height:2em;color:var(--red)}
+.tile b{display:block;font-weight:700;line-height:1.25;margin-bottom:4px}
+.qs{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.qc{padding:14px;display:flex;gap:12px;align-items:center;font-weight:600;line-height:1.3;border-style:dashed}
+.qc .qn{font:700 2.2rem/1 var(--f-head);color:var(--red)}
 .src{columns:2 280px;column-gap:26px;font-size:.88rem;padding-left:18px;margin:8px 0 0}
 .src li{break-inside:avoid;margin-bottom:6px}
-footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
+footer{padding-block:28px 0;color:var(--muted);font-size:.9rem;max-width:75ch}
 </style>
 
 </head>
@@ -211,7 +247,6 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
 <symbol id="i-scale" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></symbol>
 <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
 <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a5 5 0 0 1 5 5"/></symbol>
 <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M10 21v-4h4v4"/></symbol>
 <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17 6a7 7 0 1 0 0 12"/><path d="M4 10h9M4 14h9"/></symbol>
@@ -220,43 +255,89 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
 <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
-<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
 <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
 <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
 </defs>
 </svg>
 
 <div class="wrap">
 <header class="hero">
-  <div class="eyebrow">Bozza di lavoro, 11 novembre 2026</div>
-  <h1>Primarie di coalizione, Milano 2027</h1>
-  <p class="sub">Scegliere il candidato sindaco e il candidato di coalizione, con voto online e ai seggi a fine gennaio.</p>
-  <div class="nums">
-    <div class="num"><b>81</b><span>giorni da oggi al voto del 31 gennaio (ipotesi)</span></div>
-    <div class="num"><b>3</b><span>scenari su chi vota e come si entra</span></div>
-    <div class="num"><b>8</b><span>tappe del percorso dell'elettore</span></div>
-  </div>
-  <div class="legend" aria-label="Legenda">
-    <span><span class="tag doc">DOC</span> testo ufficiale letto</span>
-    <span><span class="tag sec">SEC</span> stampa o commento</span>
-    <span><span class="tag inf">INF</span> mia inferenza</span>
-    <span>Non è un parere legale.</span>
+  <svg class="bunting" viewBox="0 0 720 54" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+    <defs><pattern id="bunt" width="72" height="54" patternUnits="userSpaceOnUse">
+      <polygon points="4,8 32,8 18,46" fill="#E5102B"/><polygon points="40,8 68,8 54,46" fill="#FFC72C"/>
+    </pattern></defs>
+    <path d="M0 8 H720" stroke="#0F1B3D" stroke-width="3"/><rect x="0" y="0" width="720" height="54" fill="url(#bunt)"/>
+  </svg>
+
+  <!-- gazebo a sinistra -->
+  <svg class="deco l" viewBox="0 0 200 175" aria-hidden="true" focusable="false">
+    <polygon points="100,12 130,72 70,72" fill="#fff" stroke="#0F1B3D" stroke-width="3"/>
+    <polygon points="100,12 70,72 40,72" fill="#E5102B" stroke="#0F1B3D" stroke-width="3"/>
+    <polygon points="100,12 160,72 130,72" fill="#E5102B" stroke="#0F1B3D" stroke-width="3"/>
+    <polygon points="100,12 40,72 10,72" fill="#fff" stroke="#0F1B3D" stroke-width="3"/>
+    <polygon points="100,12 190,72 160,72" fill="#fff" stroke="#0F1B3D" stroke-width="3"/>
+    <g stroke="#0F1B3D" stroke-width="3"><path d="M10 72a15 15 0 0 0 30 0z" fill="#E5102B"/><path d="M40 72a15 15 0 0 0 30 0z" fill="#fff"/><path d="M70 72a15 15 0 0 0 30 0z" fill="#E5102B"/><path d="M100 72a15 15 0 0 0 30 0z" fill="#fff"/><path d="M130 72a15 15 0 0 0 30 0z" fill="#E5102B"/><path d="M160 72a15 15 0 0 0 30 0z" fill="#fff"/></g>
+    <rect x="20" y="86" width="6" height="80" fill="#0F1B3D"/><rect x="174" y="86" width="6" height="80" fill="#0F1B3D"/>
+    <rect x="42" y="124" width="116" height="38" rx="3" fill="#FFC72C" stroke="#0F1B3D" stroke-width="3"/>
+    <rect x="80" y="98" width="40" height="26" rx="2" fill="#1737D6" stroke="#0F1B3D" stroke-width="3"/><path d="M92 108h16" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <text x="100" y="149" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="15" fill="#0F1B3D">VOTA QUI</text>
+    <path d="M0 168H200" stroke="#0F1B3D" stroke-width="3"/>
+  </svg>
+
+  <!-- urna e scheda a destra -->
+  <svg class="deco r" viewBox="0 0 160 175" aria-hidden="true" focusable="false">
+    <g transform="rotate(-8 80 50)"><rect x="46" y="14" width="68" height="84" rx="4" fill="#fff" stroke="#0F1B3D" stroke-width="3"/>
+    <path d="M58 36h44M58 52h44M58 68h30" stroke="#0F1B3D" stroke-width="4" stroke-linecap="round"/><path d="M60 82l8 8 14-16" fill="none" stroke="#E5102B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <rect x="20" y="100" width="120" height="66" rx="6" fill="#E5102B" stroke="#0F1B3D" stroke-width="3"/>
+    <rect x="48" y="112" width="64" height="8" rx="4" fill="#0F1B3D"/>
+    <circle cx="80" cy="146" r="12" fill="#FFC72C" stroke="#0F1B3D" stroke-width="3"/><path d="M74 146l4 4 8-9" fill="none" stroke="#0F1B3D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M0 168H160" stroke="#0F1B3D" stroke-width="3"/>
+  </svg>
+
+  <div class="hero-in">
+    <h1>Le primarie del <em>centrosinistra</em></h1>
+    <p class="sub">Scegliere insieme il candidato sindaco di Milano e il candidato di coalizione, con voto online e ai seggi.</p>
+    <div class="count" role="timer" aria-label="Tempo che manca al voto">
+      <div class="lab">Mancano al voto</div>
+      <div class="days"><span id="cdDays">0</span><small>giorni</small></div>
+      <div class="units">
+        <div class="unit"><b id="cdH">00</b><span>ore</span></div>
+        <div class="unit"><b id="cdM">00</b><span>minuti</span></div>
+        <div class="unit"><b id="cdS">00</b><span>secondi</span></div>
+      </div>
+      <p class="note">Calcolato fino a domenica 31 gennaio 2027, ore 20, chiusura del voto. È una data ipotizzata.</p>
+    </div>
+    <svg class="crowd" viewBox="0 0 420 96" aria-hidden="true" focusable="false">
+      <g stroke="#0F1B3D" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <g><circle cx="40" cy="34" r="14" fill="#FFC72C"/><path d="M12 92c0-22 12-38 28-38s28 16 28 38z" fill="#E5102B"/><path d="M62 62l14-26" fill="none"/></g>
+        <g><circle cx="110" cy="40" r="13" fill="#fff"/><path d="M84 92c0-20 11-34 26-34s26 14 26 34z" fill="#FFC72C"/></g>
+        <g><circle cx="180" cy="30" r="14" fill="#FFC72C"/><path d="M152 92c0-22 12-38 28-38s28 16 28 38z" fill="#12B76A"/><path d="M158 60l-14-30M202 60l14-30" fill="none"/></g>
+        <g><circle cx="250" cy="40" r="13" fill="#fff"/><path d="M224 92c0-20 11-34 26-34s26 14 26 34z" fill="#E8307F"/></g>
+        <g><circle cx="320" cy="34" r="14" fill="#FFC72C"/><path d="M292 92c0-22 12-38 28-38s28 16 28 38z" fill="#fff"/><path d="M344 62l12-26" fill="none"/></g>
+        <g><circle cx="388" cy="40" r="13" fill="#fff"/><path d="M362 92c0-20 11-34 26-34s26 14 26 34z" fill="#E5102B"/></g>
+      </g>
+    </svg>
   </div>
 </header>
 
 <div class="bar" role="region" aria-label="Scelta dello scenario">
   <div class="bar-in">
-    <span class="eyebrow">Scenario</span>
+    <span class="t">Scegli lo scenario</span>
     <div class="seg" id="scSeg">
       <button type="button" data-k="A" aria-pressed="false"><span class="l">A</span>Partiti</button>
       <button type="button" data-k="B" aria-pressed="true"><span class="l">B</span>Comitato</button>
       <button type="button" data-k="C" aria-pressed="false"><span class="l">C</span>Ibrido</button>
     </div>
+    <span class="h">Cambiano il calendario e il percorso dell'elettore. La differenza spiegata è nella sezione "Cosa cambia".</span>
   </div>
 </div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <section id="premessa">
-  <div class="head"><div class="eyebrow">Premessa</div><h2>Un partito o una coalizione?</h2></div>
+  <div class="head"><span class="kick">Premessa</span><h2>Un partito o una coalizione?</h2>
+    <p class="lead">Nei paesi anglosassoni le primarie scelgono il candidato dentro un partito che rappresenta tutta un'area politica. C'è un solo registro degli elettori e lo gestisce il partito stesso.</p>
+    <p class="lead">In Italia il centrosinistra è una coalizione di più partiti. Serve un comitato promotore che li riunisce, scrive regole comuni e tiene un albo degli elettori valido per tutti.</p></div>
   <div class="two">
     <div class="panel">
       <h3><svg class="ic"><use href="#i-flag"/></svg>Paesi anglosassoni</h3>
@@ -265,9 +346,9 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
         <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
         <div class="node"><svg class="ic"><use href="#i-clip"/></svg>1 registro del partito</div>
         <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
-        <div class="node k" style="--sc:var(--ink)"><svg class="ic"><use href="#i-ballot"/></svg>Voto</div>
+        <div class="node k"><svg class="ic"><use href="#i-ballot"/></svg>Voto</div>
       </div>
-      <p class="cap">Un partito rappresenta tutta l'area. Chi organizza gestisce anche l'elenco degli elettori.</p>
+      <p class="cap">Chi organizza gestisce anche l'elenco degli elettori. Labour, Democratici americani e liberali canadesi funzionano così.</p>
     </div>
     <div class="panel">
       <h3><svg class="ic"><use href="#i-building"/></svg>Italia, centrosinistra</h3>
@@ -278,20 +359,24 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
         <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
         <div class="node"><svg class="ic"><use href="#i-clip"/></svg>Albo e regole comuni</div>
         <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
-        <div class="node k" style="--sc:var(--ink)"><svg class="ic"><use href="#i-ballot"/></svg>Voto</div>
+        <div class="node k"><svg class="ic"><use href="#i-ballot"/></svg>Voto</div>
       </div>
-      <p class="cap">Serve qualcuno che definisca l'elettorato per tutti.</p>
+      <p class="cap">Qualcuno deve definire l'elettorato per tutti i partiti. È la scelta più delicata, e gli scenari più sotto la affrontano.</p>
     </div>
   </div>
 </section>
 
 <section id="casi">
-  <div class="head"><div class="eyebrow">Casi d'uso</div><h2>12 precedenti, un numero ciascuno</h2><p class="sub">Per ogni caso il dato che conta e cosa insegna a Milano.</p></div>
+  <div class="head"><span class="kick">Casi d'uso</span><h2>12 precedenti, un numero ciascuno</h2>
+    <p class="lead">Abbiamo letto regolamenti e cronache di dodici esperienze tra Regno Unito, Canada, Stati Uniti, Germania, Spagna, Portogallo, Australia, Francia e Italia. Ogni scheda mette in evidenza il dato che conta e dice cosa insegna a Milano.</p>
+    <p class="cap">L'etichetta in alto a destra dice da dove viene il dato: testo ufficiale letto, stampa o commento, oppure una mia ipotesi.</p></div>
   <div class="cases" id="cases"></div>
 </section>
 
 <section id="scenari">
-  <div class="head"><div class="eyebrow">Proposte</div><h2>Tre modi di decidere chi vota</h2><p class="sub">In tutti: voto online dal 22 gennaio con SPID o CIE, seggi sabato 30 e domenica 31, un solo registro dei votanti.</p></div>
+  <div class="head"><span class="kick">Proposte</span><h2>Tre modi di decidere chi vota</h2>
+    <p class="lead">La domanda centrale è chi può votare e come si entra nell'elettorato. Le tre risposte cambiano i tempi, i controlli da fare e quanto è aperta la primaria.</p>
+    <p class="lead">In tutti e tre il voto è ibrido: online dal 22 gennaio con SPID o CIE, seggi sabato 30 e domenica 31, un solo registro dei votanti per evitare il doppio voto.</p></div>
   <div class="scs" id="scCards"></div>
   <div class="lights-wrap" role="region" aria-label="Confronto degli scenari" tabindex="0">
     <table class="lights">
@@ -299,21 +384,29 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
       <tbody id="lightsBody"></tbody>
     </table>
   </div>
-  <p class="cap">Valutazioni mie <span class="tag inf">INF</span>, costruite sui precedenti. Sono giudizi, non misure.</p>
+  <p class="cap">Valutazioni mie <span class="tag inf">ipotesi</span>, costruite sui precedenti. Sono giudizi e non misure.</p>
+</section>
+
+<section id="cosacambia">
+  <div class="head"><span class="kick">Cosa cambia</span><h2>Cosa cambia quando scegli A, B o C</h2>
+    <p class="lead">Il pulsante giallo in alto aggiorna il calendario e il percorso dell'elettore, e fa risaltare qui lo scenario scelto. Sotto vedi la differenza concreta per le due persone che votano: l'iscritto a un partito e il cittadino senza tessera.</p></div>
+  <div class="what" id="what"></div>
 </section>
 
 <section id="calendario">
-  <div class="head"><div class="eyebrow">Tempistiche</div><h2>Calendario dello scenario <span class="sc-name"></span></h2></div>
+  <div class="head"><span class="kick">Tempistiche</span><h2>Calendario dello scenario <span class="sc-name"></span></h2>
+    <p class="lead">Le fasi in ordine, da oggi al voto: regole, iscrizione o conferma, verifica dell'identità, voto online, seggi, ricorsi. Le barre cambiano con lo scenario scelto.</p>
+    <p class="cap">Le date sono ipotesi mie <span class="tag inf">ipotesi</span> da concordare con il comitato. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
   <div class="miles" id="miles"></div>
   <div class="gantt" id="gantt"></div>
-  <p class="cap">Date ipotizzate da me <span class="tag inf">INF</span>. Righe a righe chiare: durata reale non documentata. Linea rossa: 31 gennaio, fine della proroga della carta d'identità cartacea.</p>
   <h3>Quanto prima del voto si chiudono le iscrizioni</h3>
-  <p class="cap">Giorni tra la chiusura delle iscrizioni e la chiusura del voto, calcolati sulle date dei testi.</p>
+  <p class="cap">Più giorni tra la chiusura delle iscrizioni e il voto lasciano più tempo per verificare gli elettori ed evitano le code all'ultimo. Giorni calcolati sulle date dei testi.</p>
   <div class="bench" id="bench"></div>
 </section>
 
 <section id="voto">
-  <div class="head"><div class="eyebrow">Modalità di voto</div><h2>Come si segna la scheda</h2><p class="sub">Il voto sceglie la persona che guida il comitato di coalizione.</p></div>
+  <div class="head"><span class="kick">Modalità di voto</span><h2>Come si segna la scheda</h2>
+    <p class="lead">Il voto sceglie la persona che guida il comitato di coalizione. Le tre forme cambiano quante volte si vota e quanto è facile contare. Con poco più di due mesi a disposizione conta soprattutto evitare un secondo turno.</p></div>
   <div class="ballots">
     <div class="ballot">
       <h3>V1 Preferenze in ordine</h3>
@@ -322,16 +415,16 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
         <div class="row">Candidato B <span class="box">1</span></div>
         <div class="row">Candidata C <span class="box">3</span></div>
       </div>
-      <p class="cap">Un solo giorno di voto. Usato da Labour, liberali canadesi, New York 2025 <span class="tag doc">DOC</span></p>
-      <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Regge 81 giorni</span></div>
+      <p class="cap">L'elettore ordina i candidati e il conteggio redistribuisce le preferenze. Un solo giorno di voto. Lo usano Labour, liberali canadesi e New York 2025 <span class="tag doc">ufficiale</span></p>
+      <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Regge i tempi</span></div>
     </div>
     <div class="ballot">
       <h3>V2 Ballottaggio</h3>
       <div class="paper" aria-label="Esempio di due turni">
         <div class="row">1° turno: oltre il 50% vince <span class="box x"><svg class="ic" style="width:1em;height:1em;stroke-width:3"><use href="#i-x"/></svg></span></div>
-        <div class="two-rounds"><svg class="ic"><use href="#i-arrow"/></svg>altrimenti 2° turno una settimana dopo</div>
+        <div class="rounds"><svg class="ic"><use href="#i-arrow"/></svg>altrimenti 2° turno una settimana dopo</div>
       </div>
-      <p class="cap">Italia Bene Comune 2012. Registrazione al secondo turno contestata <span class="tag sec">SEC</span></p>
+      <p class="cap">Vince chi supera la metà dei voti, altrimenti si rivota. Italia Bene Comune 2012 lo usò, con contestazioni sulla registrazione al secondo turno <span class="tag sec">stampa</span></p>
       <div class="fit"><span class="lt mid"><svg class="ic"><use href="#i-minus"/></svg>Primo turno a metà gennaio</span></div>
     </div>
     <div class="ballot">
@@ -341,14 +434,17 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
         <div class="row">Candidato B <span class="box x"><svg class="ic" style="width:1em;height:1em;stroke-width:3"><use href="#i-x"/></svg></span></div>
         <div class="row">Candidata C <span class="box"></span></div>
       </div>
-      <p class="cap">Vince chi ha più voti. Milano e Roma 2016 <span class="tag sec">SEC</span></p>
-      <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Rapido, vincitore con quota bassa</span></div>
+      <p class="cap">Vince chi ha più voti, senza soglia. È il modello di Milano e Roma 2016 <span class="tag sec">stampa</span></p>
+      <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Rapido, ma il vincitore può avere una quota bassa</span></div>
     </div>
   </div>
 </section>
 
 <section id="journey">
-  <div class="head"><div class="eyebrow">Voter journey</div><h2>Il percorso dell'elettore in 8 tappe</h2><p class="sub">Cambia scenario in alto, tipo di elettore e canale qui sotto.</p></div>
+  <div class="head"><span class="kick">Voter journey</span><h2>Il percorso dell'elettore</h2>
+    <p class="lead">Segui un elettore dalla prima informazione al ricorso. Ogni tappa mostra la domanda che si pone, cosa fa lui, cosa fa il sistema e il rischio principale.</p>
+    <p class="lead">Scegli se l'elettore è iscritto a un partito o no e se vota online o al seggio: le tappe cambiano di conseguenza, insieme allo scenario in alto.</p>
+    <span class="badge">Scenario attivo <b class="sc-name"></b></span></div>
   <div class="jtools">
     <div><span class="lbl">Elettore</span><div class="seg neutral" id="pSeg">
       <button type="button" data-k="iscritto" aria-pressed="false"><svg class="ic"><use href="#i-building"/></svg>Iscritto a un partito</button>
@@ -362,7 +458,8 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
   <nav class="strip" id="strip" aria-label="Tappe del percorso"></nav>
   <div class="journey" id="journey"></div>
 
-  <h3>Dove si perdono gli elettori, nei casi reali <span class="tag sec">SEC</span></h3>
+  <h3>Dove si perdono gli elettori, nei casi reali <span class="tag sec">stampa</span></h3>
+  <p class="cap">Due imbuti documentati da fonti giornalistiche. Le definizioni di "registrato" e "verificato" differiscono tra i due casi, quindi il confronto è prudente.</p>
   <div class="funnel">
     <div class="panel">
       <h3>Liberali canadesi 2025</h3>
@@ -375,22 +472,23 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
       <h3>Primaire populaire 2022</h3>
       <div class="fr"><div class="fb" style="width:100%">300.000 iscritti al 10 gennaio</div></div>
       <div class="fr"><div class="fb d" style="width:40%">120.000 verificati</div></div>
-      <p class="cap">A fine iscrizioni 467.000 iscritti e 392.738 votanti (84,1%). Le definizioni differiscono dal caso canadese.</p>
+      <p class="cap">A fine iscrizioni 467.000 iscritti e 392.738 votanti (84,1%). Il voto è durato dal 27 al 30 gennaio 2022.</p>
     </div>
   </div>
 </section>
 
 <section id="vincoli">
-  <div class="head"><div class="eyebrow">Vincoli</div><h2>Sei punti da chiudere prima di partire</h2></div>
+  <div class="head"><span class="kick">Vincoli</span><h2>Sei punti da chiudere prima di partire</h2>
+    <p class="lead">Alcuni dipendono dalla legge e dai fornitori tecnici, altri da scelte politiche del comitato. Vanno risolti prima di aprire le iscrizioni.</p></div>
   <div class="tiles">
-    <div class="tile"><svg class="ic"><use href="#i-idcard"/></svg><div><b>Carta cartacea valida fino al 31 gennaio, per la pubblica amministrazione</b><span class="tag doc">DOC</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-laptop"/></svg><div><b>SPID attivo entro il 7 dicembre tramite aggregatore</b><span class="tag inf">INF</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-pin"/></svg><div><b>SPID e CIE non provano la residenza a Milano</b><span class="tag inf">INF</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-shield"/></svg><div><b>Consenso esplicito, valutazione d'impatto e audit indipendente</b><span class="tag doc">DOC</span> <span class="tag inf">INF</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-euro"/></svg><div><b>Quota di 2 euro: trasparenza da verificare</b><span class="tag inf">INF</span></div></div>
-    <div class="tile"><svg class="ic"><use href="#i-file"/></svg><div><b>Manca il PDF ufficiale di Milano 2016</b><span class="tag sec">SEC</span></div></div>
+    <div class="tile"><svg class="ic"><use href="#i-idcard"/></svg><div><b>Carta cartacea valida fino al 31 gennaio, per la pubblica amministrazione</b><span class="tag doc">ufficiale</span></div></div>
+    <div class="tile"><svg class="ic"><use href="#i-laptop"/></svg><div><b>SPID attivo entro il 7 dicembre tramite aggregatore</b><span class="tag inf">ipotesi</span></div></div>
+    <div class="tile"><svg class="ic"><use href="#i-pin"/></svg><div><b>SPID e CIE non provano la residenza a Milano</b><span class="tag inf">ipotesi</span></div></div>
+    <div class="tile"><svg class="ic"><use href="#i-shield"/></svg><div><b>Consenso esplicito, valutazione d'impatto e audit indipendente</b><span class="tag doc">ufficiale</span> <span class="tag inf">ipotesi</span></div></div>
+    <div class="tile"><svg class="ic"><use href="#i-euro"/></svg><div><b>Quota di 2 euro: trasparenza da verificare</b><span class="tag inf">ipotesi</span></div></div>
+    <div class="tile"><svg class="ic"><use href="#i-file"/></svg><div><b>Manca il PDF ufficiale di Milano 2016</b><span class="tag sec">stampa</span></div></div>
   </div>
-  <h3>Quattro decisioni per te</h3>
+  <h3>Quattro decisioni per il comitato</h3>
   <div class="qs">
     <div class="qc"><span class="qn">1</span>Una sola primaria per Milano e coalizione, o due schede?</div>
     <div class="qc"><span class="qn">2</span>Voto il 31 gennaio o una settimana prima?</div>
@@ -400,26 +498,26 @@ footer{padding-block:28px 0;color:var(--muted);font-size:.9rem}
   <details>
     <summary>Fonti consultate</summary>
     <ul class="src">
-      <li><a href="https://labourlist.org/wp-content/uploads/2020/01/LE20-Procedures-and-Timetabale.pdf" target="_blank" rel="noopener">Labour, LE20 Procedure e calendario</a> (DOC)</li>
-      <li><a href="https://labour.org.uk/wp-content/uploads/2025/02/Rule-Book-2025.pdf" target="_blank" rel="noopener">Labour, Rule Book 2025</a> (DOC)</li>
-      <li><a href="https://liberal.ca/wp-content/uploads/sites/292/2025/02/Procedures-for-Leadership-Vote-1.pdf" target="_blank" rel="noopener">Liberali canadesi, Procedure 2025</a> (DOC)</li>
-      <li><a href="https://assets.nationbuilder.com/democratsabroad/pages/32925/attachments/original/1701855863/DemocratsAbroadDSP24.11.2023.pdf" target="_blank" rel="noopener">Democrats Abroad, piano 2024</a> (DOC)</li>
-      <li><a href="https://www.deldems.org/sites/default/files/2023-03/2024-DNC-Delegate-Selection-Rules.pdf" target="_blank" rel="noopener">DNC, regole 2024</a> (DOC)</li>
-      <li><a href="https://spd.de/fileadmin/Dokumente/Beschluesse/Parteispitze/Beschluss_Mitgliederbefragung_PV_engueltig.pdf" target="_blank" rel="noopener">SPD, consultazione iscritti 2019</a> (DOC)</li>
-      <li><a href="https://ps.pt/wp-content/uploads/2026/01/Regulamento-de-eleicao-Secretario-Geral-e-Delegados-2026.pdf" target="_blank" rel="noopener">PS Portogallo, regolamento 2026</a> (DOC)</li>
-      <li><a href="https://www.elindependiente.com/wp-content/uploads/2026/06/Bases_primarias_PSOE_municipalesCCAA_2027.pdf" target="_blank" rel="noopener">PSOE, bases 2027</a> (DOC)</li>
-      <li><a href="https://www.alp.org.au/media/3572/alp-national-constitution-adopted-19-august-2023.pdf" target="_blank" rel="noopener">ALP, statuto 2023</a> (DOC)</li>
-      <li><a href="https://www.leggioggi.it/wp-content/uploads/2012/10/Regole-primarie-Pd.pdf" target="_blank" rel="noopener">Italia Bene Comune, regolamento 2012</a> (DOC)</li>
-      <li><a href="https://www.scalia2001.it/index_htm_files/REGOLAMENTO%20PRIMARIE.pdf" target="_blank" rel="noopener">Regolamento Roma 2016</a> (DOC)</li>
-      <li><a href="https://www.associazionedeicostituzionalisti.it/old_sites/sito_AIC_2003-2010/cronache/attivita_organi/primarie/regolamento.pdf" target="_blank" rel="noopener">Unione, regolamento quadro 2005</a> (DOC)</li>
-      <li><a href="http://www.milanotoday.it/politica/guida-primarie-milano-6-7-febbraio-2016.html" target="_blank" rel="noopener">MilanoToday, guida primarie 2016</a> (SEC)</li>
-      <li><a href="https://www.forumcostituzionale.it/wordpress/images/stories/pdf/documenti_forum/paper/0315_croce.pdf" target="_blank" rel="noopener">Croce, primarie comunali</a> (SEC)</li>
-      <li><a href="https://garanteprivacy.it/garante/doc.jsp?ID=9101974" target="_blank" rel="noopener">Garante Privacy, Rousseau 2019</a> (DOC)</li>
-      <li><a href="https://www.politis.fr/articles/2022/01/primaire-populaire-une-consultation-en-forme-depreuve-de-force-44024/" target="_blank" rel="noopener">Politis, Primaire populaire</a> (SEC)</li>
-      <li><a href="https://amp.cbc.ca/lite/story/1.7475577" target="_blank" rel="noopener">CBC, liberali canadesi 2025</a> (SEC)</li>
+      <li><a href="https://labourlist.org/wp-content/uploads/2020/01/LE20-Procedures-and-Timetabale.pdf" target="_blank" rel="noopener">Labour, LE20 Procedure e calendario</a> (testo ufficiale)</li>
+      <li><a href="https://labour.org.uk/wp-content/uploads/2025/02/Rule-Book-2025.pdf" target="_blank" rel="noopener">Labour, Rule Book 2025</a> (testo ufficiale)</li>
+      <li><a href="https://liberal.ca/wp-content/uploads/sites/292/2025/02/Procedures-for-Leadership-Vote-1.pdf" target="_blank" rel="noopener">Liberali canadesi, Procedure 2025</a> (testo ufficiale)</li>
+      <li><a href="https://assets.nationbuilder.com/democratsabroad/pages/32925/attachments/original/1701855863/DemocratsAbroadDSP24.11.2023.pdf" target="_blank" rel="noopener">Democrats Abroad, piano 2024</a> (testo ufficiale)</li>
+      <li><a href="https://www.deldems.org/sites/default/files/2023-03/2024-DNC-Delegate-Selection-Rules.pdf" target="_blank" rel="noopener">DNC, regole 2024</a> (testo ufficiale)</li>
+      <li><a href="https://spd.de/fileadmin/Dokumente/Beschluesse/Parteispitze/Beschluss_Mitgliederbefragung_PV_engueltig.pdf" target="_blank" rel="noopener">SPD, consultazione iscritti 2019</a> (testo ufficiale)</li>
+      <li><a href="https://ps.pt/wp-content/uploads/2026/01/Regulamento-de-eleicao-Secretario-Geral-e-Delegados-2026.pdf" target="_blank" rel="noopener">PS Portogallo, regolamento 2026</a> (testo ufficiale)</li>
+      <li><a href="https://www.elindependiente.com/wp-content/uploads/2026/06/Bases_primarias_PSOE_municipalesCCAA_2027.pdf" target="_blank" rel="noopener">PSOE, bases 2027</a> (testo ufficiale)</li>
+      <li><a href="https://www.alp.org.au/media/3572/alp-national-constitution-adopted-19-august-2023.pdf" target="_blank" rel="noopener">ALP, statuto 2023</a> (testo ufficiale)</li>
+      <li><a href="https://www.leggioggi.it/wp-content/uploads/2012/10/Regole-primarie-Pd.pdf" target="_blank" rel="noopener">Italia Bene Comune, regolamento 2012</a> (testo ufficiale)</li>
+      <li><a href="https://www.scalia2001.it/index_htm_files/REGOLAMENTO%20PRIMARIE.pdf" target="_blank" rel="noopener">Regolamento Roma 2016</a> (testo ufficiale)</li>
+      <li><a href="https://www.associazionedeicostituzionalisti.it/old_sites/sito_AIC_2003-2010/cronache/attivita_organi/primarie/regolamento.pdf" target="_blank" rel="noopener">Unione, regolamento quadro 2005</a> (testo ufficiale)</li>
+      <li><a href="http://www.milanotoday.it/politica/guida-primarie-milano-6-7-febbraio-2016.html" target="_blank" rel="noopener">MilanoToday, guida primarie 2016</a> (stampa)</li>
+      <li><a href="https://www.forumcostituzionale.it/wordpress/images/stories/pdf/documenti_forum/paper/0315_croce.pdf" target="_blank" rel="noopener">Croce, primarie comunali</a> (commento)</li>
+      <li><a href="https://garanteprivacy.it/garante/doc.jsp?ID=9101974" target="_blank" rel="noopener">Garante Privacy, Rousseau 2019</a> (testo ufficiale)</li>
+      <li><a href="https://www.politis.fr/articles/2022/01/primaire-populaire-une-consultation-en-forme-depreuve-de-force-44024/" target="_blank" rel="noopener">Politis, Primaire populaire</a> (stampa)</li>
+      <li><a href="https://amp.cbc.ca/lite/story/1.7475577" target="_blank" rel="noopener">CBC, liberali canadesi 2025</a> (stampa)</li>
     </ul>
   </details>
-  <footer>Bozza di lavoro. I giorni sono calcolati con script Python. I punti INF vanno validati con un legale e con i fornitori.</footer>
+  <footer>Bozza di lavoro dell'11 novembre 2026. I giorni tra le date sono calcolati con script Python. I punti marcati come ipotesi vanno validati con un legale e con i fornitori prima di una proposta formale.</footer>
 </section>
 </div>
 
@@ -429,18 +527,30 @@ const DAY=86400000,T0=D('2026-11-11'),T1=D('2027-02-02'),SPAN=(T1-T0)/DAY;
 const pct=s=>((D(s)-T0)/DAY)/SPAN*100;
 const fmt=s=>new Date(D(s)).toLocaleDateString('it-IT',{day:'numeric',month:'short',timeZone:'UTC'});
 const ic=(n,x='')=>`<svg class="ic" ${x} aria-hidden="true"><use href="#i-${n}"/></svg>`;
-const TAGN={doc:'DOC',sec:'SEC',inf:'INF'};
+const TAGN={doc:'ufficiale',sec:'stampa',inf:'ipotesi'};
 const tg=t=>`<span class="tag ${t}">${TAGN[t]}</span>`;
+
+/* countdown: chiusura del voto, domenica 31 gennaio 2027 ore 20 (ora italiana, UTC+1) */
+const TARGET=Date.UTC(2027,0,31,19,0,0);
+function tick(){
+ let ms=Math.max(TARGET-Date.now(),0),d=Math.floor(ms/DAY);ms-=d*DAY;
+ const h=Math.floor(ms/3600000);ms-=h*3600000;const m=Math.floor(ms/60000);const s=Math.floor((ms-m*60000)/1000);
+ const p=n=>String(n).padStart(2,'0');
+ document.getElementById('cdDays').textContent=d;document.getElementById('cdH').textContent=p(h);
+ document.getElementById('cdM').textContent=p(m);document.getElementById('cdS').textContent=p(s);
+}
+tick();setInterval(tick,1000);
+
 const SC={
  A:{name:'A Partiti',css:'var(--a)',title:'Basta il partito',
-    who:[['building','Iscritti ai partiti']],dates:[['30 nov','blocco elenco'],['10 gen','conferma canale']],
-    flow:[[['building','Iscritti']],['clip','Liste dei partiti'],['idcard','Conferma ID'],['ballot','Voto']]},
+    desc:'Votano solo gli iscritti ai partiti della coalizione. Ogni partito certifica il proprio elenco a una data fissa e il comitato lo usa come registro.',
+    who:[['building','Iscritti ai partiti']],dates:[['30 nov','blocco elenco'],['10 gen','conferma canale']]},
  B:{name:'B Comitato',css:'var(--b)',title:'Serve il comitato',
-    who:[['people','Chiunque si registra'],['building','Anche gli iscritti']],dates:[['7 dic 10 gen','iscrizione all\'albo']],
-    flow:[[['people','Chiunque']],['clip','Albo del comitato'],['idcard','Verifica ID'],['ballot','Voto']]},
+    desc:'Tutti si iscrivono all\'albo del comitato, anche gli iscritti ai partiti. Si firma la Carta dei valori, si versano 2 euro e si verifica l\'identità.',
+    who:[['people','Chiunque si registra'],['building','Anche gli iscritti']],dates:[['7 dic 10 gen','iscrizione all\'albo']]},
  C:{name:'C Ibrido',css:'var(--c)',title:'Corsia veloce e albo',
-    who:[['building','Iscritti: conferma'],['people','Non iscritti: albo']],dates:[['30 nov','blocco iscritti'],['7 dic 10 gen','albo non iscritti']],
-    flow:null}
+    desc:'Gli iscritti ai partiti hanno una corsia veloce: confermano identità e canale. I cittadini senza tessera si registrano all\'albo del comitato.',
+    who:[['building','Iscritti: conferma'],['people','Non iscritti: albo']],dates:[['30 nov','blocco iscritti'],['7 dic 10 gen','albo non iscritti']]}
 };
 const state={sc:'B',p:'non',ch:'online'};
 
@@ -463,21 +573,24 @@ document.getElementById('cases').innerHTML=CASES.map(c=>`<article class="case"><
 
 /* scenari */
 function flowHTML(k){
- const node=(i,t,kk)=>`<div class="node ${kk?'k':''}" ${kk?'style="--sc:var(--ink)"':''}>${ic(i)}${t}</div>`, ar=`<span class="arr">${ic('arrow')}</span>`;
+ const node=(i,t,kk)=>`<div class="node ${kk?'k':''}">${ic(i)}${t}</div>`,ar=`<span class="arr">${ic('arrow')}</span>`;
  if(k==='C'){
-  const lane=(a,b,c)=>`<div class="flow">${node(a[0],a[1])}${ar}${node(b[0],b[1])}${ar}${node('clip','Registro unico')}</div>`;
+  const lane=(a,b)=>`<div class="flow">${node(a[0],a[1])}${ar}${node(b[0],b[1])}${ar}${node('clip','Registro unico')}</div>`;
   return `<div class="stack">${lane(['building','Iscritti'],['clip','Liste partiti'])}${lane(['people','Non iscritti'],['clip','Albo comitato'])}<div class="flow">${node('idcard','Verifica ID')}${ar}${node('ballot','Voto',true)}</div></div>`;
  }
- const f=SC[k].flow; return `<div class="flow">${node(f[0][0][0],f[0][0][1])}${ar}${node(f[1][0],f[1][1])}${ar}${node(f[2][0],f[2][1])}${ar}${node(f[3][0],f[3][1],true)}</div>`;
+ const mid=k==='A'?['clip','Liste dei partiti']:['clip','Albo del comitato'];
+ const first=k==='A'?['building','Iscritti']:['people','Chiunque'];
+ return `<div class="flow">${node(first[0],first[1])}${ar}${node(mid[0],mid[1])}${ar}${node('idcard',k==='A'?'Conferma ID':'Verifica ID')}${ar}${node('ballot','Voto',true)}</div>`;
 }
 function renderCards(){
  document.getElementById('scCards').innerHTML=Object.entries(SC).map(([k,s])=>`
  <article class="sc ${state.sc===k?'on':''}" style="--sc:${s.css}">
-  <div class="ttl"><span class="letter">${k}</span><h3>${s.title}</h3></div>
+  <div class="band"><span class="letter">${k}</span><h3>${s.title}</h3></div>
+  <p class="d">${s.desc}</p>
   <div class="chips">${s.who.map(w=>`<span class="chip">${ic(w[0])}${w[1]}</span>`).join('')}</div>
   ${flowHTML(k)}
   <div class="chips">${s.dates.map(d=>`<span class="chip"><b>${d[0]}</b>${d[1]}</span>`).join('')}</div>
-  <button type="button" class="pick" data-pick="${k}" ${state.sc===k?'aria-pressed="true"':''}>${state.sc===k?'Scenario attivo':'Mostra nel calendario e nel percorso'}</button>
+  <button type="button" class="pick" data-pick="${k}">${state.sc===k?'Scenario attivo':'Mostra nel calendario e nel percorso'}</button>
  </article>`).join('');
 }
 const LIGHTS=[
@@ -490,11 +603,34 @@ const LIGHTS=[
 const SYM={ok:'check',mid:'minus',bad:'x'};
 document.getElementById('lightsBody').innerHTML=LIGHTS.map(r=>`<tr><td class="r">${r[0]}</td>${r[1].map(c=>`<td><div class="lt ${c[0]}">${ic(SYM[c[0]])}${c[1]}</div></td>`).join('')}</tr>`).join('');
 
+/* cosa cambia */
+const WHAT={
+ A:[['Chi vota','Solo gli iscritti ai partiti della coalizione, secondo l\'elenco bloccato il 30 novembre.'],
+    ['Se sei iscritto a un partito','Non devi iscriverti a nulla. Confermi canale e identità entro il 10 gennaio e voti.'],
+    ['Se non sei iscritto','Non puoi votare. Iscriversi a un partito dopo il 30 novembre non cambia la situazione.'],
+    ['Cosa serve','Essere nell\'elenco del partito. SPID o CIE per il voto online, un documento al seggio.']],
+ B:[['Chi vota','Chiunque si registra all\'albo del comitato: residenti a Milano, 16 anni o più.'],
+    ['Se sei iscritto a un partito','Ti registri all\'albo come tutti gli altri. La tessera di partito non dà una corsia a parte.'],
+    ['Se non sei iscritto','Ti registri all\'albo dal 7 dicembre al 10 gennaio e voti come tutti.'],
+    ['Cosa serve','Firma della Carta dei valori, 2 euro, consenso ai dati, verifica con SPID, CIE o documento.']],
+ C:[['Chi vota','Gli iscritti ai partiti (elenco al 30 novembre) e i cittadini registrati all\'albo.'],
+    ['Se sei iscritto a un partito','Corsia veloce: confermi identità e canale, senza passare dall\'albo e senza quota.'],
+    ['Se non sei iscritto','Ti registri all\'albo dal 7 dicembre al 10 gennaio, come nello scenario B.'],
+    ['Cosa serve','Per gli iscritti l\'elenco del partito. Per gli altri Carta dei valori, 2 euro e verifica.']]
+};
+const WICON=['people','building','usercheck','idcard'];
+function renderWhat(){
+ document.getElementById('what').innerHTML=Object.entries(WHAT).map(([k,rows])=>`
+ <article class="w ${state.sc===k?'on':''}" style="--sc:${SC[k].css}">
+  <h3><span>Scenario ${k}, ${SC[k].title.toLowerCase()}</span>${state.sc===k?'<span class="on-b">Attivo</span>':''}</h3>
+  <dl>${rows.map((r,i)=>`<div><dt>${ic(WICON[i])}${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl></article>`).join('');
+}
+
 /* calendario */
 const MILES={
- A:[['30 nov','Regole e blocco degli iscritti'],['15 dic','Liste certificate dai partiti'],['10 gen','Conferma del canale'],['22 gen','Voto online, poi seggi 30 31']],
- B:[['30 nov','Regole e garanti'],['7 dic','Apre l\'albo'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 31']],
- C:[['30 nov','Blocco degli iscritti'],['7 dic','Apre l\'albo dei non iscritti'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 31']]
+ A:[['30 nov','Regole e blocco degli iscritti'],['15 dic','Liste certificate dai partiti'],['10 gen','Conferma del canale'],['22 gen','Voto online, poi seggi 30 e 31']],
+ B:[['30 nov','Regole e garanti'],['7 dic','Apre l\'albo'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 e 31']],
+ C:[['30 nov','Blocco degli iscritti'],['7 dic','Apre l\'albo dei non iscritti'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 e 31']]
 };
 const ROWS={
  A:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Liste dei partiti','building','2026-11-30','2026-12-15'],['Conferma canale','usercheck','2026-12-15','2027-01-10']],
@@ -504,9 +640,8 @@ const ROWS={
 const ROWS_END=[['Voto online','laptop','2027-01-22','2027-01-31','ink'],['Seggi','pin','2027-01-30','2027-01-31','ink'],['Ricorsi','scale','2027-01-31','2027-02-02','ink']];
 function renderCal(){
  const s=SC[state.sc];
- document.getElementById('miles').style.setProperty('--sc',s.css);
  document.getElementById('miles').innerHTML=MILES[state.sc].map(m=>`<div class="mile" style="--sc:${s.css}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
- const rows=[...ROWS[state.sc],...ROWS_END], ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
+ const rows=[...ROWS[state.sc],...ROWS_END],ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
  let h=`<div class="g-axis">${ticks.map(t=>`<span style="left:${pct(t)}%">${fmt(t)}</span>`).join('')}</div>`;
  rows.forEach(r=>{
   const l=pct(r[2]),w=pct(r[3])-pct(r[2])+1.3,col=r[4]==='ink'?'var(--ink)':s.css;
@@ -520,7 +655,7 @@ function renderBench(){
  rows.push({n:'Scenario A, blocco elenco',v:62,t:'inf',m:1,on:state.sc==='A'});
  rows.push({n:'Scenari B e C, chiusura albo',v:21,t:'inf',m:1,on:state.sc!=='A'});
  rows.sort((a,b)=>b.v-a.v);
- document.getElementById('bench').innerHTML=rows.map(r=>`<div class="b-row"><div style="${r.m?'font-weight:600':''}">${r.n}</div><div class="b-line"><div class="b-bar ${r.m?'mine':''}" style="width:${Math.max(r.v/77*100,0.8)}%;${r.m?`--sc:${SC[state.sc].css};${r.on?'':'opacity:.4'}`:''}"></div><span class="b-val">${r.v} gg ${tg(r.t)}</span></div></div>`).join('');
+ document.getElementById('bench').innerHTML=rows.map(r=>`<div class="b-row"><div style="${r.m?'font-weight:700':''}">${r.n}</div><div class="b-line"><div class="b-bar ${r.m?'mine':''}" style="width:${Math.max(r.v/77*100,0.8)}%;${r.m?`--sc:${SC[state.sc].css};${r.on?'':'opacity:.4'}`:''}"></div><span class="b-val">${r.v} gg ${tg(r.t)}</span></div></div>`).join('');
 }
 
 /* journey */
@@ -530,14 +665,14 @@ function stages(){
  S.push({i:'megaphone',t:'Scopre le primarie',q:'Mi riguarda?',
   tu:'Legge regole, date e candidati sul sito.',sys:'Pubblica regolamento e Carta dei valori entro il 30 novembre.',
   risk:'Se arriva tardi, la finestra di iscrizione si accorcia.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
-  more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2).'});
+  more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale).'});
  S.push({i:'usercheck',t:'Può votare?',q:'Posso votare io?',
   tu: sc==='A'?(ins?'Controlla di essere iscritto al 30 novembre.':'Scopre di essere fuori dall\'elettorato.'):sc==='B'?'Controlla residenza a Milano e 16 anni.':(ins?'Controlla di essere nell\'elenco del partito.':'Controlla i requisiti e si prepara all\'albo.'),
   sys: sc==='A'?'Il partito certifica l\'elenco entro il 15 dicembre.':sc==='B'?'Nessuna lista di partito.':'Due flussi: liste dei partiti e albo.',
   risk:'SPID e CIE non provano la residenza a Milano.',prec:'Milano 2016: residenti, 16 anni',tag:'sec',
-  more:'SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (DOC). Milano 2016: residenti a Milano (non basta il domicilio), 16 anni, stranieri residenti (fonte secondaria). Il controllo della residenza richiede una dichiarazione o un documento a parte (INF).'});
+  more:'SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano (non basta il domicilio), 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
  if(out){
-  const off=(i,t,q)=>({i,t,q,off:true,tu:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione.',risk:'Chi è escluso può contestare.',prec:'Scenari B e C evitano il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello).'});
+  const off=(i,t,q)=>({i,t,q,off:true,tu:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione.',risk:'Chi è escluso può contestare.',prec:'Scenari B e C evitano il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello, testo ufficiale).'});
   S.push(off('clip','Si iscrive','Quanto mi costa?'),off('shield','Firma e consenso','Mi fido?'),off('idcard','Dimostra chi è','È semplice?'),off('key','Credenziali','Come voto?'),off('ballot','Vota','È segreto?'),off('scale','Risultato','Posso fidarmi?'));
   return S;
  }
@@ -545,37 +680,37 @@ function stages(){
   tu: ins&&sc!=='B'?'Conferma il canale entro il 10 gennaio.':'Si iscrive all\'albo dal 7 dicembre al 10 gennaio.',
   sys: sc==='A'?'Elimina i doppi iscritti, un voto a testa.':sc==='B'?'Costruisce un albo unico.':'Fonde liste e albo in un registro.',
   risk: sc==='A'?'Liste dei partiti di qualità ignota.':'Verifica di massa: 40% verificato in Francia.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
-  more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (DOC). Milano 2016: albo entro il 7° giorno prima (SEC). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (SEC).'});
+  more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (testo ufficiale). Milano 2016: albo entro il 7° giorno prima (stampa). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (stampa).'});
  S.push({i:'shield',t:'Firma e consenso',q:'Mi fido di chi usa i miei dati?',
   tu: ins&&sc!=='B'?'Dà il consenso a passare i dati al comitato.':'Firma la Carta dei valori, dà il consenso e versa 2 euro.',
   sys:'Informativa, valutazione d\'impatto, albo non pubblico.',
   risk:'Serve il consenso esplicito, non basta l\'art. 9.2.d.',prec:'Roma 2016 art. 13: firma, 2 €, consenso',tag:'doc',
-  more:'Labour 2020 esclude chi ha sostenuto altri partiti negli ultimi 2 anni. ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti. Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia inferenza da validare con un legale.'});
+  more:'Labour 2020 esclude chi ha sostenuto altri partiti negli ultimi 2 anni (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
  S.push({i:'idcard',t:'Dimostra chi è',q:'È semplice o un ostacolo?',
   tu: on?'Entra con SPID o CIE e dichiara la residenza.':'Mostra CIE, passaporto o patente al seggio.',
   sys: on?'L\'aggregatore SPID verifica l\'identità.':'Il presidente verifica documento ed elenco.',
   risk: on?'Senza SPID o CIE si resta fuori dall\'online.':'Carta cartacea valida solo fino al 31 gennaio.',prec: on?'Canada 2025: app con problemi':'Italia 2012: documento e certificato',tag:'doc',
-  more: on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app. Democrats Abroad: dichiarazione firmata incrociata con il database interno.':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore. La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati, quindi il regolamento deve fissare un elenco chiuso di documenti (INF).'});
+  more: on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale).':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati, quindi il regolamento deve fissare un elenco chiuso di documenti (ipotesi mia).'});
  S.push({i:'key',t:on?'Riceve le credenziali':'Sa dove votare',q:'Come voto e quando?',
   tu: on?'Riceve un link e un PIN dal 22 gennaio.':'Riceve il seggio e l\'orario: 30 o 31 gennaio.',
   sys: on?'Lo segna sul canale online.':'Lo mette nell\'elenco del seggio, online spento.',
   risk:'Doppio voto tra online e seggio.',prec:'SPD 2019: link monouso e PIN',tag:'doc',
-  more:'SPD 2019: scelta del canale in registrazione. Italia Bene Comune 2012: cedolino per ogni giornata, trattenuto al seggio. Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero (INF).'});
+  more:'SPD 2019: scelta del canale in registrazione. Italia Bene Comune 2012: cedolino per ogni giornata, trattenuto al seggio (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero (ipotesi mia).'});
  S.push({i:'ballot',t:'Vota',q:'Il mio voto è segreto e conta?',
   tu: on?'Ordina i candidati, controlla, invia.':'Ritira la scheda, vota in cabina, firma.',
   sys: on?'Cifra il voto, separa identità e voto.':'Urna sigillata e verbale firmato.',
   risk:'Preferenze su carta: conteggio più lento.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
-  more:'Regola DNC 2.G: l\'elettore verifica e corregge prima dell\'invio e il sistema produce una traccia cartacea. Rousseau 2019: sanzione del Garante di 50.000 euro per mancata separazione tra identità e voto.'});
+  more:'Regola DNC 2.G: l\'elettore verifica e corregge prima dell\'invio e il sistema produce una traccia cartacea (testo ufficiale). Rousseau 2019: sanzione del Garante di 50.000 euro per mancata separazione tra identità e voto (testo ufficiale).'});
  S.push({i:'scale',t:'Risultato e ricorsi',q:'Posso fidarmi del risultato?',
   tu:'Riceve la conferma e segue lo scrutinio.',sys:'Scrutinio, audit indipendente, proclamazione dei garanti.',
   risk:'Senza audit indipendente il risultato è contestabile.',prec:'Roma 2016: reclami in 24 ore',tag:'doc',
-  more:'Roma 2016 art. 19: reclami sul voto entro 24 ore, decisione entro 24 ore, 48 ore per il risultato. I candidati accettano l\'esito con una clausola compromissoria. Nel 2023 lo SNP rifiutò un revisore indipendente (SEC).'});
+  more:'Roma 2016 art. 19: reclami sul voto entro 24 ore, decisione entro 24 ore, 48 ore per il risultato (testo ufficiale). I candidati accettano l\'esito con una clausola compromissoria. Nel 2023 lo SNP rifiutò un revisore indipendente (stampa).'});
  return S;
 }
 function renderJourney(){
  const col=SC[state.sc].css,st=stages();
  document.getElementById('strip').style.setProperty('--sc',col);
- document.getElementById('strip').innerHTML=st.map((s,i)=>`<a class="st ${s.off?'off':''}" href="#step-${i+1}" data-step="${i+1}"><span class="c">${ic(s.i)}<span class="nn">${i+1}</span></span>${s.t}</a>`).join('');
+ document.getElementById('strip').innerHTML=st.map((s,i)=>`<a class="st ${s.off?'off':''}" href="#step-${i+1}"><span class="c">${ic(s.i)}<span class="nn">${i+1}</span></span>${s.t}</a>`).join('');
  const j=document.getElementById('journey');j.style.setProperty('--sc',col);
  j.innerHTML=st.map((s,i)=>`<article class="step ${s.off?'off':''}" id="step-${i+1}">
   <div class="s-top"><div class="s-ic">${ic(s.i)}</div><div><div class="n">TAPPA ${i+1} DI 8</div><h3>${s.t}</h3></div></div>
@@ -586,15 +721,18 @@ function renderJourney(){
 }
 
 /* controlli */
+let tt;function toast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),3200);}
 function setPressed(id,key){document.querySelectorAll(`#${id} button`).forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===key));}
 function refresh(){
  setPressed('scSeg',state.sc);setPressed('pSeg',state.p);setPressed('cSeg',state.ch);
  document.querySelectorAll('.sc-name').forEach(e=>e.textContent=SC[state.sc].name);
- renderCards();renderCal();renderBench();renderJourney();
+ renderCards();renderWhat();renderCal();renderBench();renderJourney();
 }
-const on=(id,key,attr)=>document.getElementById(id).addEventListener('click',e=>{const b=e.target.closest(attr||'button');if(b){state[key]=b.dataset.k||b.dataset.pick;refresh();}});
-on('scSeg','sc');on('pSeg','p');on('cSeg','ch');
-document.getElementById('scCards').addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(b){state.sc=b.dataset.pick;refresh();}});
+function pickScenario(k){state.sc=k;refresh();toast(`Scenario ${SC[k].name}: aggiornati calendario, percorso e confronto`);}
+document.getElementById('scSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)pickScenario(b.dataset.k);});
+document.getElementById('pSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.p=b.dataset.k;refresh();}});
+document.getElementById('cSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.ch=b.dataset.k;refresh();}});
+document.getElementById('scCards').addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(b)pickScenario(b.dataset.pick);});
 refresh();
 </script>
 </body>
