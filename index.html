@@ -492,7 +492,7 @@ html:has(dialog[open]){overflow:hidden}
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Due primarie lo stesso giorno</b><span class="d">Una per il sindaco di Milano e una per il candidato di coalizione.</span></div>
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Niente ballottaggio</b><span class="d">I tempi non lo permettono. Si vota con le preferenze in ordine oppure con un solo nome.</span></div>
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>CIE online, CIE e tessera elettorale al seggio</b><span class="d">La CIE dà codice fiscale e residenza, da confermare con l'aggregatore. Dalla residenza si risale alla sezione elettorale e al seggio dove votare.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>SPID e CIE tramite un aggregatore</b><span class="d">Un aggregatore privato offre l'accesso a SPID e CIE, attivo entro il 7 dicembre. Restano da verificare fornitore, dati trattati e costo.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>SPID e CIE tramite un aggregatore</b><span class="d">Un aggregatore privato offre l'accesso a SPID e CIE, attivo entro il 15 gennaio, prima del voto online. Restano da verificare fornitore, dati trattati e costo.</span></div>
   </div>
   <h3>Ipotesi di lavoro <span class="tag inf">ipotesi</span></h3>
   <div class="decs">
@@ -531,7 +531,7 @@ html:has(dialog[open]){overflow:hidden}
         <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg><span>Codice fiscale nel registro</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         <div class="vn k"><svg class="ic" aria-hidden="true"><use href="#i-ballot"/></svg><span>Voto, online o al seggio</span></div>
       </div>
-      <p class="cap">L'iscrizione all'albo è possibile online dal 7 dicembre e al seggio anche il giorno del voto, come a Roma 2016 e per Italia Bene Comune 2012 <span class="tag doc">ufficiale</span></p>
+      <p class="cap">Non c'è un albo anticipato: l'elettore dichiara il sostegno e vota nello stesso passaggio, online dal 22 gennaio oppure al seggio il 30 e 31 gennaio. L'iscrizione il giorno stesso del voto esiste già a Roma 2016 e a Italia Bene Comune 2012 <span class="tag doc">ufficiale</span>. Una pre-registrazione facoltativa, con un contatore anonimo e senza dati identificativi, dà solo un'indicazione dell'interesse <span class="tag inf">ipotesi</span></p>
     </div>
     <div class="panel">
       <h3><svg class="ic"><use href="#i-pin"/></svg>Dove si vota</h3>
@@ -544,6 +544,7 @@ html:has(dialog[open]){overflow:hidden}
     </div>
   </div>
   <div class="callout">Con un elettorato aperto il sistema controlla due cose, che la persona sia chi dice di essere e che il suo codice non risulti già usato. Nella mappa dei benchmark nessun caso studiato arriva a un registro unico su tutti i canali, quindi va progettato da zero <span class="tag inf">ipotesi</span></div>
+  <div class="callout">Senza un albo anticipato non si sa quanti voteranno prima di aprire il voto. La pre-registrazione facoltativa dà un'indicazione parziale, quindi la stima degli elettori resta difficile e piattaforma, assistenza e seggi si dimensionano su tre ipotesi di partecipazione, come nella sezione sul numero di elettori <span class="tag inf">ipotesi</span></div>
   <div class="kvc"><h4>Da verificare</h4><ul>
     <li>Collegamento dei seggi al registro in tempo reale, con una soluzione se manca la connessione.</li>
     <li>Chi non ha la CIE: la carta d'identità cartacea è prorogata fino al 31 gennaio 2027 per la pubblica amministrazione, e il testo non cita i privati.</li>
@@ -555,8 +556,8 @@ html:has(dialog[open]){overflow:hidden}
 
 <section id="calendario">
   <div class="head"><span class="kick">Tempistiche</span><h2>Calendario, a ritroso dal voto</h2>
-    <p class="lead">Le fasi in ordine, da oggi al voto: regole, sviluppo della piattaforma, iscrizione all'albo, candidature, voto online, seggi, ricorsi.</p>
-    <p class="cap">Il giorno del voto è una proposta di lavoro e le altre date sono ipotesi mie da concordare con il comitato <span class="tag inf">ipotesi</span>. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
+    <p class="lead">Le fasi in ordine, da oggi al voto, in cinque rilasci successivi: regole e informativa (R1), candidature (R2), piattaforma pronta e audit (R3), voto online (R4), seggi (R5), poi i ricorsi.</p>
+    <p class="cap">Il giorno del voto è una proposta di lavoro e le altre date sono ipotesi mie da concordare con il comitato <span class="tag inf">ipotesi</span>. Lo sviluppo della piattaforma parte sulla bozza del regolamento, prima dell'approvazione. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
   <div class="miles" id="miles"></div>
   <div class="gantt" id="gantt"></div>
   <h3>Quanto prima del voto si chiudono le iscrizioni</h3>
@@ -590,6 +591,72 @@ html:has(dialog[open]){overflow:hidden}
     </div>
   </div>
 </section>
+
+<section id="aggregatore">
+  <div class="head"><span class="kick">Aggregatore</span><h2>Come entrano SPID e CIE</h2>
+    <p class="lead">Un aggregatore è un intermediario tra i gestori d'identità e chi eroga il servizio. Mette a disposizione un'integrazione già collaudata con AgID, così il comitato non sviluppa da solo i protocolli di accesso (SAML2 e OpenID Connect) <span class="tag sec">fonte commerciale</span></p>
+    <p class="lead">L'aggregatore può limitarsi all'autenticazione oppure ospitare l'intero servizio. L'autenticazione gli è affidata in outsourcing e i dati del gestore passano da lui, che deve proteggerli <span class="tag sec">fonte commerciale</span></p></div>
+  <div class="two">
+    <div class="panel">
+      <h3><svg class="ic"><use href="#i-key"/></svg>Come funziona</h3>
+      <div class="flow">
+        <div class="node"><svg class="ic"><use href="#i-people"/></svg>Elettore</div>
+        <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
+        <div class="node"><svg class="ic"><use href="#i-laptop"/></svg>Piattaforma di voto</div>
+        <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
+        <div class="node k"><svg class="ic"><use href="#i-shield"/></svg>Aggregatore</div>
+        <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
+        <div class="node"><svg class="ic"><use href="#i-idcard"/></svg>SPID o CIE</div>
+      </div>
+      <p class="cap">Alla piattaforma tornerebbe solo l'identificativo cifrato dell'elettore e la residenza, mentre il codice fiscale resta all'aggregatore <span class="tag inf">ipotesi</span></p>
+    </div>
+    <div class="panel">
+      <h3><svg class="ic"><use href="#i-clip"/></svg>Cosa deve fare l'aggregatore</h3>
+      <div class="kvc" style="background:transparent;padding:0"><ul>
+        <li>Comunica ad AgID i soggetti aggregati, i servizi e gli attributi richiesti per ciascuno.</li>
+        <li>Conserva i log delle autenticazioni per 2 anni e dà assistenza di primo livello.</li>
+        <li>Segnala subito malfunzionamenti, incidenti di sicurezza e violazioni di dati.</li>
+        <li>Secondo Webloom la convenzione con AgID prevede la conservazione dei dati per almeno 5 anni <span class="tag sec">fonte commerciale</span>, da verificare e da conciliare con la cancellazione dei dati dopo i ricorsi <span class="tag inf">ipotesi</span></li>
+      </ul></div>
+      <p class="cap">Fonte: pagine di Webloom, un aggregatore, quindi fonte commerciale. Riferimenti normativi citati: determina AgID 71/2022 e successivo schema del 2023, letti solo in estratti dei risultati di ricerca <span class="tag sec">stampa</span></p>
+    </div>
+  </div>
+  <h3>Chi sono</h3>
+  <div class="tablewrap" role="region" aria-label="Aggregatori" tabindex="0">
+    <table class="tbl">
+      <thead><tr><th>Soggetto</th><th>Cosa risulta</th><th>Fonte</th></tr></thead>
+      <tbody>
+        <tr><td><b>Webloom</b> (Roma)</td><td>Si presenta come aggregatore certificato AgID (sito dell'azienda). Compare in un vecchio elenco di aggregatori di servizi pubblici riportato da una testata di settore (lentepubblica.it).</td><td><span class="tag sec">fonte commerciale</span> <span class="tag sec">stampa</span></td></tr>
+        <tr><td><b>Lepida</b> (Bologna)</td><td>Compare nello stesso elenco ed è anche gestore d'identità. Non risulta se serva i privati.</td><td><span class="tag sec">stampa</span></td></tr>
+        <tr><td><b>Elenco aggiornato</b></td><td>Sta nei dati aperti SPID e nel registro di AgID. Le pagine AgID non sono state consultabili, quindi l'elenco dei privati è da completare.</td><td>da verificare</td></tr>
+        <tr><td><b>Aggregatori per la CIE</b></td><td>Il manuale operativo del Ministero dell'Interno prevede l'adesione di aggregatori privati alla federazione CIE. Requisiti, tempi e costi non sono stati letti.</td><td>da verificare</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Quanto costa</h3>
+  <div class="kv">
+    <div class="kvc"><h4>Cosa sappiamo</h4><ul>
+      <li>Per i fornitori privati la tariffa è regolata da AgID e si paga per utente unico annuale: conta la prima autenticazione di una persona nell'anno. Il prezzo varia con gli attributi richiesti. <span class="tag sec">fonte commerciale</span></li>
+      <li>Il contratto tra committente e aggregatore è a trattativa libera, e l'aggregatore paga a sua volta i gestori. Il prezzo finale sarà probabilmente più alto della tariffa AgID. <span class="tag sec">forum AgID</span> <span class="tag inf">ipotesi</span></li>
+      <li>I canoni di 5 o 6 euro l'anno li pagano i cittadini ai gestori e non rientrano nel costo del comitato. <span class="tag sec">stampa</span></li>
+    </ul></div>
+    <div class="kvc"><h4>Cosa manca</h4><ul>
+      <li>Nessuna cifra verificata: il listino AgID non è stato consultabile.</li>
+      <li>I valori del 2019, zero fino a 1.000 utenti e poi 0,4 euro per autenticazione, sono datati e vanno riconfermati.</li>
+      <li>Serve un preventivo scritto per ciascuna delle tre ipotesi di partecipazione.</li>
+    </ul></div>
+  </div>
+  <div class="kvc"><h4>Cosa chiedere nel preventivo</h4><ul>
+    <li>Attributi restituiti per CIE e per SPID, residenza compresa.</li>
+    <li>Se può consegnare solo un identificativo cifrato, e chi custodisce la chiave.</li>
+    <li>Chi è titolare e chi responsabile del trattamento dei dati.</li>
+    <li>Conservazione di log e dati rispetto alla cancellazione prevista dopo i ricorsi.</li>
+    <li>Tariffa per le tre ipotesi di partecipazione, bassa, media e alta.</li>
+    <li>Tempi di attivazione, entro il 15 gennaio per il rilascio R3, e requisiti per la federazione CIE.</li>
+  </ul></div>
+  <div class="callout">Webloom è l'unico aggregatore che si presenta come tale nelle fonti consultate, e Lepida compare solo in un vecchio elenco. Vanno confrontati con altri aggregatori, con un preventivo scritto prima di scegliere <span class="tag inf">ipotesi</span></div>
+</section>
+
 
 <section id="journey">
   <div class="head"><span class="kick">Voter journey</span><h2>Il percorso dell'elettore e quello del sistema</h2>
@@ -652,17 +719,17 @@ html:has(dialog[open]){overflow:hidden}
 
   <article class="detail" id="privacy">
     <div class="dh"><span class="dn">2</span><h3>Dati personali e sicurezza del voto</h3></div>
-    <p class="lead">L'albo degli elettori dice da che parte politica sta una persona. Per la legge è un dato particolare, protetto in modo rafforzato. Il voto deve restare segreto e il sistema deve poterlo dimostrare.</p>
+    <p class="lead">L'elenco dei votanti dice da che parte politica sta una persona. Per la legge è un dato particolare, protetto in modo rafforzato. Il voto deve restare segreto e il sistema deve poterlo dimostrare.</p>
     <div class="kv">
       <div class="kvc"><h4>Quali dati si trattano</h4><ul>
         <li>L'identità, da SPID o CIE.</li>
-        <li>L'appartenenza all'albo, che rivela un'opinione politica.</li>
+        <li>La dichiarazione di sostegno e il fatto di aver votato, che rivelano un'opinione politica.</li>
         <li>Il voto, che deve restare segreto e separato dall'identità.</li>
         <li>Lo stato "ha già votato", per evitare il doppio voto.</li>
       </ul></div>
       <div class="kvc"><h4>Cosa chiede la regola</h4><ul>
         <li>L'opinione politica è un dato particolare (GDPR art. 9). <span class="tag doc">ufficiale</span></li>
-        <li>L'art. 9.2.d copre solo iscritti, ex iscritti e persone in contatto regolare. Per un albo aperto agli indipendenti serve probabilmente il consenso esplicito. <span class="tag inf">ipotesi</span></li>
+        <li>L'art. 9.2.d copre solo iscritti, ex iscritti e persone in contatto regolare. Per un elenco aperto agli indipendenti serve probabilmente il consenso esplicito. <span class="tag inf">ipotesi</span></li>
         <li>Il Garante nel 2014 ha stabilito che la comunicazione dei dati a terzi richiede il consenso scritto. <span class="tag doc">ufficiale</span></li>
         <li>Il trattamento su larga scala di dati particolari richiede una valutazione d'impatto (art. 35) e un registro (art. 30). Il fornitore va nominato responsabile (art. 28). <span class="tag doc">ufficiale</span></li>
         <li>L'albo non va pubblicato online: lo disse il Garante nel 2012 per le primarie del centrosinistra. <span class="tag sec">stampa</span></li>
@@ -677,20 +744,19 @@ html:has(dialog[open]){overflow:hidden}
       <div class="kvc"><h4>Cosa prevediamo</h4><ul>
         <li>Informativa unica e consenso esplicito, separati dall'autodichiarazione di sostegno.</li>
         <li>Raccolta del minimo dei dati, senza trasferirli agli archivi dei partiti.</li>
-        <li>Valutazione d'impatto e registro dei trattamenti completati prima del 7 dicembre.</li>
+        <li>Valutazione d'impatto e registro dei trattamenti completati entro il 15 dicembre, insieme a regolamento e informativa.</li>
         <li>Fornitore della piattaforma nominato responsabile per iscritto.</li>
         <li>Identità e voto separati: il registro unico contiene solo "ha votato", mai il voto.</li>
         <li>Voto online cifrato, con ricevuta senza il contenuto e traccia verificabile, come nella regola DNC 2.G.</li>
         <li>Credenziali nominative per chi amministra, e risultati invisibili fino alla chiusura.</li>
         <li>Audit di sicurezza indipendente concluso entro il 15 gennaio.</li>
-        <li>Albo non pubblico, e cancellazione dei dati a tempi fissati prima, dopo i ricorsi.</li>
+        <li>Registro non pubblico, e cancellazione dei dati a tempi fissati prima, dopo i ricorsi.</li>
       </ul><span class="tag inf">ipotesi</span></div>
     </div>
-    <div class="callout">L'autodichiarazione apre l'albo a tutti, e l'albo dice che una persona sostiene il centrosinistra. Per questo il registro non è pubblico, raccoglie il minimo dei dati e contiene solo lo stato «ha votato», mai il voto. <span class="tag inf">ipotesi</span></div>
+    <div class="callout">L'autodichiarazione apre il voto a tutti, e il registro dice che una persona ha partecipato alle primarie del centrosinistra. Per questo il registro non è pubblico, raccoglie il minimo dei dati e contiene solo lo stato «ha votato», mai il voto. <span class="tag inf">ipotesi</span></div>
     <div class="miles" style="--sc:var(--red)">
-      <div class="mile"><b>30 nov</b><span>Regolamento e informativa approvati</span></div>
-      <div class="mile"><b>7 dic</b><span>Valutazione d'impatto, contratti e responsabile del trattamento</span></div>
-      <div class="mile"><b>15 gen</b><span>Audit di sicurezza indipendente concluso</span></div>
+      <div class="mile"><b>15 dic</b><span>Regolamento, informativa, valutazione d'impatto e registro dei trattamenti approvati</span></div>
+      <div class="mile"><b>15 gen</b><span>Audit di sicurezza indipendente concluso, contratti e responsabile del trattamento firmati</span></div>
       <div class="mile"><b>Dopo i ricorsi</b><span>Cancellazione dei dati nei tempi fissati</span></div>
     </div>
     <p class="cap">Non è un parere legale. Le date sono proposte mie e vanno validate con un legale e con un responsabile della protezione dei dati.</p>
@@ -698,7 +764,7 @@ html:has(dialog[open]){overflow:hidden}
 
   <article class="detail" id="scala">
     <div class="dh"><span class="dn">3</span><h3>Reggere il numero di elettori</h3></div>
-    <p class="lead">Nelle primarie del passato la partecipazione è andata da poche decine di migliaia di voti in una città a milioni di voti in tutta Italia. Albo, verifica, SPID, piattaforma e seggi vanno dimensionati prima di sapere quanti saranno.</p>
+    <p class="lead">Nelle primarie del passato la partecipazione è andata da poche decine di migliaia di voti in una città a milioni di voti in tutta Italia. Registro, verifica, SPID, piattaforma e seggi vanno dimensionati prima di sapere quanti saranno.</p>
     <div class="bench" style="border:0;padding:0">
       <div class="b-row"><div>Unione 2005</div><div class="b-line"><div class="b-bar mine" style="width:100%;--sc:var(--red)"></div><span class="b-val">4.290.388</span></div></div>
       <div class="b-row"><div>Italia Bene Comune 2012</div><div class="b-line"><div class="b-bar mine" style="width:72.4%;--sc:var(--red)"></div><span class="b-val">3.107.568</span></div></div>
@@ -709,7 +775,7 @@ html:has(dialog[open]){overflow:hidden}
       <div class="kvc"><h4>Verifica degli elettori</h4><ul>
         <li>Liberali canadesi 2025: circa 400.000 registrati, 137.000 verificati, 115.000 votanti. Si perde quasi il 66% alla verifica (calcolato). <span class="tag sec">stampa</span></li>
         <li>Primaire populaire 2022: 120.000 verificati su 300.000 iscritti a pochi giorni dal voto. <span class="tag sec">stampa</span></li>
-        <li>Con la CIE l'identità si verifica al momento dell'iscrizione, senza un controllo di massa a parte. Da confermare con l'aggregatore. <span class="tag inf">ipotesi</span></li>
+        <li>Con la CIE l'identità si verifica al momento del voto, senza un controllo di massa a parte. Da confermare con l'aggregatore. <span class="tag inf">ipotesi</span></li>
       </ul></div>
       <div class="kvc"><h4>SPID e CIE</h4><ul>
         <li>Nel 2019 le tariffe per i privati erano a zero per l'autenticazione fino a 1.000 utenti unici per gestore, poi 0,4 euro per autenticazione. Probabilmente superate, da chiedere all'aggregatore. <span class="tag sec">stampa</span></li>
@@ -964,7 +1030,7 @@ const MAP=[
  {n:'Proposta',name:'Proposta del progetto',t:'pr',ref:0,x:4,y:4,sh:'di',ev:'inf',src:[],
   one:'Autodichiarazione di sostegno, iscrizione anche al seggio. Codice fiscale verificato con la CIE per ogni votante, in un registro in tempo reale: chi ha votato non può rivotare né online né al seggio.',
   d:[['Chi vota','Chiunque si riconosca nel centrosinistra, iscritto o no a un partito. Basta l\'autodichiarazione di sostegno.'],
-     ['Come ci si iscrive','Online con la CIE dal 7 dicembre. Al seggio con CIE e tessera elettorale, anche il giorno del voto. Quota di 2 euro al tesoriere (ipotesi).'],
+     ['Come ci si iscrive','Nessuna iscrizione anticipata: online con la CIE dal 22 gennaio, al seggio con CIE e tessera elettorale il 30 e 31 gennaio, nello stesso passaggio del voto. Quota di 2 euro al tesoriere (ipotesi).'],
      ['Quando chiude l\'iscrizione','0 giorni: fino al giorno del voto.'],
      ['Canali','Online dal 22 gennaio e seggi il 30 e 31 gennaio, nel seggio della propria sezione.'],
      ['Verifica dell\'identità','CIE online, con codice fiscale e residenza. CIE e tessera elettorale al seggio.'],
@@ -1033,10 +1099,10 @@ document.getElementById('lessons').innerHTML=CASES.map(c=>`<article class="les">
 
 /* calendario */
 const COL='var(--b)';
-const MILES=[['30 nov','Regole approvate, parte lo sviluppo'],['7 dic','Apre l\'albo online'],['5 gen','Deposito candidature: 2.500 e 10.000 firme'],['15 gen','Piattaforma pronta, audit concluso'],['22 gen','Voto online, poi seggi 30 e 31'],['31 gen','Chiudono albo e voto']];
-const ROWS=[['Regole','file','2026-11-11','2026-11-30'],['Sviluppo piattaforma','laptop','2026-11-30','2027-01-15',true],['Iscrizione all\'albo','clip','2026-12-07','2027-01-31']];
-const ROWS_CAND=[['Raccolta firme','flag','2026-12-01','2027-01-05'],['Ammissione e ricorsi','scale','2027-01-05','2027-01-12']];
-const ROWS_END=[['Voto online','laptop','2027-01-22','2027-01-31','ink'],['Seggi','pin','2027-01-30','2027-01-31','ink'],['Ricorsi','scale','2027-01-31','2027-02-02','ink']];
+const MILES=[['15 dic','R1: regolamento e informativa approvati'],['5 gen','R2: deposito candidature, 2.500 e 10.000 firme'],['15 gen','R3: piattaforma pronta, audit concluso'],['22 gen','R4: voto online'],['30 e 31 gen','R5: seggi, chiude il voto']];
+const ROWS=[['R1 Regole','file','2026-11-11','2026-12-15'],['Pre-registrazione','clip','2026-12-15','2027-01-21',true]];
+const ROWS_CAND=[['R2 Candidature','flag','2026-12-15','2027-01-05'],['Ammissione','scale','2027-01-05','2027-01-12'],['R3 Piattaforma','laptop','2026-11-30','2027-01-15',true]];
+const ROWS_END=[['R4 Voto online','laptop','2027-01-22','2027-01-31','ink'],['R5 Seggi','pin','2027-01-30','2027-01-31','ink'],['Ricorsi','scale','2027-01-31','2027-02-02','ink']];
 function renderCal(){
  document.getElementById('miles').innerHTML=MILES.map(m=>`<div class="mile" style="--sc:${COL}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
  const rows=[...ROWS,...ROWS_CAND,...ROWS_END],ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
@@ -1062,13 +1128,13 @@ function phases(){
  P.push({i:'megaphone',t:'Informazione e requisiti',q:'Mi riguarda? Posso votare io?',
   el:'Legge regole e date e capisce che può votare, iscritto a un partito o no, purché si riconosca nel centrosinistra.',
   who:'Comitato promotore e partiti',
-  sys:'Pubblica regolamento, testo dell\'autodichiarazione e calendario entro il 30 novembre, con un sito che mostra istruzioni e mappa dei seggi.',
+  sys:'Pubblica regolamento, testo dell\'autodichiarazione e calendario entro il 15 dicembre, con un sito che mostra istruzioni e mappa dei seggi.',
   rEl:'',rSy:'SPID non prova la residenza. La CIE potrebbe restituirla da ANPR, da verificare.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
   more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale). Milano 2016: residenti a Milano, 16 anni, stranieri residenti (stampa). Con la CIE la residenza arriva dall\'anagrafe, con SPID resta una dichiarazione (ipotesi mia).'});
- P.push({i:'clip',t:'Iscrizione e consenso',q:'Quanto mi costa? Mi fido di chi usa i miei dati?',
-  el:'Dichiara di sostenere il centrosinistra, dà il consenso al trattamento dei dati e versa 2 euro. Online dal 7 dicembre, al seggio anche il giorno del voto.',
+ P.push({i:'clip',t:'Dichiarazione e consenso',q:'Quanto mi costa? Mi fido di chi usa i miei dati?',
+  el:'Dichiara di sostenere il centrosinistra, dà il consenso al trattamento dei dati e versa 2 euro, nello stesso passaggio del voto: online dal 22 gennaio, al seggio il 30 e 31 gennaio.',
   who:'Coordinamento organizzativo e tesoriere',
-  sys:'Identifica ogni elettore dal codice fiscale verificato con la CIE e lo inserisce nel registro unico. Informativa, valutazione d\'impatto, albo non pubblico.',
+  sys:'Identifica ogni elettore dal codice fiscale verificato con la CIE e lo inserisce nel registro unico. Informativa, valutazione d\'impatto, registro non pubblico.',
   rEl:'',rSy:'Serve il consenso esplicito.',prec:'Roma 2016: iscrizione al seggio, 2 €',tag:'doc',
   more:'Roma 2016 art. 13: firma, almeno 2 euro e consenso all\'albo, anche al seggio il giorno stesso (testo ufficiale). Italia Bene Comune 2012: iscrizione all\'albo fino al giorno del voto (testo ufficiale). Democrats Abroad: l\'iscrizione è la registrazione, anche il giorno stesso (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
  P.push({i:'idcard',t:'Identità e accesso',q:'È semplice o un ostacolo?',
