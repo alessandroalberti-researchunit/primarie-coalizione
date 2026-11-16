@@ -37,6 +37,7 @@ p{margin:0}
 .ui{font-family:var(--f-ui)}
 .lead{font-size:1.2rem;max-width:84ch}
 .cap{font:400 .95rem/1.5 var(--f-ui);color:var(--muted);max-width:96ch}
+.lead,.cap,.note,details>p,.les .m{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
 .tag{display:inline-block;font:600 .64rem/1 var(--f-ui);letter-spacing:.07em;text-transform:uppercase;padding:4px 7px;border-radius:2px;vertical-align:middle;white-space:nowrap}
 .tag.doc{background:var(--doc-bg);color:var(--doc-fg)} .tag.sec{background:var(--sec-bg);color:var(--sec-fg)} .tag.inf{background:var(--inf-bg);color:var(--inf-fg)}
 section{padding-block:72px 0;display:grid;gap:24px}
@@ -79,7 +80,10 @@ section{padding-block:72px 0;display:grid;gap:24px}
 .two{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
 .panel{padding:20px;display:grid;gap:16px;min-width:0;align-content:start}
 .panel h3{display:flex;align-items:center;gap:10px}
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow{display:flex;flex-wrap:nowrap;align-items:center;gap:8px}
+.flow .node{flex:1 1 0;min-width:0;padding:10px 8px}
+.flow .arr{flex:none}
+@media (max-width:620px){.flow{flex-wrap:wrap}.flow .node{flex:0 0 auto;min-width:88px}}
 .group{display:flex;flex-wrap:wrap;gap:8px}
 .node{display:inline-flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:var(--soft);border-radius:2px;padding:10px 12px;min-width:88px;font:500 .86rem/1.25 var(--f-ui)}
 .node .ic{width:1.8em;height:1.8em}
@@ -179,6 +183,7 @@ section{padding-block:72px 0;display:grid;gap:24px}
 .fit .lt{min-height:34px;padding:6px 10px;justify-content:flex-start;width:fit-content}
 
 /* journey */
+.chn{display:block}.chn+.chn{margin-top:.5em}.chn b{display:block;font:700 .72rem/1.2 var(--f-ui);letter-spacing:.1em;text-transform:uppercase}
 .jtools{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:flex-end}
 .jtools .lbl{display:block;font:700 .75rem/1 var(--f-ui);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
 .strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:16px 10px}
@@ -381,7 +386,9 @@ dialog#caseDlg::backdrop{background:rgba(40,44,48,.5)}
 .dl dd{margin:3px 0 0;font:400 1rem/1.5 var(--f-ui)}
 .dlg-src{font:400 .88rem/1.45 var(--f-ui);color:var(--muted)}
 html:has(dialog[open]){overflow:hidden}
-.lessons{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.lessons{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.lessons{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.lessons{grid-template-columns:1fr}}
 .les{background:var(--soft);border-radius:var(--r);padding:14px 16px;display:grid;gap:4px;align-content:start}
 .les .t{display:flex;gap:8px;align-items:center;justify-content:space-between;font:700 .84rem/1.25 var(--f-ui)}
 .les .t .n{display:flex;gap:6px;align-items:center}
@@ -431,7 +438,7 @@ html:has(dialog[open]){overflow:hidden}
       <div class="unit"><b id="cdM">00</b><span>minuti</span></div>
       <div class="unit"><b id="cdS">00</b><span>secondi</span></div>
     </div>
-    <p class="note">Proposta di lavoro: il voto chiude domenica 31 gennaio 2027. Il conto arriva alle ore 20, un orario che ho ipotizzato io.</p>
+    <p class="note">A scadenza ipotizzata al 31 gennaio 2027</p>
   </div>
 </header>
 <div class="tip" id="tip" hidden aria-hidden="true"></div>
@@ -545,7 +552,7 @@ html:has(dialog[open]){overflow:hidden}
 <section id="platea">
   <div class="head"><span class="kick">Proposta</span><h2>Chi vota e come si evita il doppio voto</h2>
     <p class="lead">Vota chiunque si riconosca nel centrosinistra. Basta un'autodichiarazione di sostegno: essere iscritti a un partito non cambia nulla, gli iscritti votano come tutti gli altri.</p>
-    <p class="lead">Ogni votante riceve un codice univoco, inserito in un registro aggiornato in tempo reale. Quando una persona ha votato il suo codice risulta usato, e non può rivotare né online né al seggio. Il registro contiene solo lo stato «ha votato», mai il voto <span class="tag inf">ipotesi</span></p></div>
+    <p class="lead">Ogni votante è identificato dal proprio codice fiscale, verificato con la CIE dall'aggregatore, che consegna al sistema solo un identificativo cifrato con la propria chiave. Il comitato promotore non vede né conserva il codice fiscale. L'identificativo entra in un registro aggiornato in tempo reale. Quando una persona ha votato il suo codice risulta usato, e non può rivotare né online né al seggio. Il registro contiene solo lo stato «ha votato», mai il voto <span class="tag inf">ipotesi</span></p></div>
   <div class="two">
     <div class="panel">
       <h3><svg class="ic"><use href="#i-people"/></svg>Come si entra</h3>
@@ -553,7 +560,7 @@ html:has(dialog[open]){overflow:hidden}
         <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-people"/></svg><span>Chiunque si riconosca nel centrosinistra, iscritto o no</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-usercheck"/></svg><span>Autodichiarazione di sostegno e consenso</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span>CIE: codice fiscale e residenza</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg><span>Codice univoco nel registro</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg><span>Codice fiscale nel registro</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         <div class="vn k"><svg class="ic" aria-hidden="true"><use href="#i-ballot"/></svg><span>Voto, online o al seggio</span></div>
       </div>
       <p class="cap">L'iscrizione all'albo è possibile online dal 7 dicembre e al seggio anche il giorno del voto, come a Roma 2016 e per Italia Bene Comune 2012 <span class="tag doc">ufficiale</span></p>
@@ -574,6 +581,7 @@ html:has(dialog[open]){overflow:hidden}
     <li>Chi non ha la CIE: la carta d'identità cartacea è prorogata fino al 31 gennaio 2027 per la pubblica amministrazione, e il testo non cita i privati.</li>
     <li>SPID non prova la residenza: dichiarazione con controlli a campione oppure solo CIE per la scheda di Milano.</li>
     <li>Cosa succede se l'autodichiarazione risulta falsa.</li>
+    <li>Se l'aggregatore può fornire solo un identificativo cifrato e chi custodisce la chiave. Il registro resta comunque un trattamento di dati personali di cui qualcuno è titolare.</li>
   </ul></div>
 </section>
 
@@ -618,13 +626,7 @@ html:has(dialog[open]){overflow:hidden}
 <section id="journey">
   <div class="head"><span class="kick">Voter journey</span><h2>Il percorso dell'elettore e quello del sistema</h2>
     <p class="lead">Cinque fasi e due percorsi paralleli. A sinistra c'è il voter journey, cioè cosa fa l'elettore. A destra c'è il system journey, cioè cosa fanno comitato, partiti, piattaforma e seggi, con l'indicazione di chi fa che cosa.</p>
-    <p class="lead">Scegli se l'elettore vota online o al seggio: le fasi cambiano di conseguenza.</p></div>
-  <div class="jtools">
-    <div><span class="lbl">Canale</span><div class="seg neutral" id="cSeg">
-      <button type="button" data-k="online" aria-pressed="true"><svg class="ic"><use href="#i-laptop"/></svg>Online</button>
-      <button type="button" data-k="seggio" aria-pressed="false"><svg class="ic"><use href="#i-pin"/></svg>Seggio</button>
-    </div></div>
-  </div>
+    <p class="lead">Dove il percorso cambia tra voto online e voto al seggio, nella stessa fase compaiono entrambe le versioni.</p></div>
   <nav class="strip" id="strip" aria-label="Tappe del percorso"></nav>
   <div class="journey" id="jrn"></div>
 
@@ -811,6 +813,7 @@ html:has(dialog[open]){overflow:hidden}
 </div>
 
 <script>
+document.documentElement.lang="it";
 const D=s=>{const[y,m,d]=s.split('-').map(Number);return Date.UTC(y,m-1,d)};
 const DAY=86400000,T0=D('2026-11-11'),T1=D('2027-02-02'),SPAN=(T1-T0)/DAY;
 const pct=s=>((D(s)-T0)/DAY)/SPAN*100;
@@ -991,15 +994,13 @@ const MAP=[
      ['Lezione','Iscrizione fino all\'ultimo giorno, con dichiarazione firmata.']],
   why:'Apertura 4: iscrizione anche il giorno stesso. Controllo 1: dichiarazione firmata contro il database.'},
  {n:'Proposta',name:'Proposta del progetto',t:'pr',ref:0,x:4,y:4,sh:'di',ev:'inf',src:[],
-  one:'Autodichiarazione di sostegno, iscrizione anche al seggio. Codice univoco per ogni votante in un registro in tempo reale: chi ha votato non può rivotare né online né al seggio.',
+  one:'Autodichiarazione di sostegno, iscrizione anche al seggio. Codice fiscale verificato con la CIE per ogni votante, in un registro in tempo reale: chi ha votato non può rivotare né online né al seggio.',
   d:[['Chi vota','Chiunque si riconosca nel centrosinistra, iscritto o no a un partito. Basta l\'autodichiarazione di sostegno.'],
      ['Come ci si iscrive','Online con la CIE dal 7 dicembre. Al seggio con CIE e tessera elettorale, anche il giorno del voto. Quota di 2 euro al tesoriere (ipotesi).'],
      ['Quando chiude l\'iscrizione','0 giorni: fino al giorno del voto.'],
      ['Canali','Online dal 22 gennaio e seggi il 30 e 31 gennaio, nel seggio della propria sezione.'],
      ['Verifica dell\'identità','CIE online, con codice fiscale e residenza. CIE e tessera elettorale al seggio.'],
-     ['Controllo del voto unico','Codice univoco per ogni votante in un registro unico, aggiornato in tempo reale su tutti i canali.'],
-     ['Lezione','Nella mappa nessun caso studiato arriva a questo livello: va progettato da zero.']],
-  why:'Apertura 4 e controllo 4: è la proposta del progetto, non un caso studiato.'}
+     ['Controllo del voto unico','Codice fiscale verificato con la CIE per ogni votante, in un registro unico, aggiornato in tempo reale su tutti i canali.']]}
 ];
 
 (function buildMap(){
@@ -1030,7 +1031,7 @@ function openCase(b){
  const m=MAP[+b.dataset.i];lastPt=b;hideTip();
  document.getElementById('dlgT').textContent=m.name;
  document.getElementById('dlgTags').innerHTML=`${tg(m.ev)}${m.ev2?tg(m.ev2):''}<span class="tag inf" style="background:var(--soft);color:var(--ink)">${TYN[m.t]}</span><span class="tag inf" style="background:var(--soft);color:var(--ink)">${SHN[m.sh]}</span>${m.ref?'<span class="tag doc">Caso di riferimento</span>':''}`;
- document.getElementById('dlgBody').innerHTML=m.d.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')+`<div><dt>Perché è qui sulla mappa</dt><dd>${m.why} <span class="tag inf">ipotesi</span></dd></div>`;
+ document.getElementById('dlgBody').innerHTML=m.d.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')+(m.why?`<div><dt>Perché è qui sulla mappa</dt><dd>${m.why} <span class="tag inf">ipotesi</span></dd></div>`:'');
  document.getElementById('dlgSrc').innerHTML=m.src.length?'Fonti: '+m.src.map(s=>`<a href="${SRC[s][1]}" target="_blank" rel="noopener">${SRC[s][0]}</a>`).join(', ')+'.':'Proposta del progetto, senza fonte esterna.';
  dlg.showModal();dlg.querySelector('.dlg-in').scrollTop=0;
 }
@@ -1088,7 +1089,7 @@ function renderBench(){
 
 /* journey */
 function phases(){
- const on=state.ch==='online';
+ const ch=(o,s)=>`<span class="chn"><b>Online</b>${o}</span><span class="chn"><b>Al seggio</b>${s}</span>`;
  const P=[];
  P.push({i:'megaphone',t:'Informazione e requisiti',q:'Mi riguarda? Posso votare io?',
   el:'Legge regole e date e capisce che può votare, iscritto a un partito o no, purché si riconosca nel centrosinistra.',
@@ -1099,21 +1100,21 @@ function phases(){
  P.push({i:'clip',t:'Iscrizione e consenso',q:'Quanto mi costa? Mi fido di chi usa i miei dati?',
   el:'Dichiara di sostenere il centrosinistra, dà il consenso al trattamento dei dati e versa 2 euro. Online dal 7 dicembre, al seggio anche il giorno del voto.',
   who:'Coordinamento organizzativo e tesoriere',
-  sys:'Assegna a ogni elettore un codice univoco e lo inserisce nel registro unico. Informativa, valutazione d\'impatto, albo non pubblico.',
+  sys:'Identifica ogni elettore dal codice fiscale verificato con la CIE e lo inserisce nel registro unico. Informativa, valutazione d\'impatto, albo non pubblico.',
   rEl:'',rSy:'Serve il consenso esplicito.',prec:'Roma 2016: iscrizione al seggio, 2 €',tag:'doc',
   more:'Roma 2016 art. 13: firma, almeno 2 euro e consenso all\'albo, anche al seggio il giorno stesso (testo ufficiale). Italia Bene Comune 2012: iscrizione all\'albo fino al giorno del voto (testo ufficiale). Democrats Abroad: l\'iscrizione è la registrazione, anche il giorno stesso (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
  P.push({i:'idcard',t:'Identità e accesso',q:'È semplice o un ostacolo?',
-  el:on?'Entra con CIE (o SPID) dal 22 gennaio. La CIE dà codice fiscale e residenza, da cui il sistema ricava sezione e seggio.':'Mostra CIE e tessera elettorale al seggio della propria sezione, il 30 o il 31 gennaio.',
-  who:on?'Aggregatore SPID e CIE e piattaforma di voto':'Presidente di seggio',
-  sys:on?'Verifica l\'identità, legge la residenza, la collega a sezione e seggio tramite il registro e controlla che il codice non risulti già usato.':'Verifica i documenti, trova il codice dell\'elettore nel registro e controlla che non abbia già votato, online o altrove.',
-  rEl:on?'Senza CIE o SPID si resta fuori dall\'online.':'Carta cartacea valida solo fino al 31 gennaio: va chiarito chi non ha la CIE.',
+  el:ch('Entra con CIE (o SPID) dal 22 gennaio. La CIE dà codice fiscale e residenza, da cui il sistema ricava sezione e seggio.','Mostra CIE e tessera elettorale al seggio della propria sezione, il 30 o il 31 gennaio.'),
+  who:ch('Aggregatore SPID e CIE e piattaforma di voto','Presidente di seggio'),
+  sys:ch('L\'aggregatore verifica l\'identità e tratta il codice fiscale, passando alla piattaforma solo l\'identificativo cifrato e la residenza. La piattaforma la collega a sezione e seggio tramite il registro e controlla che l\'identificativo non risulti già usato (ipotesi).','Verifica i documenti, trova il codice dell\'elettore nel registro e controlla che non abbia già votato, online o altrove.'),
+  rEl:ch('Senza CIE o SPID si resta fuori dall\'online.','Carta cartacea valida solo fino al 31 gennaio: va chiarito chi non ha la CIE.'),
   rSy:'Doppio voto tra online e seggio se il registro non è aggiornato in tempo reale.',
-  prec:on?'Canada 2025: app con problemi':'Italia 2012: documento e certificato',tag:'doc',
-  more:(on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). ':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). Il seggio è quello della propria sezione elettorale (art. 3.6, testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati (ipotesi mia). ')+'Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale). SPD 2019: link monouso e PIN (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero. Il registro tra residenza e seggio richiede l\'elenco delle sezioni e delle sedi (ipotesi mie).'});
+  prec:ch('Canada 2025: app con problemi','Italia 2012: documento e certificato'),tag:'doc',
+  more:'Online. Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). Al seggio. Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). Il seggio è quello della propria sezione elettorale (art. 3.6, testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati (ipotesi mia). Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale). SPD 2019: link monouso e PIN (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero. Il registro tra residenza e seggio richiede l\'elenco delle sezioni e delle sedi (ipotesi mie).'});
  P.push({i:'ballot',t:'Voto',q:'Il mio voto è segreto e conta?',
-  el:on?'Compila le schede, controlla, invia.':'Ritira le schede, vota in cabina, firma.',
-  who:on?'Piattaforma di voto':'Seggio',
-  sys:on?'Cifra il voto, separa identità e voto, segna il codice come «ha votato» nel registro unico e rilascia una ricevuta.':'Urna sigillata e verbale firmato. Il seggio segna il codice come «ha votato» nel registro unico.',
+  el:ch('Compila le schede, controlla, invia.','Ritira le schede, vota in cabina, firma.'),
+  who:ch('Piattaforma di voto','Seggio'),
+  sys:ch('Cifra il voto, separa identità e voto, segna il codice come «ha votato» nel registro unico e rilascia una ricevuta.','Urna sigillata e verbale firmato. Il seggio segna il codice come «ha votato» nel registro unico.'),
   rEl:'',rSy:'Più schede a testa allungano il tempo al seggio.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
   more:'Regola DNC 2.G: l\'elettore verifica e corregge prima dell\'invio e il sistema produce una traccia cartacea (testo ufficiale). Rousseau 2019: sanzione del Garante di 50.000 euro per mancata separazione tra identità e voto (testo ufficiale).'});
  P.push({i:'scale',t:'Risultato e ricorsi',q:'Posso fidarmi del risultato?',
@@ -1142,9 +1143,7 @@ function renderJourney(){
 }
 
 /* controlli */
-function setPressed(id,key){document.querySelectorAll(`#${id} button`).forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===key));}
-function refresh(){setPressed('cSeg',state.ch);renderCal();renderBench();renderJourney();}
-document.getElementById('cSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.ch=b.dataset.k;refresh();}});
+function refresh(){renderCal();renderBench();renderJourney();}
 refresh();
 
 </script>
