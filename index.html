@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Le primarie del centrosinistra: due scenari su chi vota e come si entra, calendario, percorso dell'elettore e del sistema, casi di studio. Bozza di lavoro.">
+<meta name="description" content="Le primarie del centrosinistra: mappa dei benchmark nel mondo, platea aperta con codice univoco per votante, calendario, percorso dell'elettore e del sistema. Bozza di lavoro.">
 <style>html{padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 <title>Le primarie del centrosinistra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,24 +211,6 @@ details p{padding-top:4px;color:var(--muted)}
 .fb.d{background:var(--red);color:#fff} .fb.e{background:var(--b);color:#fff}
 .fr{display:grid;gap:3px;margin-top:8px}
 
-/* slider casi */
-.slider{display:grid;gap:14px}
-.slider-bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.slcount{font:700 1rem/1 var(--f-ui);letter-spacing:.08em;text-transform:uppercase}
-.slbtns{display:flex;gap:8px}
-.slbtns button{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);border:0;cursor:pointer}
-.slbtns button:disabled{opacity:.3;cursor:default}
-.track{position:relative;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 20px;scrollbar-width:thin;scrollbar-color:var(--red) var(--soft)}
-.track:focus-visible{outline:3px solid var(--red);outline-offset:4px}
-.lc{flex:0 0 min(88vw,580px);scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-top:8px solid var(--red);padding:clamp(20px,3vw,34px);display:grid;gap:16px;align-content:start}
-.lc .t{display:flex;gap:12px;align-items:center;justify-content:space-between}
-.lc .t .n{display:flex;gap:12px;align-items:center;font:700 1.15rem/1.25 var(--f-ui)}
-.lc .t .n .ic{width:1.8em;height:1.8em;color:var(--blue)}
-.lc .no{font:800 1rem/1 var(--f-head);color:var(--muted);letter-spacing:.1em}
-.lc .big{font:800 clamp(4.5rem,13vw,7.5rem)/.9 var(--f-head);color:var(--red);text-transform:uppercase}
-.lc .u{font:500 1.15rem/1.35 var(--f-ui);color:var(--ink)}
-.lc .m{font:400 1.25rem/1.5 var(--f-body);padding-top:16px;border-top:1px solid var(--line)}
-.lc .lab{display:block;font:700 .75rem/1 var(--f-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--red-d);margin-bottom:8px}
 /* journey a due colonne */
 .duo{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;row-gap:26px;position:relative}
 .duo::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--line);transform:translateX(-1.5px)}
@@ -351,10 +333,67 @@ html,body{background:var(--bg);color:var(--ink)}
 a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,.sc[data-pick]:focus-visible,.w[data-pick]:focus-visible{outline-color:var(--red-d)}
 .fb.d{color:#2B2F33}
 .seg button{border-color:var(--ink)}
+
+/* mappa dei benchmark */
+.dot{display:block;width:20px;height:20px;background:var(--pc,var(--ink))}
+.dot.ci{border-radius:50%}.dot.sq{border-radius:4px}.dot.di{transform:rotate(45deg) scale(.8);border-radius:3px}.dot.tr{clip-path:polygon(50% 0,100% 100%,0 100%)}
+.t-it{--pc:var(--red)}.t-es{--pc:var(--a)}.t-pr{--pc:var(--b)}
+.mapscroll{overflow-x:auto;padding-bottom:6px}
+.mapscroll:focus-visible{outline:3px solid var(--red-d);outline-offset:3px}
+.map{min-width:780px;display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto 640px auto auto;column-gap:10px;row-gap:6px}
+.map-hint{display:none}
+@media (max-width:820px){.map-hint{display:block}}
+.map-cap{font:700 .78rem/1.2 var(--f-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.map-cap.r{grid-column:2;text-align:right}
+.map-ylab{display:grid;grid-template-rows:repeat(4,1fr)}
+.map-ylab div{display:flex;align-items:center;justify-content:flex-end;text-align:right;font:600 .8rem/1.25 var(--f-ui);padding-right:8px}
+.map-plot{position:relative;border-radius:var(--r);background:var(--soft);overflow:hidden}
+.map-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr)}
+.map-grid i{border:1px dashed color-mix(in srgb,var(--ink) 14%,transparent)}
+.map-goal{position:absolute;right:0;top:0;width:25%;height:25%;background:color-mix(in srgb,var(--b) 14%,transparent);border-radius:0 var(--r) 0 0}
+.map-goal span{position:absolute;left:10px;top:8px;font:700 .68rem/1.1 var(--f-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--ok)}
+.map-xlab{display:grid;grid-template-columns:repeat(4,1fr)}
+.map-xlab div{text-align:center;font:600 .8rem/1.25 var(--f-ui);padding:4px 6px}
+.pt{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:6px;cursor:pointer;font:600 .74rem/1.15 var(--f-ui);color:var(--ink);min-width:44px;min-height:44px}
+.pt .dot{transition:transform .12s}
+.pt:hover .dot,.pt:focus-visible .dot{transform:scale(1.3)}
+.pt:hover .dot.di,.pt:focus-visible .dot.di{transform:rotate(45deg) scale(1)}
+.pt.ref .dot{box-shadow:0 0 0 3px var(--soft),0 0 0 5px var(--ink)}
+.pt .lbl{max-width:118px;text-align:center;text-wrap:balance}
+.pt:focus-visible{outline:3px solid var(--red-d);outline-offset:2px;border-radius:14px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font:500 .84rem/1.2 var(--f-ui);align-items:center}
+.lg{display:inline-flex;align-items:center;gap:7px}
+.lg .dot{width:14px;height:14px}
+.lg .ringd{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--ink);border-radius:50%;background:var(--muted)}
+.tip{position:fixed;z-index:80;max-width:min(320px,calc(100vw - 16px));background:var(--ink);color:var(--bg);padding:12px 14px;border-radius:16px;font:400 .88rem/1.4 var(--f-ui);pointer-events:none;box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.tip[hidden]{display:none}
+.tip b{display:block;font:800 1.2rem/1.05 var(--f-head);text-transform:uppercase;margin-bottom:4px}
+.tip .more{display:inline-block;margin-top:8px;font:700 .68rem/1 var(--f-ui);letter-spacing:.08em;text-transform:uppercase;background:var(--bg);color:var(--ink);padding:5px 9px;border-radius:999px}
+dialog#caseDlg{border:0;padding:0;border-radius:28px;max-width:min(780px,calc(100vw - 24px));width:100%;max-height:calc(100dvh - 24px);background:var(--bg);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.28)}
+dialog#caseDlg::backdrop{background:rgba(40,44,48,.5)}
+.dlg-in{padding:clamp(18px,3vw,32px);display:grid;gap:16px;max-height:calc(100dvh - 24px);overflow:auto}
+.dlg-h{display:flex;gap:12px;justify-content:space-between;align-items:flex-start}
+.dlg-h h3{font:800 clamp(1.8rem,4vw,2.6rem)/1 var(--f-head);text-transform:uppercase}
+.dlg-x{width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.dlg-tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dl{display:grid;gap:14px;margin:0}
+.dl dt{font:700 .72rem/1.2 var(--f-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--red-d)}
+.dl dd{margin:3px 0 0;font:400 1rem/1.5 var(--f-ui)}
+.dlg-src{font:400 .88rem/1.45 var(--f-ui);color:var(--muted)}
+html:has(dialog[open]){overflow:hidden}
+.lessons{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.les{background:var(--soft);border-radius:var(--r);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.les .t{display:flex;gap:8px;align-items:center;justify-content:space-between;font:700 .84rem/1.25 var(--f-ui)}
+.les .t .n{display:flex;gap:6px;align-items:center}
+.les .t .ic{width:1.3em;height:1.3em}
+.les .big{font:800 2.2rem/1 var(--f-head);color:var(--red);text-transform:uppercase}
+.les .u{font:400 .8rem/1.3 var(--f-ui);color:var(--muted)}
+.les .m{font:400 .88rem/1.4 var(--f-ui);padding-top:6px;border-top:1px solid var(--line)}
+.dec .ok.hyp{background:var(--mid);font:800 1.25rem/1 var(--f-head)}
+@media (prefers-reduced-motion:reduce){.pt .dot{transition:none}}
 </style>
 
-</head>
-<body>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
 <defs>
 <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 7a7 7 0 0 1 0 10"/></symbol>
@@ -392,15 +431,56 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
       <div class="unit"><b id="cdM">00</b><span>minuti</span></div>
       <div class="unit"><b id="cdS">00</b><span>secondi</span></div>
     </div>
-    <p class="note">Il voto chiude domenica 31 gennaio 2027. Il conto arriva alle ore 20, un orario di chiusura che ho ipotizzato io.</p>
+    <p class="note">Proposta di lavoro: il voto chiude domenica 31 gennaio 2027. Il conto arriva alle ore 20, un orario che ho ipotizzato io.</p>
   </div>
 </header>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="tip" id="tip" hidden aria-hidden="true"></div>
+<dialog id="caseDlg" aria-labelledby="dlgT">
+  <div class="dlg-in">
+    <div class="dlg-h"><h3 id="dlgT"></h3><button type="button" class="dlg-x" id="dlgX" aria-label="Chiudi il dettaglio"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <div class="dlg-tags" id="dlgTags"></div>
+    <dl class="dl" id="dlgBody"></dl>
+    <p class="dlg-src" id="dlgSrc"></p>
+  </div>
+</dialog>
+
+<section id="casi">
+  <div class="head"><span class="kick">Benchmark</span><h2>Le primarie nel mondo, su una mappa</h2>
+    <p class="lead">Abbiamo studiato regolamenti e cronache di primarie in Italia, Regno Unito, Canada, Stati Uniti, Germania, Spagna, Portogallo, Australia e Francia. Ognuna è un punto: più a destra si vota in modo più aperto, più in alto il sistema controlla meglio che nessuno voti due volte.</p>
+    <p class="cap">Passa il cursore su un punto per leggere come si vota, clicca per aprire il dettaglio. La posizione è una classificazione mia <span class="tag inf">ipotesi</span> costruita sui testi, con i criteri sotto la mappa.</p></div>
+  <p class="cap map-hint">Sul telefono scorri la mappa di lato per vederla tutta.</p>
+  <div class="mapscroll" role="region" aria-label="Mappa delle primarie" tabindex="0">
+    <div class="map">
+      <div class="map-cap" style="grid-column:1/-1">Più in alto: controllo del voto unico più forte</div>
+      <div class="map-ylab" id="mapY"></div>
+      <div class="map-plot" id="mapPlot"></div>
+      <div></div>
+      <div class="map-xlab" id="mapX"></div>
+      <div class="map-cap r">Apertura dell'elettorato, verso destra più aperta</div>
+    </div>
+  </div>
+  <div class="legend" aria-label="Legenda della mappa">
+    <span class="lg"><i class="dot sq"></i>Solo presenza</span>
+    <span class="lg"><i class="dot ci"></i>Solo remoto (online o posta)</span>
+    <span class="lg"><i class="dot di"></i>Presenza e remoto</span>
+    <span class="lg"><i class="dot tr"></i>Canale non documentato</span>
+    <span class="lg"><i class="dot ci t-it"></i>Coalizione italiana</span>
+    <span class="lg"><i class="dot ci t-es"></i>Partito estero</span>
+    <span class="lg"><i class="dot ci t-pr"></i>Proposta del progetto</span>
+    <span class="lg"><i class="dot ringd"></i>Caso di riferimento</span>
+  </div>
+  <details>
+    <summary>Come ho classificato i casi</summary>
+    <p>Apertura dell'elettorato, quattro livelli: solo iscritti; iscritti e sostenitori con filtri (quota, anzianità, esclusioni); chiunque si registri, con iscrizione chiusa prima del voto; chiunque, anche iscrivendosi il giorno del voto. Controllo del voto unico, quattro livelli: verifica sull'elenco e sul documento; segno sul canale di voto (registro al seggio, cedolino, link monouso); identità forte verificata prima del voto con credenziale personale; codice univoco per votante in un registro unico aggiornato su tutti i canali. Nella mappa nessun caso arriva all'ultimo livello. Sono classificazioni mie sui testi letti, con la fonte e il motivo di ogni posizione nel dettaglio di ciascun caso. Esclusi per fonti solo secondarie o assenti: Milano 2011, PD 2023, NDP 2026, Iowa 2024 e le regole DNC.</p>
+  </details>
+  <h3>12 lezioni da imparare</h3>
+  <div class="lessons" id="lessons"></div>
+</section>
 
 <section id="premessa">
   <div class="head"><span class="kick">Premessa</span><h2>Un partito o una coalizione?</h2>
     <p class="lead">Nei paesi anglosassoni le primarie scelgono il candidato dentro un partito che rappresenta tutta un'area politica. C'è un solo registro degli elettori e lo gestisce il partito stesso.</p>
-    <p class="lead">In Italia il centrosinistra è una coalizione di più partiti. Serve un comitato promotore che li riunisce, scrive regole comuni e tiene un albo degli elettori valido per tutti.</p></div>
+    <p class="lead">In Italia il centrosinistra è una coalizione di più partiti. Per avere regole comuni e un albo degli elettori valido per tutti, nei precedenti italiani i partiti hanno affidato il processo a un comitato promotore (Unione 2005, Italia Bene Comune 2012, Roma 2016).</p></div>
   <div class="two">
     <div class="panel">
       <h3><svg class="ic"><use href="#i-flag"/></svg>Paesi anglosassoni</h3>
@@ -424,23 +504,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
         <span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span>
         <div class="node k"><svg class="ic"><use href="#i-ballot"/></svg>Voto</div>
       </div>
-      <p class="cap">Qualcuno deve definire l'elettorato per tutti i partiti. È la scelta più delicata, e gli scenari più sotto la affrontano.</p>
+      <p class="cap">Qualcuno deve definire l'elettorato per tutti i partiti. È la scelta più delicata, e la sezione sulla platea la affronta.</p>
     </div>
   </div>
 </section>
 
 <section id="decisioni">
-  <div class="head"><span class="kick">Già deciso</span><h2>Otto scelte fatte</h2>
-    <p class="lead">Queste scelte fissano la cornice. Le sezioni che seguono partono da qui e mostrano le opzioni ancora aperte.</p></div>
+  <div class="head"><span class="kick">Impostazione</span><h2>Quattro scelte e quattro ipotesi</h2>
+    <p class="lead">Le scelte fissano la cornice del progetto. Le ipotesi di lavoro sono valori ripresi dai precedenti, e i promotori possono modificarle.</p></div>
+  <h3>Scelte di impostazione</h3>
   <div class="decs">
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Due primarie lo stesso giorno</b><span class="d">Una per il sindaco di Milano e una per il candidato di coalizione.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Voto domenica 31 gennaio 2027</b><span class="d">È il giorno in cui il voto chiude. Il countdown in alto conta fino a lì.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Regole scritte dal comitato promotore dei partiti</b><span class="d">Il comitato nomina il coordinamento organizzativo e i garanti, sul modello di Roma 2016.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>2.500 firme per candidarsi a sindaco, 10.000 come candidato di coalizione</b><span class="d">È la soglia per candidarsi. Roma 2016 chiedeva tra 2.000 e 2.500, l'Unione 2005 almeno 10.000.</span></div>
     <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Niente ballottaggio</b><span class="d">I tempi non lo permettono. Si vota con le preferenze in ordine oppure con un solo nome.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Elenco chiuso di documenti ai seggi</b><span class="d">Ai seggi valgono solo i documenti elencati nel regolamento. Quali siano resta da fissare.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>SPID e CIE tramite un aggregatore</b><span class="d">Un aggregatore privato offre l'accesso a SPID e CIE, attivo entro il 7 dicembre.</span></div>
-    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>Quota di 2 euro al tesoriere</b><span class="d">Il tesoriere del comitato incassa le quote e ne rende conto.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>CIE online, CIE e tessera elettorale al seggio</b><span class="d">La CIE dà codice fiscale e residenza, da confermare con l'aggregatore. Dalla residenza si risale alla sezione elettorale e al seggio dove votare.</span></div>
+    <div class="dec"><span class="ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><b>SPID e CIE tramite un aggregatore</b><span class="d">Un aggregatore privato offre l'accesso a SPID e CIE, attivo entro il 7 dicembre. Restano da verificare fornitore, dati trattati e costo.</span></div>
+  </div>
+  <h3>Ipotesi di lavoro <span class="tag inf">ipotesi</span></h3>
+  <div class="decs">
+    <div class="dec"><span class="ok hyp" aria-hidden="true">?</span><b>Regole scritte dal comitato promotore</b><span class="d">I partiti potrebbero affidare al comitato regole, coordinamento organizzativo e garanti, sul modello di Roma 2016.</span></div>
+    <div class="dec"><span class="ok hyp" aria-hidden="true">?</span><b>2.500 firme per candidarsi a sindaco, 10.000 come candidato di coalizione</b><span class="d">Valori ripresi dai precedenti: Roma 2016 chiedeva tra 2.000 e 2.500, l'Unione 2005 almeno 10.000.</span></div>
+    <div class="dec"><span class="ok hyp" aria-hidden="true">?</span><b>Voto domenica 31 gennaio 2027</b><span class="d">È il giorno in cui il voto chiude, usato per costruire il calendario a ritroso. Il countdown in alto conta fino a lì.</span></div>
+    <div class="dec"><span class="ok hyp" aria-hidden="true">?</span><b>Quota di 2 euro al tesoriere</b><span class="d">Come a Roma 2016 e Milano 2016. Il tesoriere del comitato incassa le quote e ne rende conto.</span></div>
   </div>
   <div class="panel">
     <h3><svg class="ic"><use href="#i-flag"/></svg>Chi governa il processo</h3>
@@ -455,46 +539,58 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
         <div class="node"><svg class="ic"><use href="#i-scale"/></svg>Collegio dei garanti<br>5 persone: ricorsi e risultato</div>
       </div>
     </div>
-    <p class="cap">Le cariche di comitato, coordinamento e garanti sono incompatibili tra loro e con la candidatura. Lo schema segue il regolamento di Roma 2016 <span class="tag doc">ufficiale</span></p>
+    <p class="cap">Lo schema descrive il regolamento di Roma 2016 per capire le responsabilità operative di una coalizione. Le cariche di comitato, coordinamento e garanti sono incompatibili tra loro e con la candidatura <span class="tag doc">ufficiale</span></p>
   </div></section>
 
-<section id="scenari">
-  <div class="head"><span class="kick">Proposte</span><h2>Due modi di decidere chi vota</h2>
-    <p class="lead">La domanda centrale è chi può votare e come si entra nell'elettorato. Le due risposte cambiano i tempi, i controlli da fare e quanto è aperta la primaria.</p>
-    <p class="lead">In entrambi il voto è ibrido: online dal 22 gennaio con SPID o CIE, seggi sabato 30 e domenica 31, un solo registro dei votanti per evitare il doppio voto.</p>
-    <p class="cap">Clicca su una scheda per sceglierla: calendario e percorso dell'elettore mostrano quello scenario. Puoi passare da uno scenario all'altro cliccando un'altra scheda.</p></div>
-  <div class="scs" id="scCards"></div>
-  <div class="lights-wrap" role="region" aria-label="Confronto degli scenari" tabindex="0">
-    <table class="lights">
-      <thead><tr><th scope="col"></th><th scope="col" style="color:var(--a)">A Partiti</th><th scope="col" style="color:var(--b)">B Albo unico</th></tr></thead>
-      <tbody id="lightsBody"></tbody>
-    </table>
+<section id="platea">
+  <div class="head"><span class="kick">Proposta</span><h2>Chi vota e come si evita il doppio voto</h2>
+    <p class="lead">Vota chiunque si riconosca nel centrosinistra. Basta un'autodichiarazione di sostegno: essere iscritti a un partito non cambia nulla, gli iscritti votano come tutti gli altri.</p>
+    <p class="lead">Ogni votante riceve un codice univoco, inserito in un registro aggiornato in tempo reale. Quando una persona ha votato il suo codice risulta usato, e non può rivotare né online né al seggio. Il registro contiene solo lo stato «ha votato», mai il voto <span class="tag inf">ipotesi</span></p></div>
+  <div class="two">
+    <div class="panel">
+      <h3><svg class="ic"><use href="#i-people"/></svg>Come si entra</h3>
+      <div class="vflow">
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-people"/></svg><span>Chiunque si riconosca nel centrosinistra, iscritto o no</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-usercheck"/></svg><span>Autodichiarazione di sostegno e consenso</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span>CIE: codice fiscale e residenza</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg><span>Codice univoco nel registro</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn k"><svg class="ic" aria-hidden="true"><use href="#i-ballot"/></svg><span>Voto, online o al seggio</span></div>
+      </div>
+      <p class="cap">L'iscrizione all'albo è possibile online dal 7 dicembre e al seggio anche il giorno del voto, come a Roma 2016 e per Italia Bene Comune 2012 <span class="tag doc">ufficiale</span></p>
+    </div>
+    <div class="panel">
+      <h3><svg class="ic"><use href="#i-pin"/></svg>Dove si vota</h3>
+      <div class="vflow">
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span>La residenza dalla CIE</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg><span>Registro che collega residenza e seggio</span></div><span class="vd"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="vn k"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span>Seggio della propria sezione elettorale</span></div>
+      </div>
+      <p class="cap">Online la CIE basta per entrare. Al seggio servono CIE e tessera elettorale. Il seggio della propria sezione è la regola di Italia Bene Comune 2012, art. 3.6 <span class="tag doc">ufficiale</span>. Il registro tra residenza e seggio richiede l'elenco delle sezioni e delle sedi <span class="tag inf">ipotesi</span></p>
+    </div>
   </div>
-  <p class="cap">Valutazioni mie <span class="tag inf">ipotesi</span>, costruite sui precedenti. Sono giudizi e non misure.</p>
-</section>
-
-<section id="cosacambia">
-  <div class="head"><span class="kick">Cosa cambia</span><h2>Cosa cambia quando scegli A o B</h2>
-    <p class="lead">Scegli uno scenario qui sotto: lo scenario scelto resta evidenziato e le sezioni su calendario e percorso dell'elettore si aggiornano di conseguenza. Per ciascuno vedi la differenza concreta per le due persone che votano, l'iscritto a un partito e il cittadino senza tessera.</p>
-    <div class="pickrow"><span class="t">Scenario</span><div class="seg" data-scseg></div></div></div>
-  <div class="what" id="what"></div>
+  <div class="callout">Con un elettorato aperto il sistema controlla due cose, che la persona sia chi dice di essere e che il suo codice non risulti già usato. Nella mappa dei benchmark nessun caso studiato arriva a un registro unico su tutti i canali, quindi va progettato da zero <span class="tag inf">ipotesi</span></div>
+  <div class="kvc"><h4>Da verificare</h4><ul>
+    <li>Collegamento dei seggi al registro in tempo reale, con una soluzione se manca la connessione.</li>
+    <li>Chi non ha la CIE: la carta d'identità cartacea è prorogata fino al 31 gennaio 2027 per la pubblica amministrazione, e il testo non cita i privati.</li>
+    <li>SPID non prova la residenza: dichiarazione con controlli a campione oppure solo CIE per la scheda di Milano.</li>
+    <li>Cosa succede se l'autodichiarazione risulta falsa.</li>
+  </ul></div>
 </section>
 
 <section id="calendario">
-  <div class="head"><span class="kick">Tempistiche</span><h2>Calendario dello scenario <span class="sc-name"></span></h2>
-    <p class="lead">Le fasi in ordine, da oggi al voto: regole, iscrizione o conferma, verifica dell'identità, voto online, seggi, ricorsi. Le barre cambiano con lo scenario scelto.</p>
-    <div class="pickrow"><span class="t">Scenario</span><div class="seg" data-scseg></div></div>
-    <p class="cap">Il giorno del voto è deciso. Le altre date sono ipotesi mie <span class="tag inf">ipotesi</span> da concordare con il comitato. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
+  <div class="head"><span class="kick">Tempistiche</span><h2>Calendario, a ritroso dal voto</h2>
+    <p class="lead">Le fasi in ordine, da oggi al voto: regole, sviluppo della piattaforma, iscrizione all'albo, candidature, voto online, seggi, ricorsi.</p>
+    <p class="cap">Il giorno del voto è una proposta di lavoro e le altre date sono ipotesi mie da concordare con il comitato <span class="tag inf">ipotesi</span>. Le righe a tratteggio indicano attività la cui durata reale non è documentata. La linea rossa segna il 31 gennaio, fine della proroga della carta d'identità cartacea.</p></div>
   <div class="miles" id="miles"></div>
   <div class="gantt" id="gantt"></div>
   <h3>Quanto prima del voto si chiudono le iscrizioni</h3>
-  <p class="cap">Più giorni tra la chiusura delle iscrizioni e il voto lasciano più tempo per verificare gli elettori ed evitano le code all'ultimo. Giorni calcolati sulle date dei testi.</p>
+  <p class="cap">Più giorni tra la chiusura delle iscrizioni e il voto lasciano più tempo per verificare gli elettori. Giorni calcolati sulle date dei testi.</p>
   <div class="bench" id="bench"></div>
 </section>
 
 <section id="voto">
   <div class="head"><span class="kick">Modalità di voto</span><h2>Come si segna la scheda</h2>
-    <p class="lead">Il voto sceglie le persone che guidano il centrosinistra. Il ballottaggio è escluso per i tempi, quindi restano due forme: le preferenze in ordine oppure un solo nome. Cambiano il modo di contare e il peso della scelta di ciascun elettore.</p></div>
+    <p class="lead">Il voto sceglie le persone che guidano il centrosinistra. Il ballottaggio è escluso per i tempi, quindi restano due forme di scheda: le preferenze in ordine oppure un solo nome. La scelta è ancora aperta e riguarda solo come l'elettore esprime il voto.</p></div>
   <div class="ballots">
     <div class="ballot">
       <h3>Preferenze in ordine</h3>
@@ -503,7 +599,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
         <div class="row">Candidato B <span class="box">1</span></div>
         <div class="row">Candidata C <span class="box">3</span></div>
       </div>
-      <p class="cap">L'elettore ordina i candidati e il conteggio redistribuisce le preferenze. Un solo giorno di voto. Lo usano Labour, liberali canadesi e New York 2025 <span class="tag doc">ufficiale</span></p>
+      <p class="cap">L'elettore ordina i candidati. Un solo giorno di voto. Lo usano Labour, liberali canadesi e New York 2025 <span class="tag doc">ufficiale</span></p>
       <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Regge i tempi</span></div>
     </div>
     <div class="ballot">
@@ -513,8 +609,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
         <div class="row">Candidato B <span class="box x"><svg class="ic" style="width:1em;height:1em;stroke-width:3"><use href="#i-x"/></svg></span></div>
         <div class="row">Candidata C <span class="box"></span></div>
       </div>
-      <p class="cap">Vince chi ha più voti, senza soglia. È il modello di Milano e Roma 2016 <span class="tag sec">stampa</span></p>
-      <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Rapido, ma il vincitore può avere una quota bassa</span></div>
+      <p class="cap">L'elettore sceglie un solo nome. È il modello di Milano e Roma 2016 <span class="tag sec">stampa</span></p>
+      <div class="fit"><span class="lt ok"><svg class="ic"><use href="#i-check"/></svg>Un solo segno sulla scheda</span></div>
     </div>
   </div>
 </section>
@@ -522,20 +618,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
 <section id="journey">
   <div class="head"><span class="kick">Voter journey</span><h2>Il percorso dell'elettore e quello del sistema</h2>
     <p class="lead">Cinque fasi e due percorsi paralleli. A sinistra c'è il voter journey, cioè cosa fa l'elettore. A destra c'è il system journey, cioè cosa fanno comitato, partiti, piattaforma e seggi, con l'indicazione di chi fa che cosa.</p>
-    <p class="lead">Scegli lo scenario, se l'elettore è iscritto a un partito o no e se vota online o al seggio: le fasi cambiano di conseguenza.</p></div>
+    <p class="lead">Scegli se l'elettore vota online o al seggio: le fasi cambiano di conseguenza.</p></div>
   <div class="jtools">
-    <div><span class="lbl">Scenario</span><div class="seg" data-scseg></div></div>
-    <div><span class="lbl">Elettore</span><div class="seg neutral" id="pSeg">
-      <button type="button" data-k="iscritto" aria-pressed="false"><svg class="ic"><use href="#i-building"/></svg>Iscritto a un partito</button>
-      <button type="button" data-k="non" aria-pressed="true"><svg class="ic"><use href="#i-people"/></svg>Cittadino non iscritto</button>
-    </div></div>
     <div><span class="lbl">Canale</span><div class="seg neutral" id="cSeg">
       <button type="button" data-k="online" aria-pressed="true"><svg class="ic"><use href="#i-laptop"/></svg>Online</button>
       <button type="button" data-k="seggio" aria-pressed="false"><svg class="ic"><use href="#i-pin"/></svg>Seggio</button>
     </div></div>
   </div>
   <nav class="strip" id="strip" aria-label="Tappe del percorso"></nav>
-  <div class="journey" id="journey"></div>
+  <div class="journey" id="jrn"></div>
 
   <h3>Dove si perdono gli elettori, nei casi reali <span class="tag sec">stampa</span></h3>
   <p class="cap">Due imbuti documentati da fonti giornalistiche. Le definizioni di "registrato" e "verificato" differiscono tra i due casi, quindi il confronto è prudente.</p>
@@ -556,25 +647,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
   </div>
 </section>
 
-<section id="casi">
-  <div class="head"><span class="kick">Precedenti dal mondo</span><h2>Casi d'uso: 12 lezioni da imparare</h2>
-    <p class="lead">Abbiamo letto regolamenti e cronache di dodici esperienze tra Regno Unito, Canada, Stati Uniti, Germania, Spagna, Portogallo, Australia, Francia e Italia. Ogni scheda mette in grande il dato che conta e ne ricava una lezione.</p>
-    <p class="cap">Scorri le schede con le frecce o con il dito. L'etichetta in alto a destra dice da dove viene il dato: testo ufficiale letto, stampa o commento, oppure una mia ipotesi.</p></div>
-  <div class="slider" role="region" aria-roledescription="carosello" aria-label="Dodici casi, una lezione ciascuno">
-    <div class="slider-bar">
-      <span class="slcount" id="slCount" aria-live="polite">1 di 12</span>
-      <div class="slbtns">
-        <button type="button" id="slPrev" aria-label="Caso precedente"><svg class="ic" style="transform:rotate(180deg)" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        <button type="button" id="slNext" aria-label="Caso successivo"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-      </div>
-    </div>
-    <div class="track" id="cases" tabindex="0" aria-label="Schede dei casi"></div>
-  </div>
-</section>
-
 <section id="vincoli">
   <div class="head"><span class="kick">Da chiudere</span><h2>Tre punti da approfondire</h2>
-    <p class="lead">Dei sette punti iniziali, tre sono ora scelte fatte e uno è stato eliminato. Restano tre nodi: come verificare la residenza, come proteggere i dati e come reggere il numero di elettori. Ognuno ha qui il quadro completo.</p></div>
+    <p class="lead">Restano tre nodi: come verificare la residenza, come proteggere i dati e come reggere il numero di elettori. Ognuno ha qui il quadro completo.</p></div>
 
   <article class="detail" id="residenza">
     <div class="dh"><span class="dn">1</span><h3>Come verificare la residenza</h3></div>
@@ -592,12 +667,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
     </div>
     <div class="kv">
       <div class="kvc"><h4>Cosa prevediamo</h4><ul>
-        <li>Online: l'elettore dichiara la residenza, e il comitato la confronta con l'attributo della CIE quando l'aggregatore lo restituisce.</li>
-        <li>Con SPID la dichiarazione resta tale, con controlli a campione.</li>
-        <li>Al seggio: un documento dell'elenco chiuso e una dichiarazione firmata di residenza.</li>
+        <li>Online: la CIE dà codice fiscale e residenza. Dalla residenza il sistema ricava sezione elettorale e seggio, con un registro che collega residenza e seggio.</li>
+        <li>Al seggio: CIE e tessera elettorale, nel seggio della propria sezione.</li>
+        <li>Con SPID la residenza resta una dichiarazione, con controlli a campione.</li>
       </ul><span class="tag inf">ipotesi</span></div>
       <div class="kvc"><h4>Da fare</h4><ul>
         <li>Chiedere all'aggregatore quali attributi restituisce per CIE e per SPID.</li>
+        <li>Verificare se esiste un fornitore in grado di fare i controlli, quali dati tratta e quanto costa.</li>
         <li>Leggere il manuale tecnico CIE e le regole AgID sul domicilio fisico.</li>
         <li>Decidere cosa fare con chi non può provare la residenza online.</li>
       </ul></div>
@@ -629,7 +705,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
         <li>Il Garante scrisse che la piattaforma non aveva le proprietà richieste a un sistema di voto elettronico e prescrisse audit, credenziali esclusive e valutazione d'impatto.</li>
       </ul></div>
       <div class="kvc"><h4>Cosa prevediamo</h4><ul>
-        <li>Informativa unica e consenso esplicito, separati dalla firma della Carta dei valori.</li>
+        <li>Informativa unica e consenso esplicito, separati dall'autodichiarazione di sostegno.</li>
+        <li>Raccolta del minimo dei dati, senza trasferirli agli archivi dei partiti.</li>
         <li>Valutazione d'impatto e registro dei trattamenti completati prima del 7 dicembre.</li>
         <li>Fornitore della piattaforma nominato responsabile per iscritto.</li>
         <li>Identità e voto separati: il registro unico contiene solo "ha votato", mai il voto.</li>
@@ -639,11 +716,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
         <li>Albo non pubblico, e cancellazione dei dati a tempi fissati prima, dopo i ricorsi.</li>
       </ul><span class="tag inf">ipotesi</span></div>
     </div>
-    <div class="callout">Nello scenario B gli iscritti ai partiti entrano nell'albo senza fare nulla. Per questo i partiti devono dare informativa e raccogliere il consenso prima di consegnare gli elenchi al comitato, entro il conteggio del 31 dicembre. È la conseguenza più concreta della regola del 2014 sulle scelte già fatte. <span class="tag inf">ipotesi</span></div>
+    <div class="callout">L'autodichiarazione apre l'albo a tutti, e l'albo dice che una persona sostiene il centrosinistra. Per questo il registro non è pubblico, raccoglie il minimo dei dati e contiene solo lo stato «ha votato», mai il voto. <span class="tag inf">ipotesi</span></div>
     <div class="miles" style="--sc:var(--red)">
       <div class="mile"><b>30 nov</b><span>Regolamento e informativa approvati</span></div>
       <div class="mile"><b>7 dic</b><span>Valutazione d'impatto, contratti e responsabile del trattamento</span></div>
-      <div class="mile"><b>31 dic</b><span>Consensi raccolti dai partiti per gli elenchi</span></div>
       <div class="mile"><b>15 gen</b><span>Audit di sicurezza indipendente concluso</span></div>
       <div class="mile"><b>Dopo i ricorsi</b><span>Cancellazione dei dati nei tempi fissati</span></div>
     </div>
@@ -663,7 +739,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
       <div class="kvc"><h4>Verifica degli elettori</h4><ul>
         <li>Liberali canadesi 2025: circa 400.000 registrati, 137.000 verificati, 115.000 votanti. Si perde quasi il 66% alla verifica (calcolato). <span class="tag sec">stampa</span></li>
         <li>Primaire populaire 2022: 120.000 verificati su 300.000 iscritti a pochi giorni dal voto. <span class="tag sec">stampa</span></li>
-        <li>Nello scenario B gli iscritti ai partiti sono già censiti, quindi la verifica di massa pesa soprattutto sugli indipendenti. <span class="tag inf">ipotesi</span></li>
+        <li>Con la CIE l'identità si verifica al momento dell'iscrizione, senza un controllo di massa a parte. Da confermare con l'aggregatore. <span class="tag inf">ipotesi</span></li>
       </ul></div>
       <div class="kvc"><h4>SPID e CIE</h4><ul>
         <li>Nel 2019 le tariffe per i privati erano a zero per l'autenticazione fino a 1.000 utenti unici per gestore, poi 0,4 euro per autenticazione. Probabilmente superate, da chiedere all'aggregatore. <span class="tag sec">stampa</span></li>
@@ -695,8 +771,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
     <div class="qc"><span class="qn">1</span>Quanti seggi servono e chi li gestisce nelle diverse città?</div>
     <div class="qc"><span class="qn">2</span>Quale forma di voto: preferenze in ordine oppure un solo nome?</div>
     <div class="qc"><span class="qn">3</span>A che ora aprono e chiudono i seggi sabato 30 e domenica 31 gennaio?</div>
-    <div class="qc"><span class="qn">4</span>Quali documenti entrano nell'elenco chiuso ammesso ai seggi?</div>
-    <div class="qc"><span class="qn">5</span>Come si verifica la residenza online, e con quali attributi?</div>
+    <div class="qc"><span class="qn">4</span>Come vota al seggio chi non ha la CIE o la tessera elettorale?</div>
+    <div class="qc"><span class="qn">5</span>Come si verifica la residenza con SPID, e come si costruisce il registro tra residenza e seggio?</div>
+    <div class="qc"><span class="qn">6</span>Come restano collegati al registro i seggi senza connessione?</div>
   </div>
 </section>
 
@@ -729,7 +806,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.track:focus-visible,
       <li><a href="https://prefettura.interno.gov.it/it/prefetture/bolzano/notizie/disposizioni-urgenti-garantire-lefficacia-documento-identita" target="_blank" rel="noopener">Prefettura di Bolzano, D.L. 108/2026</a> (stampa)</li>
     </ul>
   </details>
-  <footer>Bozza di lavoro dell'11 novembre 2026. I giorni tra le date sono calcolati con script Python. I punti marcati come ipotesi vanno validati con un legale e con i fornitori prima di una proposta formale.</footer>
+  <footer>Bozza di lavoro, aggiornata il 16 novembre 2026. I giorni tra le date sono calcolati con script Python. I punti marcati come ipotesi vanno validati con un legale e con i fornitori prima di una proposta formale.</footer>
 </section>
 </div>
 
@@ -753,157 +830,291 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 
-const SC={
- A:{name:'A Partiti',short:'Partiti',css:'var(--a)',title:'Basta il partito',
-    desc:'Votano solo gli iscritti ai partiti della coalizione. Ogni partito certifica il proprio elenco degli iscritti al 31 dicembre, e il comitato lo usa come registro. Entro il 15 gennaio ogni iscritto conferma che vota.',
-    who:[['building','Iscritti ai partiti']],dates:[['31 dic','conteggio iscritti'],['15 gen','voto confermato']]},
- B:{name:'B Albo unico',short:'Albo unico',css:'var(--b)',title:'Albo unico, iscritti inclusi',
-    desc:'Gli iscritti ai partiti, contati al 31 dicembre, entrano automaticamente nell\'albo degli elettori e non devono fare nulla. Chi non ha tessere può iscriversi direttamente all\'albo come indipendente, dal 7 dicembre al 10 gennaio.',
-    who:[['building','Iscritti: già nell\'albo'],['people','Indipendenti: si iscrivono']],dates:[['31 dic','conteggio iscritti'],['7 dic 10 gen','iscrizione indipendenti']]}
-};
-const state={sc:'B',p:'non',ch:'online'};
+const state={ch:'online'};
 
-/* casi */
+/* fonti, riprese dall'elenco in fondo alla pagina */
+const SRC={
+ labour20:['Labour, LE20 Procedure e calendario','https://labourlist.org/wp-content/uploads/2020/01/LE20-Procedures-and-Timetabale.pdf'],
+ rulebook:['Labour, Rule Book 2025','https://labour.org.uk/wp-content/uploads/2025/02/Rule-Book-2025.pdf'],
+ liberal:['Liberali canadesi, Procedure 2025','https://liberal.ca/wp-content/uploads/sites/292/2025/02/Procedures-for-Leadership-Vote-1.pdf'],
+ cbc:['CBC, liberali canadesi 2025','https://amp.cbc.ca/lite/story/1.7475577'],
+ da:['Democrats Abroad, piano 2024','https://assets.nationbuilder.com/democratsabroad/pages/32925/attachments/original/1701855863/DemocratsAbroadDSP24.11.2023.pdf'],
+ spd:['SPD, consultazione iscritti 2019','https://spd.de/fileadmin/Dokumente/Beschluesse/Parteispitze/Beschluss_Mitgliederbefragung_PV_engueltig.pdf'],
+ ps:['PS Portogallo, regolamento 2026','https://ps.pt/wp-content/uploads/2026/01/Regulamento-de-eleicao-Secretario-Geral-e-Delegados-2026.pdf'],
+ psoe:['PSOE, bases 2027','https://www.elindependiente.com/wp-content/uploads/2026/06/Bases_primarias_PSOE_municipalesCCAA_2027.pdf'],
+ alp:['ALP, statuto 2023','https://www.alp.org.au/media/3572/alp-national-constitution-adopted-19-august-2023.pdf'],
+ ibc:['Italia Bene Comune, regolamento 2012','https://www.leggioggi.it/wp-content/uploads/2012/10/Regole-primarie-Pd.pdf'],
+ roma:['Regolamento Roma 2016','https://www.scalia2001.it/index_htm_files/REGOLAMENTO%20PRIMARIE.pdf'],
+ unione:['Unione, regolamento quadro 2005','https://www.associazionedeicostituzionalisti.it/old_sites/sito_AIC_2003-2010/cronache/attivita_organi/primarie/regolamento.pdf'],
+ milanotoday:['MilanoToday, guida primarie 2016','http://www.milanotoday.it/politica/guida-primarie-milano-6-7-febbraio-2016.html'],
+ politis:['Politis, Primaire populaire','https://www.politis.fr/articles/2022/01/primaire-populaire-une-consultation-en-forme-depreuve-de-force-44024/']
+};
+
+/* mappa: x = apertura dell'elettorato (1 a 4), y = controllo del voto unico (1 a 4) */
+const XL=['Solo iscritti','Iscritti e sostenitori con filtri','Chiunque, iscrizione chiusa prima del voto','Chiunque, anche il giorno del voto'];
+const YL=['Elenco e documento','Segno sul canale: registro al seggio, cedolino, link monouso','Identità forte e credenziale personale','Codice univoco, registro unico su tutti i canali'];
+const SHN={sq:'Solo presenza',ci:'Solo remoto',di:'Presenza e remoto',tr:'Canale non documentato'};
+const TYN={it:'Coalizione italiana',es:'Partito estero',pr:'Proposta del progetto'};
+const MAP=[
+ {n:'Unione 2005',name:'Unione 2005',t:'it',ref:1,x:3,y:1,sh:'sq',ev:'doc',src:['unione'],
+  one:'Si firma il Progetto dell\'Unione e si versa un contributo. Voto ai seggi, con documento e tessera elettorale.',
+  d:[['Chi vota','Cittadini con elettorato attivo per la Camera che sottoscrivono il Progetto dell\'Unione e versano un contributo. Gli stranieri residenti possono votare a discrezione dell\'Ufficio di Presidenza (art. 6.1 e 6.3).'],
+     ['Come ci si iscrive','Firma del Progetto e contributo, non quantificato nel regolamento quadro. Consenso all\'inserimento in un elenco dei partecipanti consultabile da chiunque abbia interesse (art. 6.2).'],
+     ['Quando chiude l\'iscrizione','Non fissata nel regolamento quadro.'],
+     ['Canali','Seggi. L\'Ufficio tecnico predispone strumenti informatici per l\'eventuale voto telematico (art. 4.1) e le schede possono essere cartacee o informatiche (art. 7.5). Il voto telematico era solo previsto.'],
+     ['Verifica dell\'identità','Documento e tessera elettorale (art. 6.2).'],
+     ['Controllo del voto unico','Elenco dei partecipanti. Nel regolamento quadro non è descritto un meccanismo contro il doppio voto.'],
+     ['Numeri','4.290.388 votanti (stampa). Almeno 10.000 firme per candidarsi, in almeno 10 regioni (art. 5.2).'],
+     ['Lezione','Nelle primarie di coalizione l\'albo con la firma di un testo politico è lo strumento di legittimazione.']],
+  why:'Apertura 3: chi firma il Progetto e versa il contributo, con una finestra non indicata nel quadro (classificazione mia). Controllo 1: documento e tessera elettorale su un elenco.'},
+ {n:'Italia Bene Comune 2012',name:'Italia Bene Comune 2012',t:'it',ref:1,x:4,y:2,sh:'sq',ev:'doc',src:['ibc'],
+  one:'Albo con appello e almeno 2 euro, iscrizione aperta fino al giorno del voto. Un cedolino per giornata, trattenuto al seggio, evita il doppio voto.',
+  d:[['Chi vota','Maggiorenni che sottoscrivono l\'Appello e dichiarano di riconoscersi nella Carta d\'intenti. Cittadini UE residenti e stranieri con permesso e carta d\'identità (art. 3.1 e 3.2).'],
+     ['Come ci si iscrive','Iscrizione all\'albo presso le sedi decise dal Coordinamento provinciale, con almeno 2 euro (art. 3.3).'],
+     ['Quando chiude l\'iscrizione','La finestra va dal 4 al 25 novembre e comprende il giorno del voto: 0 giorni prima.'],
+     ['Canali','Solo seggi, nel seggio della propria sezione elettorale (art. 3.6). Nessun voto online nel regolamento.'],
+     ['Verifica dell\'identità','Documento, tessera elettorale e certificato di elettore (art. 10.1).'],
+     ['Controllo del voto unico','Il certificato di elettore ha un cedolino per ogni giornata di voto, trattenuto al seggio contro il doppio voto (art. 10.2 e 10.3).'],
+     ['Numeri','3.107.568 votanti al primo turno (stampa).'],
+     ['Lezione','Il cedolino per giornata evita il doppio voto. La registrazione tardiva e il ballottaggio sono stati la parte più contestata (stampa).']],
+  why:'Apertura 4: iscrizione fino al giorno del voto. Controllo 2: cedolino per giornata trattenuto al seggio.'},
+ {n:'Roma 2016',name:'Roma 2016',t:'it',ref:1,x:4,y:2,sh:'sq',ev:'doc',src:['roma'],
+  one:'Firma delle Linee guida, almeno 2 euro e iscrizione all\'albo anche al seggio il giorno del voto. Registro dei votanti al seggio.',
+  d:[['Chi vota','Titolari dell\'elettorato attivo a Roma. Stranieri residenti e sedicenni con iscrizione preventiva entro il 3 marzo, tre giorni prima del voto del 6 marzo (art. 9).'],
+     ['Come ci si iscrive','Per gli altri nessuna registrazione anticipata: firma delle Linee guida, almeno 2 euro e consenso all\'inserimento nell\'albo al seggio il giorno stesso (art. 13).'],
+     ['Quando chiude l\'iscrizione','0 giorni per la maggior parte degli elettori, 3 per le categorie con iscrizione preventiva.'],
+     ['Canali','Solo seggi, con registro al seggio dei votanti.'],
+     ['Verifica dell\'identità','Documento con foto che indichi la residenza e/o il certificato elettorale (art. 13.a.1).'],
+     ['Controllo del voto unico','Registro dei votanti al seggio.'],
+     ['Governo del processo','Comitato Promotore dei partiti, che nomina un Coordinamento Organizzativo (fino a 10 persone) e il Tesoriere. Il Coordinamento nomina il Collegio dei Garanti (5 persone). Reclami sul voto entro 24 ore (art. 1 e 19). Copia del regolamento ospitata su un sito privato.'],
+     ['Lezione','È il testo costruito attorno a un comitato promotore di più forze politiche, come in una coalizione.']],
+  why:'Apertura 4: iscrizione al seggio il giorno stesso. Controllo 2: registro dei votanti al seggio.'},
+ {n:'Milano 2016',name:'Milano 2016',t:'it',ref:0,x:3,y:1,sh:'sq',ev:'sec',src:['milanotoday'],
+  one:'Albo entro il settimo giorno prima del voto presso le sedi dei partiti, almeno 2 euro. Voto in 150 seggi.',
+  d:[['Chi vota','Residenti a Milano (non basta il domicilio), dai 16 anni, stranieri residenti. Firma delle Linee guida del centrosinistra per Milano.'],
+     ['Come ci si iscrive','Iscrizione all\'Albo entro il settimo giorno prima del voto presso le sedi dei partiti del Comitato promotore, con documento con foto e residenza, almeno 2 euro e consenso al trattamento. Dal 18 gennaio al 2 febbraio si potevano compilare online i moduli da completare ai seggi, che non è un voto online.'],
+     ['Quando chiude l\'iscrizione','7 giorni prima, come scritto nel testo riprodotto dalla stampa.'],
+     ['Canali','Solo seggi, 150, il 6 e 7 febbraio 2016.'],
+     ['Verifica dell\'identità','Documento con foto che indichi la residenza e/o il certificato elettorale.'],
+     ['Controllo del voto unico','Dai testi disponibili non risulta un meccanismo documentato contro il doppio voto.'],
+     ['Numeri','60.900 votanti in 150 seggi, cioè 406 voti per seggio (calcolato). Il PDF ufficiale non è stato trovato: gli articoli 9 e 13 sono riprodotti da una testata locale e coincidono con il regolamento di Roma.'],
+     ['Lezione','Il voto a un solo nome con maggioranza semplice è rapido, con il rischio di un vincitore con una quota bassa (stampa).']],
+  why:'Apertura 3: albo chiuso 7 giorni prima. Controllo 1: nessun meccanismo documentato oltre al documento.'},
+ {n:'Labour 2015 a 2020',name:'Labour 2015 a 2020',t:'es',ref:1,x:2,y:2,sh:'ci',ev:'doc',ev2:'sec',src:['labour20'],
+  one:'Iscritti, affiliati e sostenitori votano con pari peso. I sostenitori si registrano con 3 sterline (2015) o 25 sterline (2016 e 2020). Voto per email o posta.',
+  d:[['Chi vota','Iscritti, affiliati e sostenitori registrati. Nel 2020 sono esclusi i sostenitori di altri partiti negli ultimi 2 anni.'],
+     ['Come ci si iscrive','Sostenitori: finestra di 3 giorni (dal 14 al 16 gennaio nel 2020), 25 sterline, freeze dell\'elettorato il 20 gennaio. Nel 2015 la quota era di 3 sterline, con finestra fino al 12 agosto.'],
+     ['Quando chiude l\'iscrizione','77 giorni prima della chiusura del voto nel 2020, 63 nel 2016, 29 nel 2015.'],
+     ['Canali','Email, posta se manca l\'email (Civica).'],
+     ['Verifica dell\'identità','Iscrizione alle liste elettorali. Nel 2015 verifica da 6 membri del NEC: 3.138 domande respinte a fine agosto, circa 56.000 a consuntivo secondo Wikipedia (dati non conciliabili, nessun dato ufficiale).'],
+     ['Controllo del voto unico','Voto per email o posta, su elenco verificato. I dettagli tecnici sul doppio voto non sono nello studio.'],
+     ['Lezione','Il collo di bottiglia è la verifica di massa, non il voto. Un congelamento retroattivo dell\'elettorato è stato ritenuto legittimo in UK e resta un rischio di contenzioso.']],
+  why:'Apertura 2: sostenitori ammessi con quota e filtri. Controllo 2: voto a invito personale per email o posta (classificazione mia).'},
+ {n:'Labour 2025',name:'Labour, regole 2025',t:'es',ref:0,x:1,y:1,sh:'tr',ev:'doc',src:['rulebook'],
+  one:'Solo iscritti e affiliati con 6 mesi di iscrizione. Lo scrutineer approva la lista degli elettori.',
+  d:[['Chi vota','Solo iscritti e affiliati, con 6 mesi di iscrizione. I sostenitori registrati sono assenti dal testo.'],
+     ['Quando chiude l\'iscrizione','Decide il NEC.'],
+     ['Canali','Voto preferenziale. I canali non sono indicati nello studio.'],
+     ['Verifica dell\'identità','Lo scrutineer approva la lista.'],
+     ['Controllo del voto unico','Non documentato nello studio.']],
+  why:'Apertura 1: solo iscritti e affiliati. Controllo 1: approvazione della lista.'},
+ {n:'Canada 2025',name:'Liberali canadesi 2025',t:'es',ref:0,x:3,y:3,sh:'ci',ev:'doc',src:['liberal','cbc'],
+  one:'Registrazione gratuita dai 14 anni, chiusa 41 giorni prima. Identità verificata con Identity+ o ufficio postale. Voto online o per telefono.',
+  d:[['Chi vota','Registered Liberals dai 14 anni.'],
+     ['Come ci si iscrive','Registrazione gratuita.'],
+     ['Quando chiude l\'iscrizione','41 giorni prima del voto.'],
+     ['Canali','Online, telefono su autorizzazione, voto anticipato di 11 giorni.'],
+     ['Verifica dell\'identità','Identity+ di Canada Post o ufficio postale, con patente o ID provinciale. Verifica tra il 20 febbraio e il 7 marzo.'],
+     ['Controllo del voto unico','Identità verificata prima del voto, con accesso personale.'],
+     ['Numeri','Circa 400.000 registrati (dato preliminare), 137.000 verificati, 115.000 votanti (stampa). Si perde quasi il 66% alla verifica (calcolato).'],
+     ['Lezione','Verifica con app o ufficio postale: serve un ripiego in presenza.']],
+  why:'Apertura 3: registrazione gratuita chiusa 41 giorni prima. Controllo 3: identità verificata prima del voto.'},
+ {n:'Francia 2022',name:'Primaire populaire 2022',t:'es',ref:0,x:3,y:3,sh:'ci',ev:'sec',src:['politis'],
+  one:'Chiunque dai 16 anni, gratuita, chiusa 7 giorni prima. Solo online, con verifica di email, telefono e carta di pagamento.',
+  d:[['Chi vota','Chiunque abbia 16 anni o più.'],
+     ['Come ci si iscrive','Gratuita, iscrizioni chiuse il 23 gennaio.'],
+     ['Quando chiude l\'iscrizione','7 giorni prima, con voto dal 27 al 30 gennaio 2022.'],
+     ['Canali','Solo online.'],
+     ['Verifica dell\'identità','Email, telefono, carta di pagamento (Neovote). 120.000 verificati su 300.000 iscritti al 10 gennaio.'],
+     ['Controllo del voto unico','Identità verificata prima del voto.'],
+     ['Numeri','467.000 iscritti a fine iscrizioni e 392.738 votanti, l\'84,1% (stampa).'],
+     ['Lezione','Una verifica pesante fa perdere elettori.']],
+  why:'Apertura 3: iscrizioni chiuse 7 giorni prima. Controllo 3: verifica di email, telefono e carta di pagamento.'},
+ {n:'Germania SPD 2019',name:'SPD 2019',t:'es',ref:0,x:1,y:2,sh:'ci',ev:'doc',src:['spd'],
+  one:'Votano solo gli iscritti, senza quota. Link monouso e PIN, voto online o per posta, con dichiarazione giurata.',
+  d:[['Chi vota','Iscritti. Gli ospiti sono esclusi.'],
+     ['Come ci si iscrive','Nessuna quota. Registrazione online per scegliere il canale.'],
+     ['Quando chiude l\'iscrizione','36 giorni prima, per la registrazione online che sceglie il canale.'],
+     ['Canali','Online e posta.'],
+     ['Verifica dell\'identità','Link monouso, PIN, dichiarazione giurata per la posta.'],
+     ['Controllo del voto unico','Il canale si sceglie in registrazione e il link è monouso.'],
+     ['Lezione','Scegliere il canale in fase di registrazione è un modo di evitare il doppio voto tra canali.']],
+  why:'Apertura 1: solo iscritti. Controllo 2: link monouso e PIN.'},
+ {n:'Spagna PSOE 2027',name:'PSOE 2027',t:'es',ref:0,x:1,y:1,sh:'sq',ev:'doc',src:['psoe'],
+  one:'Solo militanti, con censo chiuso 48 giorni prima. Si vota solo in presenza, con DNI, passaporto, patente o NIE.',
+  d:[['Chi vota','Solo militanti.'],
+     ['Come ci si iscrive','Quote regolarizzabili fino a 3 giorni prima.'],
+     ['Quando chiude l\'iscrizione','Censo chiuso 48 giorni prima.'],
+     ['Canali','Solo presenza.'],
+     ['Verifica dell\'identità','DNI, passaporto, patente, NIE.'],
+     ['Controllo del voto unico','Censo chiuso e documento al seggio.'],
+     ['Fonte','Testo ufficiale in copia giornalistica.']],
+  why:'Apertura 1: solo militanti. Controllo 1: censo chiuso e documento.'},
+ {n:'Portogallo PS 2026',name:'PS Portogallo 2026',t:'es',ref:0,x:2,y:2,sh:'sq',ev:'doc',src:['ps'],
+  one:'Militanti e simpatizzanti con 6 mesi, contributo unico. Solo urna, con piattaforma a doppia identificazione.',
+  d:[['Chi vota','Militanti e simpatizzanti con 6 mesi.'],
+     ['Come ci si iscrive','Contributo unico.'],
+     ['Quando chiude l\'iscrizione','22 giorni prima del voto.'],
+     ['Canali','Solo urna.'],
+     ['Verifica dell\'identità','Documento oppure due militanti. Piattaforma con doppia identificazione.'],
+     ['Controllo del voto unico','Piattaforma con doppia identificazione al seggio.'],
+     ['Lezione','Simpatizzanti registrati, documento al seggio.']],
+  why:'Apertura 2: simpatizzanti con anzianità e contributo. Controllo 2: doppia identificazione sulla piattaforma del seggio.'},
+ {n:'Australia ALP',name:'ALP Australia, clausola 42',t:'es',ref:0,x:2,y:1,sh:'tr',ev:'doc',src:['alp'],
+  one:'Soci con quota, oppure elettori iscritti alle liste elettorali del collegio che firmano una dichiarazione di sostegno e di non appartenenza ad altri partiti.',
+  d:[['Chi vota','Soci con quota, oppure elettori iscritti alle liste elettorali del collegio (preselezioni di comunità, clausola 42).'],
+     ['Come ci si iscrive','Non iscritti: dichiarazione firmata di essere sostenitori Labor e di non appartenere ad altri partiti.'],
+     ['Quando chiude l\'iscrizione','Non indicata nello studio.'],
+     ['Canali','Non indicati nello studio.'],
+     ['Verifica dell\'identità','Iscrizione alla commissione elettorale (AEC).'],
+     ['Controllo del voto unico','Non documentato nello studio.'],
+     ['Lezione','Dichiarazione di sostegno e di non appartenenza ad altri partiti, un modello vicino all\'autodichiarazione proposta qui (ipotesi).']],
+  why:'Apertura 2: non iscritti con dichiarazione e requisiti (classificazione mia). Controllo 1: iscrizione alle liste elettorali.'},
+ {n:'Democrats Abroad 2024',name:'Democrats Abroad 2024',t:'es',ref:0,x:4,y:1,sh:'di',ev:'doc',src:['da'],
+  one:'L\'iscrizione è la registrazione, anche il giorno stesso. Dichiarazione firmata incrociata con il database. Voto in presenza, posta, fax o email firmata.',
+  d:[['Chi vota','Cittadini USA all\'estero che votano come Democratici.'],
+     ['Come ci si iscrive','L\'iscrizione è la registrazione, anche il giorno stesso.'],
+     ['Quando chiude l\'iscrizione','0 giorni.'],
+     ['Canali','Presenza, posta, fax, email firmata. Nessuna piattaforma web.'],
+     ['Verifica dell\'identità','Dichiarazione firmata contro il database interno. In centro, documento o giuramento.'],
+     ['Controllo del voto unico','Dichiarazione firmata incrociata con il database interno.'],
+     ['Lezione','Iscrizione fino all\'ultimo giorno, con dichiarazione firmata.']],
+  why:'Apertura 4: iscrizione anche il giorno stesso. Controllo 1: dichiarazione firmata contro il database.'},
+ {n:'Proposta',name:'Proposta del progetto',t:'pr',ref:0,x:4,y:4,sh:'di',ev:'inf',src:[],
+  one:'Autodichiarazione di sostegno, iscrizione anche al seggio. Codice univoco per ogni votante in un registro in tempo reale: chi ha votato non può rivotare né online né al seggio.',
+  d:[['Chi vota','Chiunque si riconosca nel centrosinistra, iscritto o no a un partito. Basta l\'autodichiarazione di sostegno.'],
+     ['Come ci si iscrive','Online con la CIE dal 7 dicembre. Al seggio con CIE e tessera elettorale, anche il giorno del voto. Quota di 2 euro al tesoriere (ipotesi).'],
+     ['Quando chiude l\'iscrizione','0 giorni: fino al giorno del voto.'],
+     ['Canali','Online dal 22 gennaio e seggi il 30 e 31 gennaio, nel seggio della propria sezione.'],
+     ['Verifica dell\'identità','CIE online, con codice fiscale e residenza. CIE e tessera elettorale al seggio.'],
+     ['Controllo del voto unico','Codice univoco per ogni votante in un registro unico, aggiornato in tempo reale su tutti i canali.'],
+     ['Lezione','Nella mappa nessun caso studiato arriva a questo livello: va progettato da zero.']],
+  why:'Apertura 4 e controllo 4: è la proposta del progetto, non un caso studiato.'}
+];
+
+(function buildMap(){
+ const plot=document.getElementById('mapPlot');
+ document.getElementById('mapY').innerHTML=[4,3,2,1].map(l=>`<div>${YL[l-1]}</div>`).join('');
+ document.getElementById('mapX').innerHTML=XL.map(l=>`<div>${l}</div>`).join('');
+ let h='<div class="map-grid" aria-hidden="true">'+'<i></i>'.repeat(16)+'</div><div class="map-goal" aria-hidden="true"><span>Obiettivo del progetto</span></div>';
+ const cell={};MAP.forEach(m=>{const k=m.x+','+m.y;(cell[k]=cell[k]||[]).push(m);});
+ MAP.forEach((m,i)=>{
+  const g=cell[m.x+','+m.y],n=g.length,k=g.indexOf(m);
+  const left=((m.x-.5)/4*100+(n>1?(k%2?1:-1)*8:0)).toFixed(2),top=(((4-m.y)+(k+1)/(n+1))/4*100+(m.x===4&&m.y===4?3:0)).toFixed(2);
+  h+=`<button type="button" class="pt t-${m.t}${m.ref?' ref':''}" data-i="${i}" style="left:${left}%;top:${top}%" aria-haspopup="dialog" aria-label="${m.name}. ${m.one} Clicca per aprire il dettaglio."><i class="dot ${m.sh}"></i><span class="lbl">${m.n}</span></button>`;
+ });
+ plot.innerHTML=h;
+})();
+
+const tip=document.getElementById('tip'),dlg=document.getElementById('caseDlg');let lastPt=null;
+function showTip(b){
+ const m=MAP[+b.dataset.i];
+ tip.innerHTML=`<b>${m.name}</b>${m.one}<br><span class="more">Clicca per saperne di più</span>`;
+ tip.hidden=false;
+ const r=b.getBoundingClientRect(),w=tip.offsetWidth,hh=tip.offsetHeight;
+ let l=Math.max(8,Math.min(r.left+r.width/2-w/2,innerWidth-w-8)),t=r.top-hh-8;if(t<8)t=r.bottom+8;
+ tip.style.left=l+'px';tip.style.top=t+'px';
+}
+function hideTip(){tip.hidden=true;}
+function openCase(b){
+ const m=MAP[+b.dataset.i];lastPt=b;hideTip();
+ document.getElementById('dlgT').textContent=m.name;
+ document.getElementById('dlgTags').innerHTML=`${tg(m.ev)}${m.ev2?tg(m.ev2):''}<span class="tag inf" style="background:var(--soft);color:var(--ink)">${TYN[m.t]}</span><span class="tag inf" style="background:var(--soft);color:var(--ink)">${SHN[m.sh]}</span>${m.ref?'<span class="tag doc">Caso di riferimento</span>':''}`;
+ document.getElementById('dlgBody').innerHTML=m.d.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')+`<div><dt>Perché è qui sulla mappa</dt><dd>${m.why} <span class="tag inf">ipotesi</span></dd></div>`;
+ document.getElementById('dlgSrc').innerHTML=m.src.length?'Fonti: '+m.src.map(s=>`<a href="${SRC[s][1]}" target="_blank" rel="noopener">${SRC[s][0]}</a>`).join(', ')+'.':'Proposta del progetto, senza fonte esterna.';
+ dlg.showModal();dlg.querySelector('.dlg-in').scrollTop=0;
+}
+const plotEl=document.getElementById('mapPlot');
+plotEl.addEventListener('mouseover',e=>{const b=e.target.closest('.pt');if(b)showTip(b);});
+plotEl.addEventListener('mouseout',e=>{if(e.target.closest('.pt'))hideTip();});
+plotEl.addEventListener('focusin',e=>{const b=e.target.closest('.pt');if(b)showTip(b);});
+plotEl.addEventListener('focusout',hideTip);
+plotEl.addEventListener('click',e=>{const b=e.target.closest('.pt');if(b)openCase(b);});
+window.addEventListener('scroll',hideTip,{passive:true});
+document.getElementById('dlgX').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
+dlg.addEventListener('close',()=>{if(lastPt)lastPt.focus();});
+
+/* lezioni compatte */
 const CASES=[
  ['Labour 2020','people','77 gg','iscrizioni chiuse prima del voto','Esclusi chi ha sostenuto altri partiti negli ultimi 2 anni.','doc'],
  ['Labour 2015','usercheck','3.138','domande respinte a fine agosto','La verifica di massa è il collo di bottiglia.','sec'],
  ['Liberali canadesi 2025','laptop','41 gg','iscrizioni chiuse prima del voto','Verifica con app o ufficio postale. Serve un ripiego in presenza.','doc'],
  ['Democrats Abroad 2024','pin','3 su 4','voti arrivati da remoto','Iscrizione fino all\'ultimo giorno, dichiarazione firmata.','doc'],
  ['Regole DNC, art. 2.G','shield','+ carta','online solo come alternativa','Serve sempre una traccia cartacea del voto.','doc'],
- ['SPD 2019','key','25 gg','scelta del canale prima del voto','Link monouso e PIN, voto cifrato.','doc'],
+ ['SPD 2019','key','Link + PIN','monouso per ogni elettore','Canale scelto prima del voto.','doc'],
  ['PS Portogallo 2026','idcard','22 gg','iscrizioni chiuse prima del voto','Simpatizzanti registrati, documento al seggio.','doc'],
  ['Italia Bene Comune 2012','clip','2 €','quota minima, albo e cedolino','Il cedolino per giornata evita il doppio voto.','doc'],
- ['Roma e Milano 2016','flag','5 garanti','nominati dal comitato promotore','Albo a Milano chiuso 7 giorni prima. Solo seggi.','sec'],
+ ['Roma e Milano 2016','flag','5 garanti','nominati dal coordinamento organizzativo (Roma)','Albo a Milano chiuso 7 giorni prima. Solo seggi.','sec'],
  ['Unione 2005','file','10.000','firme per candidarsi','Il voto telematico era già previsto, e non fu usato.','doc'],
  ['Primaire populaire 2022','laptop','40%','verificati a pochi giorni dal voto','Una verifica pesante fa perdere elettori.','sec'],
  ['ALP Australia, cl. 42','usercheck','1 firma','per votare senza essere iscritti','Dichiarazione di sostegno e di non appartenenza ad altri partiti.','doc']
 ];
-const trk=document.getElementById('cases');
-trk.innerHTML=CASES.map((c,i)=>`<article class="lc" aria-label="Caso ${i+1} di ${CASES.length}: ${c[0]}"><div class="t"><span class="n">${ic(c[1])}${c[0]}</span>${tg(c[5])}</div><div class="big">${c[2]}</div><div class="u">${c[3]}</div><div class="m"><span class="lab">La lezione</span>${c[4]}</div><div class="no">${String(i+1).padStart(2,'0')} / ${CASES.length}</div></article>`).join('');
-const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function curIdx(){const x=trk.scrollLeft;let b=0,bd=1e9;[...trk.children].forEach((c,i)=>{const d=Math.abs(c.offsetLeft-x);if(d<bd){bd=d;b=i;}});return b;}
-function goCase(i){i=Math.max(0,Math.min(trk.children.length-1,i));trk.scrollTo({left:trk.children[i].offsetLeft,behavior:reduceMotion?'auto':'smooth'});}
-function updSlider(){const i=curIdx();document.getElementById('slCount').textContent=`${i+1} di ${CASES.length}`;document.getElementById('slPrev').disabled=i===0;const atEnd=trk.scrollLeft+trk.clientWidth>=trk.scrollWidth-4;document.getElementById('slNext').disabled=atEnd;}
-let slRaf;trk.addEventListener('scroll',()=>{cancelAnimationFrame(slRaf);slRaf=requestAnimationFrame(updSlider);});
-document.getElementById('slPrev').addEventListener('click',()=>goCase(curIdx()-1));
-document.getElementById('slNext').addEventListener('click',()=>goCase(curIdx()+1));
-window.addEventListener('resize',updSlider);updSlider();
-
-/* scenari */
-function flowHTML(k){
- const node=(i,t,kk)=>`<div class="vn ${kk?'k':''}">${ic(i)}<span>${t}</span></div>`,dn=`<span class="vd">${ic('arrow')}</span>`;
- if(k==='B'){
-  return `<div class="vflow"><div class="vpair"><div class="vcol">${node('building','Iscritti ai partiti')}${dn}${node('clip','Inseriti nell\'albo dai partiti')}</div><div class="vcol">${node('people','Indipendenti')}${dn}${node('clip','Iscrizione diretta all\'albo')}</div></div>${dn}${node('clip','Albo unico dei votanti')}${dn}${node('idcard','Verifica ID')}${dn}${node('ballot','Voto',true)}</div>`;
- }
- const mid=k==='A'?'Liste dei partiti':'Albo del comitato',first=k==='A'?['building','Iscritti ai partiti']:['people','Chiunque'];
- return `<div class="vflow">${node(first[0],first[1])}${dn}${node('clip',mid)}${dn}${node('idcard',k==='A'?'Conferma ID':'Verifica ID')}${dn}${node('ballot','Voto',true)}</div>`;
-}
-function renderCards(){
- document.getElementById('scCards').innerHTML=Object.entries(SC).map(([k,s])=>`
- <article class="sc ${state.sc===k?'on':''}" style="--sc:${s.css}" data-pick="${k}" role="button" tabindex="0" aria-pressed="${state.sc===k}" aria-label="Scenario ${k}: ${s.title}">
-  <div class="ttl"><span class="letter">${k}</span><h3>${s.title}</h3></div>
-  <p class="d">${s.desc}</p>
-  <div class="chips">${s.who.map(w=>`<span class="chip">${ic(w[0])}${w[1]}</span>`).join('')}</div>
-  ${flowHTML(k)}
-  <div class="chips">${s.dates.map(d=>`<span class="chip"><b>${d[0]}</b>${d[1]}</span>`).join('')}</div>
-  <div class="pickl">${state.sc===k?'Scenario attivo':'Clicca per vedere calendario e percorso'}</div>
- </article>`).join('');
-}
-const LIGHTS=[
- ['Tempi',[['ok','Ampi'],['mid','Stretti']]],
- ['Verifica',[['ok','Leggera'],['mid','Media']]],
- ['Apertura',[['bad','Chiusa'],['ok','Aperta']]],
- ['Liste dei partiti',[['bad','Servono'],['bad','Servono']]],
- ['Privacy',[['mid','Rischio medio'],['bad','Rischio alto']]]
-];
-const SYM={ok:'check',mid:'minus',bad:'x'};
-document.getElementById('lightsBody').innerHTML=LIGHTS.map(r=>`<tr><td class="r">${r[0]}</td>${r[1].map(c=>`<td><div class="lt ${c[0]}">${ic(SYM[c[0]])}${c[1]}</div></td>`).join('')}</tr>`).join('');
-
-/* cosa cambia */
-const WHAT={
- A:[['Chi vota','Solo gli iscritti ai partiti della coalizione, contati al 31 dicembre.'],
-    ['Se sei iscritto a un partito','Non devi iscriverti a nulla. Entro il 15 gennaio confermi che voti e scegli il canale.'],
-    ['Se non sei iscritto','Non puoi votare. Iscriversi a un partito dopo il 31 dicembre non cambia la situazione.'],
-    ['Cosa serve','Essere nell\'elenco del partito. SPID o CIE per il voto online, un documento al seggio.']],
- B:[['Chi vota','Gli iscritti ai partiti, contati al 31 dicembre, e gli indipendenti iscritti all\'albo.'],
-    ['Se sei iscritto a un partito','Sei già nell\'albo, senza fare nulla e senza quota. Quando si vota ti identifichi e scegli il canale.'],
-    ['Se non sei iscritto','Ti iscrivi direttamente all\'albo dal 7 dicembre al 10 gennaio, come indipendente.'],
-    ['Cosa serve','Per gli iscritti l\'elenco del partito. Per gli indipendenti Carta dei valori, 2 euro e verifica con SPID, CIE o documento.']]
-};
-const WICON=['people','building','usercheck','idcard'];
-function renderWhat(){
- document.getElementById('what').innerHTML=Object.entries(WHAT).map(([k,rows])=>`
- <article class="w ${state.sc===k?'on':''}" style="--sc:${SC[k].css}" data-pick="${k}" role="button" tabindex="0" aria-pressed="${state.sc===k}" aria-label="Scenario ${k}: ${SC[k].title}">
-  <h3><span>Scenario ${k}, ${SC[k].title.toLowerCase()}</span>${state.sc===k?'<span class="on-b">Attivo</span>':''}</h3>
-  <dl>${rows.map((r,i)=>`<div><dt>${ic(WICON[i])}${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl></article>`).join('');
-}
+document.getElementById('lessons').innerHTML=CASES.map(c=>`<article class="les"><div class="t"><span class="n">${ic(c[1])}${c[0]}</span>${tg(c[5])}</div><div class="big">${c[2]}</div><div class="u">${c[3]}</div><div class="m">${c[4]}</div></article>`).join('');
 
 /* calendario */
-const MILES={
- A:[['30 nov','Regole e garanti'],['31 dic','Conteggio degli iscritti'],['15 gen','Voto confermato dagli iscritti'],['22 gen','Voto online, poi seggi 30 e 31']],
- B:[['30 nov','Regole e garanti'],['7 dic','Apre l\'albo agli indipendenti'],['31 dic','Conteggio degli iscritti'],['10 gen','Chiude l\'albo'],['22 gen','Voto online, poi seggi 30 e 31']]
-};
-const ROWS={
- A:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Conteggio iscritti','building','2026-12-31','2026-12-31'],['Conferma del voto','usercheck','2027-01-01','2027-01-15']],
- B:[['Regole e piattaforma','file','2026-11-11','2027-01-15',true],['Albo indipendenti','clip','2026-12-07','2027-01-10'],['Conteggio iscritti','building','2026-12-31','2026-12-31'],['Verifica ID indipendenti','idcard','2027-01-10','2027-01-22']]
-};
+const COL='var(--b)';
+const MILES=[['30 nov','Regole approvate, parte lo sviluppo'],['7 dic','Apre l\'albo online'],['5 gen','Deposito candidature: 2.500 e 10.000 firme'],['15 gen','Piattaforma pronta, audit concluso'],['22 gen','Voto online, poi seggi 30 e 31'],['31 gen','Chiudono albo e voto']];
+const ROWS=[['Regole','file','2026-11-11','2026-11-30'],['Sviluppo piattaforma','laptop','2026-11-30','2027-01-15',true],['Iscrizione all\'albo','clip','2026-12-07','2027-01-31']];
 const ROWS_CAND=[['Raccolta firme','flag','2026-12-01','2027-01-05'],['Ammissione e ricorsi','scale','2027-01-05','2027-01-12']];
 const ROWS_END=[['Voto online','laptop','2027-01-22','2027-01-31','ink'],['Seggi','pin','2027-01-30','2027-01-31','ink'],['Ricorsi','scale','2027-01-31','2027-02-02','ink']];
 function renderCal(){
- const s=SC[state.sc];
- document.getElementById('miles').innerHTML=(()=>{const a=[...MILES[state.sc]];const k=a.findIndex(m=>['10 gen','15 gen','22 gen'].includes(m[0]));a.splice(k,0,['5 gen','Deposito candidature: 2.500 e 10.000 firme']);return a})().map(m=>`<div class="mile" style="--sc:${s.css}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
- const rows=[...ROWS[state.sc],...ROWS_CAND,...ROWS_END],ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
+ document.getElementById('miles').innerHTML=MILES.map(m=>`<div class="mile" style="--sc:${COL}"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('');
+ const rows=[...ROWS,...ROWS_CAND,...ROWS_END],ticks=['2026-11-11','2026-12-01','2027-01-01','2027-02-01'];
  let h=`<div class="g-axis">${ticks.map(t=>`<span style="left:${pct(t)}%">${fmt(t)}</span>`).join('')}</div>`;
  rows.forEach(r=>{
-  const l=pct(r[2]),w=pct(r[3])-pct(r[2])+1.3,col=r[4]==='ink'?'var(--ink)':s.css;
+  const l=pct(r[2]),w=pct(r[3])-pct(r[2])+1.3,col=r[4]==='ink'?'var(--ink)':COL;
   h+=`<div class="g-row"><div class="g-label">${ic(r[1])}<span>${r[0]}</span></div><div class="g-track"><div class="g-bit ${r[4]===true?'hatch':''}" style="--bc:${col};left:${l}%;width:${w}%"></div><div class="g-line" style="left:${pct('2027-01-31')}%"></div></div></div>`;
  });
  document.getElementById('gantt').innerHTML=h;
 }
-const BENCH=[['Labour 2020',77,'doc'],['Liberali canadesi 2025',41,'doc'],['SPD 2019',36,'doc'],['PS Portogallo 2026',22,'doc'],['Milano 2016',7,'sec'],['Italia Bene Comune 2012',0,'doc']];
+const BENCH=[['Labour 2020',77,'doc'],['Milano 2016',7,'sec'],['Roma 2016',0,'doc'],['Italia Bene Comune 2012',0,'doc']];
 function renderBench(){
  const rows=BENCH.map(b=>({n:b[0],v:b[1],t:b[2]}));
- rows.push({n:'Scenari A e B, conteggio iscritti',v:31,t:'inf',m:1,on:true});
- rows.push({n:'Scenario A, voto confermato',v:16,t:'inf',m:1,on:state.sc==='A'});
- rows.push({n:'Scenario B, chiusura albo indipendenti',v:21,t:'inf',m:1,on:state.sc==='B'});
+ rows.push({n:'Proposta, iscrizione fino al giorno del voto',v:0,t:'inf',m:1});
  rows.sort((a,b)=>b.v-a.v);
- document.getElementById('bench').innerHTML=rows.map(r=>`<div class="b-row"><div style="${r.m?'font-weight:700':''}">${r.n}</div><div class="b-line"><div class="b-bar ${r.m?'mine':''}" style="width:${Math.max(r.v/77*100,0.8)}%;${r.m?`--sc:${SC[state.sc].css};${r.on?'':'opacity:.4'}`:''}"></div><span class="b-val">${r.v} gg ${tg(r.t)}</span></div></div>`).join('');
+ document.getElementById('bench').innerHTML=rows.map(r=>`<div class="b-row"><div style="${r.m?'font-weight:700':''}">${r.n}</div><div class="b-line"><div class="b-bar ${r.m?'mine':''}" style="width:${Math.max(r.v/77*100,0.8)}%;${r.m?`--sc:${COL}`:''}"></div><span class="b-val">${r.v} gg ${tg(r.t)}</span></div></div>`).join('');
 }
 
 /* journey */
 function phases(){
- const {sc,p,ch}=state,ins=p==='iscritto',on=ch==='online',A=sc==='A',out=(A&&!ins);
+ const on=state.ch==='online';
  const P=[];
  P.push({i:'megaphone',t:'Informazione e requisiti',q:'Mi riguarda? Posso votare io?',
-  el:A?(ins?'Legge regole e date, e controlla di essere iscritto al 31 dicembre.':'Legge regole e date, e scopre di essere fuori dall\'elettorato.'):(ins?'Legge regole e date, e scopre di essere già nell\'albo come iscritto.':'Legge regole e date, controlla i requisiti e si prepara a iscriversi.'),
+  el:'Legge regole e date e capisce che può votare, iscritto a un partito o no, purché si riconosca nel centrosinistra.',
   who:'Comitato promotore e partiti',
-  sys:'Pubblica regolamento, Carta dei valori e calendario entro il 30 novembre. '+(A?'I partiti certificano l\'elenco degli iscritti al 31 dicembre.':'I partiti consegnano l\'elenco degli iscritti e il comitato apre l\'albo agli indipendenti.'),
+  sys:'Pubblica regolamento, testo dell\'autodichiarazione e calendario entro il 30 novembre, con un sito che mostra istruzioni e mappa dei seggi.',
   rEl:'',rSy:'SPID non prova la residenza. La CIE potrebbe restituirla da ANPR, da verificare.',prec:'Roma 2016: sito con mappa dei seggi',tag:'doc',
-  more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale). SPD 2019 ammette solo gli iscritti ed esclude gli ospiti (testo ufficiale). Milano 2016: residenti a Milano, 16 anni, stranieri residenti (stampa). Il controllo della residenza richiede una dichiarazione o un documento a parte (ipotesi mia).'});
- if(out){
-  const off=(i,t,q,who)=>({i,t,q,who,off:true,el:'Non applicabile: fuori dall\'elettorato.',sys:'Nessuna azione per questo elettore.',rEl:'Chi è escluso può contestare.',rSy:'',prec:'Lo scenario B evita il problema',tag:'inf',more:'Il blocco dell\'elettorato a data fissa è ammesso nei precedenti, anche con effetto retroattivo (Labour 2016, appello, testo ufficiale).'});
-  P.push(off('clip','Iscrizione e consenso','Quanto mi costa?','Partiti'),off('idcard','Identità e accesso','È semplice?','Piattaforma e seggi'),off('ballot','Voto','È segreto?','Piattaforma e seggi'),off('scale','Risultato e ricorsi','Posso fidarmi?','Coordinamento e garanti'));
-  return P;
- }
+  more:'I liberali canadesi pubblicano le procedure almeno 27 giorni prima del voto (regole 2.1.5, testo ufficiale). Roma 2016 prevede un sito dedicato con mappa dei seggi e istruzioni (art. 2.c.2, testo ufficiale). Milano 2016: residenti a Milano, 16 anni, stranieri residenti (stampa). Con la CIE la residenza arriva dall\'anagrafe, con SPID resta una dichiarazione (ipotesi mia).'});
  P.push({i:'clip',t:'Iscrizione e consenso',q:'Quanto mi costa? Mi fido di chi usa i miei dati?',
-  el:A?'Conferma che vota e il canale entro il 15 gennaio, e dà il consenso al passaggio dei dati al comitato.':(ins?'Non deve iscriversi e non paga quota. Dà il consenso al passaggio dei dati dal partito al comitato.':'Si iscrive all\'albo dal 7 dicembre al 10 gennaio, firma la Carta dei valori, dà il consenso e versa 2 euro.'),
-  who:'Partiti e coordinamento organizzativo',
-  sys:A?'Elimina i doppi iscritti e assegna un voto a testa. Informativa, valutazione d\'impatto, albo non pubblico.':'Fonde le liste dei partiti e le iscrizioni dirette in un albo unico. Informativa, valutazione d\'impatto, albo non pubblico.',
-  rEl:(A||ins)?'':'Una verifica pesante fa perdere elettori: in Francia solo il 40% era verificato a pochi giorni dal voto.',
-  rSy:(A||ins)?'Liste dei partiti di qualità ignota.':'Serve il consenso esplicito.',prec:'PD 2023: iscritti esenti, altri 2 €',tag:'sec',
-  more:'Liberali canadesi: registrazione gratuita, chiusa 41 giorni prima del voto (testo ufficiale). Milano 2016: albo entro il 7° giorno prima (stampa). Alla Primaire populaire 120.000 iscritti su 300.000 erano verificati al 10 gennaio (stampa). Roma 2016 art. 13: firma, almeno 2 euro e consenso all\'albo (testo ufficiale). Labour 2020 esclude chi ha sostenuto altri partiti negli ultimi 2 anni (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
+  el:'Dichiara di sostenere il centrosinistra, dà il consenso al trattamento dei dati e versa 2 euro. Online dal 7 dicembre, al seggio anche il giorno del voto.',
+  who:'Coordinamento organizzativo e tesoriere',
+  sys:'Assegna a ogni elettore un codice univoco e lo inserisce nel registro unico. Informativa, valutazione d\'impatto, albo non pubblico.',
+  rEl:'',rSy:'Serve il consenso esplicito.',prec:'Roma 2016: iscrizione al seggio, 2 €',tag:'doc',
+  more:'Roma 2016 art. 13: firma, almeno 2 euro e consenso all\'albo, anche al seggio il giorno stesso (testo ufficiale). Italia Bene Comune 2012: iscrizione all\'albo fino al giorno del voto (testo ufficiale). Democrats Abroad: l\'iscrizione è la registrazione, anche il giorno stesso (testo ufficiale). ALP cl. 42: dichiarazione di sostegno e di non appartenenza ad altri partiti (testo ufficiale). Il consenso esplicito al posto dell\'art. 9.2.d del GDPR è una mia ipotesi da validare con un legale.'});
  P.push({i:'idcard',t:'Identità e accesso',q:'È semplice o un ostacolo?',
-  el:on?'Entra con SPID o CIE e riceve link e PIN dal 22 gennaio.':'Mostra CIE, passaporto o patente al seggio, il 30 o il 31 gennaio.',
-  who:on?'Aggregatore SPID e piattaforma di voto':'Presidente di seggio',
-  sys:on?'Verifica l\'identità e segna l\'elettore sul canale online nel registro unico.':'Verifica documento ed elenco e spegne il canale online per quell\'elettore.',
-  rEl:on?'Senza SPID o CIE si resta fuori dall\'online.':'Carta cartacea valida solo fino al 31 gennaio.',rSy:'Doppio voto tra online e seggio.',
+  el:on?'Entra con CIE (o SPID) dal 22 gennaio. La CIE dà codice fiscale e residenza, da cui il sistema ricava sezione e seggio.':'Mostra CIE e tessera elettorale al seggio della propria sezione, il 30 o il 31 gennaio.',
+  who:on?'Aggregatore SPID e CIE e piattaforma di voto':'Presidente di seggio',
+  sys:on?'Verifica l\'identità, legge la residenza, la collega a sezione e seggio tramite il registro e controlla che il codice non risulti già usato.':'Verifica i documenti, trova il codice dell\'elettore nel registro e controlla che non abbia già votato, online o altrove.',
+  rEl:on?'Senza CIE o SPID si resta fuori dall\'online.':'Carta cartacea valida solo fino al 31 gennaio: va chiarito chi non ha la CIE.',
+  rSy:'Doppio voto tra online e seggio se il registro non è aggiornato in tempo reale.',
   prec:on?'Canada 2025: app con problemi':'Italia 2012: documento e certificato',tag:'doc',
-  more:(on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale). ':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati, quindi il regolamento deve fissare un elenco chiuso di documenti (ipotesi mia). ')+'SPD 2019: scelta del canale in registrazione, link monouso e PIN. Italia Bene Comune 2012: cedolino per ogni giornata, trattenuto al seggio (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero (ipotesi mia).'});
+  more:(on?'Liberali canadesi 2025: Identity+ o ufficio postale, con difficoltà dell\'app (testo ufficiale e stampa). ':'Italia Bene Comune 2012, art. 10.1: documento, tessera elettorale e certificato di elettore (testo ufficiale). Il seggio è quello della propria sezione elettorale (art. 3.6, testo ufficiale). La proroga della carta cartacea riguarda la pubblica amministrazione e non cita i privati (ipotesi mia). ')+'Democrats Abroad: dichiarazione firmata incrociata con il database interno (testo ufficiale). SPD 2019: link monouso e PIN (testo ufficiale). Nessun testo italiano letto prevede il voto online, quindi il registro unico va progettato da zero. Il registro tra residenza e seggio richiede l\'elenco delle sezioni e delle sedi (ipotesi mie).'});
  P.push({i:'ballot',t:'Voto',q:'Il mio voto è segreto e conta?',
   el:on?'Compila le schede, controlla, invia.':'Ritira le schede, vota in cabina, firma.',
   who:on?'Piattaforma di voto':'Seggio',
-  sys:on?'Cifra il voto, separa identità e voto, rilascia una ricevuta.':'Urna sigillata e verbale firmato dal seggio.',
-  rEl:'',rSy:'Più schede a testa: conteggio su carta più lungo.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
+  sys:on?'Cifra il voto, separa identità e voto, segna il codice come «ha votato» nel registro unico e rilascia una ricevuta.':'Urna sigillata e verbale firmato. Il seggio segna il codice come «ha votato» nel registro unico.',
+  rEl:'',rSy:'Più schede a testa allungano il tempo al seggio.',prec:'DNC 2.G: traccia cartacea',tag:'doc',
   more:'Regola DNC 2.G: l\'elettore verifica e corregge prima dell\'invio e il sistema produce una traccia cartacea (testo ufficiale). Rousseau 2019: sanzione del Garante di 50.000 euro per mancata separazione tra identità e voto (testo ufficiale).'});
  P.push({i:'scale',t:'Risultato e ricorsi',q:'Posso fidarmi del risultato?',
   el:'Riceve la conferma di voto e segue lo scrutinio.',
@@ -914,16 +1125,16 @@ function phases(){
  return P;
 }
 function renderJourney(){
- const col=SC[state.sc].css,P=phases();
+ const col=COL,P=phases();
  const strip=document.getElementById('strip');strip.style.setProperty('--sc',col);
- strip.innerHTML=P.map((s,i)=>`<a class="st ${s.off?'off':''}" href="#fase-${i+1}"><span class="c">${ic(s.i)}<span class="nn">${i+1}</span></span>${s.t}</a>`).join('');
- const j=document.getElementById('journey');j.style.setProperty('--sc',col);
+ strip.innerHTML=P.map((s,i)=>`<a class="st" href="#fase-${i+1}"><span class="c">${ic(s.i)}<span class="nn">${i+1}</span></span>${s.t}</a>`).join('');
+ const j=document.getElementById('jrn');j.style.setProperty('--sc',col);
  const rk=t=>t?`<span class="risk">${ic('alert')}${t}</span>`:'';
  j.innerHTML=`<div class="duo"><div class="lh el">${ic('people')}<div><b>Voter journey</b><span>Cosa fa l'elettore</span></div></div><div class="lh sy">${ic('building')}<div><b>System journey</b><span>Cosa fanno comitato, partiti, piattaforma e seggi</span></div></div>`+
- P.map((s,i)=>{const last=i===P.length-1?' last':'',off=s.off?' off':'';return `<article class="cell el${off}${last}" id="fase-${i+1}"><span class="num">${i+1}</span>
+ P.map((s,i)=>{const last=i===P.length-1?' last':'';return `<article class="cell el${last}" id="fase-${i+1}"><span class="num">${i+1}</span>
   <div class="ptag">Elettore, fase ${i+1} di ${P.length}</div><h3 class="ptitle">${s.t}</h3>
   <div class="q">${s.q}</div><p>${s.el}</p>${rk(s.rEl)}</article>
- <article class="cell sy${off}${last}"><span class="num">${i+1}</span>
+ <article class="cell sy${last}"><span class="num">${i+1}</span>
   <div class="ptag">Sistema, fase ${i+1} di ${P.length}</div><h3 class="ptitle">${s.t}</h3>
   <div class="who-chip">Chi: ${s.who}</div><p>${s.sys}</p>${rk(s.rSy)}
   <span class="prec">${tg(s.tag)} ${s.prec}</span>
@@ -931,29 +1142,11 @@ function renderJourney(){
 }
 
 /* controlli */
-let tt;function toast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('show'),3000);}
-function renderSegs(){
- document.querySelectorAll('[data-scseg]').forEach(el=>{el.innerHTML=Object.entries(SC).map(([k,s])=>`<button type="button" data-k="${k}" aria-pressed="${state.sc===k}"><span class="l">${k}</span>${s.short}</button>`).join('');});
-}
 function setPressed(id,key){document.querySelectorAll(`#${id} button`).forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===key));}
-function refresh(){
- setPressed('pSeg',state.p);setPressed('cSeg',state.ch);renderSegs();
- document.querySelectorAll('.sc-name').forEach(e=>e.textContent=SC[state.sc].name);
- renderCards();renderWhat();renderCal();renderBench();renderJourney();
-}
-function pickScenario(k){
- const a=document.activeElement,par=a&&a.closest?a.closest('#scCards,#what'):null;
- state.sc=k;refresh();
- if(par){const el=document.getElementById(par.id).querySelector(`[data-pick="${k}"]`);if(el)el.focus();}
- toast(`Scenario ${SC[k].name}: aggiornati calendario, percorso e confronto`);
-}
-document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-pick]')){e.preventDefault();pickScenario(e.target.dataset.pick);}});
-document.addEventListener('click',e=>{
- const s=e.target.closest('[data-scseg] button');if(s){pickScenario(s.dataset.k);return;}
- const c=e.target.closest('[data-pick]');if(c){pickScenario(c.dataset.pick);}
-});
-document.getElementById('pSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.p=b.dataset.k;refresh();}});
-document.getElementById('cSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.ch=b.dataset.k;refresh();}});refresh();
+function refresh(){setPressed('cSeg',state.ch);renderCal();renderBench();renderJourney();}
+document.getElementById('cSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){state.ch=b.dataset.k;refresh();}});
+refresh();
+
 </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Primarie del centrosinistra: scenari di fattibilità (Milano 2027 e candidato di coalizione)
 
-> Documento di lavoro dell'11 novembre 2026. Le sezioni 7 e seguenti, in fondo, riportano le decisioni prese dopo la stesura e prevalgono sulle parti precedenti: gli scenari sono ora due (A e B) e non tre, il ballottaggio è escluso e le due primarie si tengono lo stesso giorno. Non è un parere legale. I punti marcati INF sono inferenze da validare con un legale.
+> Documento di lavoro, aggiornato il 16 novembre 2026. Le sezioni 7 e seguenti, in fondo, riportano le decisioni prese dopo la stesura e prevalgono sulle parti precedenti. La sezione 13 recepisce la revisione del 16 novembre: gli scenari A e B sono superati, la platea è aperta a tutti con un codice univoco per votante.
 
 Data di redazione: 11 novembre 2026. Bozza di lavoro, non parere legale.
 
@@ -194,3 +194,18 @@ Le 8 tappe sono accorpate in 5 fasi: informazione e requisiti, iscrizione e cons
 5. Quota di 2 euro versata al tesoriere: deciso.
 6. Punto sul PDF di Milano 2016: eliminato, non interessa.
 7. Scala: sezione dedicata nella pagina (partecipazione dei precedenti, verifica, SPID, seggi, piattaforma). Calcoli: 406 voti per seggio a Milano 2016, circa 7.654 seggi equivalenti per 3.107.568 voti.
+
+## 13. Revisione del 16 novembre 2026 (dalla registrazione del 13 novembre)
+
+Destinatario: il partito promotore del centrosinistra. Documenti: il one pager (`primarie-centrosinistra.html`, con il precedente salvato in `backup/`) e il documento illustrativo di 2 pagine. Spec: `docs/kg/specs/revisione-primarie-benchmark.md`.
+
+- **Cornice**: comitato promotore, firme (2.500 per il sindaco, 10.000 per il candidato di coalizione), data (voto che chiude il 31 gennaio 2027) e quota di 2 euro diventano ipotesi di lavoro, modificabili dai promotori. Restano scelte di impostazione: due primarie lo stesso giorno, niente ballottaggio, documenti (CIE online, CIE e tessera elettorale al seggio), aggregatore SPID e CIE.
+- **Platea**: la più aperta possibile. Basta l'autodichiarazione di sostegno, l'iscrizione al partito è irrilevante. Iscrizione online dal 7 dicembre e al seggio fino al giorno del voto (precedenti: Italia Bene Comune 2012 e Roma 2016 [DOC]). Gli scenari A e B (elettorato ristretto agli iscritti, albo con iscrizione chiusa il 10 gennaio) sono superati.
+- **Doppio voto**: codice univoco per ogni votante in un registro unico, aggiornato in tempo reale online e ai seggi. Il registro contiene solo lo stato "ha votato" [INF]. Nessun caso studiato arriva a questo livello (classificazione mia).
+- **Dove si vota**: online la CIE dà codice fiscale e residenza, da cui il registro ricava sezione e seggio. Al seggio CIE e tessera elettorale, nel seggio della propria sezione (Italia Bene Comune 2012, art. 3.6 [DOC]).
+- **Aggregatore**: da verificare se esiste un fornitore in grado di fare i controlli, quali dati tratta e quanto costa. Nessuna tariffa verificata.
+- **Calendario**: Regole fino al 30 novembre, sviluppo della piattaforma dal 30 novembre al 15 gennaio (46 giorni, calcolo Python), albo online dal 7 dicembre al 31 gennaio. Eliminati il conteggio degli iscritti al 31 dicembre e la chiusura dell'albo del 10 gennaio.
+- **Benchmark**: mappa a due assi con 14 punti. Asse X, apertura dell'elettorato (solo iscritti, iscritti e sostenitori con filtri, chiunque con iscrizione chiusa prima del voto, chiunque anche il giorno del voto). Asse Y, controllo del voto unico (elenco e documento, segno sul canale, identità forte con credenziale, registro unico su tutti i canali). Classificazioni mie sui testi letti. Esclusi per fonti solo secondarie o assenti: Milano 2011, PD 2023, NDP 2026, Iowa 2024, regole DNC.
+- **Voto**: la descrizione del metodo di conteggio esce dalla pagina. Restano le due forme di scheda.
+- **Discrepanza trovata**: per SPD 2019 la tabella della sezione 1 indica 36 giorni (registrazione online per scegliere il canale), mentre la pagina dell'11 novembre riportava 25 giorni. La nuova pagina usa 36 nel dettaglio e non ripete il numero nella lezione compatta.
+- **Domande aperte nuove**: chi non ha la CIE o la tessera elettorale, residenza con SPID, collegamento in tempo reale dei seggi al registro, costruzione del registro tra residenza e seggio, cosa succede a un'autodichiarazione falsa.
