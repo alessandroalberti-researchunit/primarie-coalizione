@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Cosa sono gli aggregatori SPID e CIE, come si impiegano, costi per scaglioni di votanti, tempi e piano B senza aggregatori. Bozza di lavoro.">
+<title>Prospetto aggregatori</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Libre+Franklin:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+:root{--ink:#000C2E;--muted:#4A5568;--line:#DADFE8;--soft:#F2F6FA;--red:#F53C27;--red-d:#C8200F;--blue:#0B3C8A;
+--doc-bg:#E1F5EA;--doc-fg:#0B5A34;--sec-bg:#FFF1CC;--sec-fg:#6B4400;--inf-bg:#EDE7FB;--inf-fg:#4A2A9B;
+--fh:'Barlow Condensed','Arial Narrow',Arial,sans-serif;--fb:'Source Serif 4',Georgia,serif;--fu:'Libre Franklin',Arial,sans-serif}
+@page{size:A4;margin:14mm 14mm 16mm}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:400 10.5pt/1.5 var(--fb)}
+.wrap{max-width:182mm;margin:0 auto}
+h1,h2,h3{font-family:var(--fh);text-transform:uppercase;margin:0;line-height:1;letter-spacing:.005em}
+h1{font-size:40pt;font-weight:800} h2{font-size:21pt;font-weight:800;margin-top:20px;border-top:3px solid var(--red);padding-top:10px}
+h3{font-size:13pt;font-weight:700;margin:14px 0 6px}
+p{margin:6px 0;text-align:justify;hyphens:auto}
+ul{margin:6px 0;padding-left:18px} li{margin:3px 0;text-align:justify;hyphens:auto}
+.kick{font:700 8pt/1 var(--fu);letter-spacing:.14em;text-transform:uppercase;color:var(--red-d)}
+.sub{font-size:12pt;color:var(--muted);margin-top:8px}
+.cap{font:400 8.5pt/1.45 var(--fu);color:var(--muted)}
+.tag{display:inline-block;font:600 6.5pt/1 var(--fu);letter-spacing:.07em;text-transform:uppercase;padding:3px 5px;border-radius:2px;white-space:nowrap;vertical-align:middle}
+.tag.doc{background:var(--doc-bg);color:var(--doc-fg)} .tag.sec{background:var(--sec-bg);color:var(--sec-fg)} .tag.inf{background:var(--inf-bg);color:var(--inf-fg)}
+table{border-collapse:collapse;width:100%;font:400 9pt/1.35 var(--fu);margin:8px 0}
+th{background:var(--ink);color:#fff;text-align:left;padding:6px 8px;font-weight:600}
+td{border-bottom:1px solid var(--line);padding:5px 8px;vertical-align:top}
+td.n{text-align:right;font-variant-numeric:tabular-nums} td.big{font:800 15pt/1 var(--fh);vertical-align:middle}
+tr{break-inside:avoid} h2,h3{break-after:avoid}
+.flow{display:grid;gap:6px;margin:8px 0;counter-reset:s}
+.flow div{counter-increment:s;border:1px solid var(--line);border-left:4px solid var(--red);padding:6px 10px;font:400 9.5pt/1.4 var(--fu);break-inside:avoid}
+.flow div::before{content:counter(s) ". ";font-weight:700;color:var(--red-d)}
+.sc3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.sc{border:2px solid var(--red);padding:8px 10px;font:400 9pt/1.4 var(--fu);break-inside:avoid}
+.sc .n1{font:800 26pt/1 var(--fh);color:var(--red);text-transform:uppercase} .sc .t{font-weight:600;margin-bottom:4px}
+.sc .c{margin:3px 0} .sc .s{color:var(--muted);font-size:8pt;margin-top:5px}
+.box{background:var(--soft);padding:8px 12px;font:400 9.5pt/1.45 var(--fu);margin:8px 0;break-inside:avoid}
+.pb{break-before:page}
+body{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+table{display:block;overflow-x:auto}
+@media(max-width:640px){.sc3{grid-template-columns:1fr}}
+@media screen{.wrap{padding-block:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<span class="kick">Primarie del centrosinistra · Prospetto del 19 novembre 2026</span>
+<h1>Aggregatori SPID e CIE</h1>
+<p class="sub">Cosa sono, a cosa servono, come li impiegheremmo, quanto costano e il piano B senza aggregatori. Voto che chiude il 31 gennaio 2027.</p>
+<p class="cap">Fonti etichettate: <span class="tag doc">ufficiale</span> testo ufficiale letto, <span class="tag sec">stampa</span> stampa, <span class="tag sec">fonte commerciale</span>, <span class="tag inf">ipotesi</span> inferenza mia da validare. Calcoli eseguiti con uno script Python. Non è un parere legale.</p>
+
+<h2>Cosa sono e a cosa servono</h2>
+<p>Un aggregatore è un soggetto che rende disponibile l'infrastruttura per far accedere ai servizi online con SPID o con la CIE i soggetti che aderiscono tramite lui, detti aggregati <span class="tag doc">ufficiale</span>. Per SPID l'aggregatore svolge, come fornitore di servizi, la sola funzione di autenticazione per i propri aggregati (schema di convenzione, art. 1) <span class="tag doc">ufficiale</span>.</p>
+<ul>
+<li>Al comitato serve perché evita di sviluppare e certificare da solo l'integrazione con i gestori d'identità (protocolli SAML2 e OpenID Connect). <span class="tag sec">fonte commerciale</span></li>
+<li>Per la CIE l'aggregatore verifica i requisiti di onorabilità degli aggregati privati prima di aggregarli e li ripete almeno ogni quattro anni. Il rappresentante legale e chi amministra o controlla il soggetto privato non devono avere condanne definitive per reati commessi con sistemi informatici. <span class="tag doc">ufficiale</span></li>
+<li>Tutti gli aderenti alla federazione CIE si impegnano alla minimizzazione dei dati, cioè a chiedere solo il set minimo necessario. <span class="tag doc">ufficiale</span></li>
+<li>Il gestore o l'aggregatore conserva per ventiquattro mesi le informazioni per imputare le operazioni alle identità (schema di convenzione, art. 2) <span class="tag doc">ufficiale</span>. Webloom parla anche di dati conservati per almeno 5 anni, da verificare e da conciliare con la cancellazione dei dati dopo i ricorsi. <span class="tag sec">fonte commerciale</span></li>
+</ul>
+
+<h2>Come li impiegheremmo</h2>
+<p class="cap">Flusso previsto nel progetto, tutto da confermare con l'aggregatore <span class="tag inf">ipotesi</span></p>
+<div class="flow">
+<div>Dal 22 gennaio l'elettore sceglie CIE o SPID sulla piattaforma di voto.</div>
+<div>L'aggregatore autentica l'elettore presso il gestore e restituisce alla piattaforma un identificativo cifrato e la residenza. Il codice fiscale resta all'aggregatore. Con la CIE la residenza dovrebbe arrivare da ANPR, con SPID non è un attributo anagrafico.</div>
+<div>La piattaforma collega la residenza a sezione e seggio e controlla nel registro unico che l'identificativo non abbia già votato.</div>
+<div>Dichiarazione di sostegno e voto avvengono nello stesso passaggio. Il registro conserva solo lo stato «ha votato», mai il voto.</div>
+<div>Il 30 e 31 gennaio ai seggi si vota con CIE e tessera elettorale, sullo stesso registro. L'aggregatore serve solo online.</div>
+</div>
+
+<h2 class="pb">Quanto costa</h2>
+<h3>Le tariffe AgID</h3>
+<p>Sono regolate dall'Allegato 4 AgID del 2019, in euro e IVA esclusa. Si paga per utente unico e per anno solare, una sola volta per fornitore a prescindere dal numero di accessi <span class="tag doc">ufficiale</span>.</p>
+<table><tr><th></th><th>Primi 1.000 utenti unici per gestore</th><th>Oltre 1.000</th></tr>
+<tr><td><b>Autenticazione</b> (solo dati anagrafici), livello 1 o 2</td><td class="n">0 €</td><td class="n">0,4 €</td></tr>
+<tr><td><b>Registrazione</b> (con attributi extra), livello 1 o 2</td><td class="n">3,5 €</td><td class="n">3,5 €</td></tr>
+<tr><td><b>Autenticazione e registrazione</b>, livello 3</td><td class="n">0 € (solo autenticazione)</td><td class="n">7 €</td></tr></table>
+<p>Con un aggregatore l'utente unico si conta per ciascun soggetto aggregato (schema di convenzione AgID, art. 3) <span class="tag doc">ufficiale</span>. La fattura arriva entro il 10 gennaio dell'anno successivo al periodo di fatturazione, quindi a voto concluso <span class="tag doc">ufficiale</span>. Le cifre sono del 2019. Lo schema di convenzione letto è un fac-simile non utilizzabile per la sottoscrizione e cita una determinazione di modifica della 166/2019 con il numero in bianco, quindi la vigenza attuale è da confermare con AgID.</p>
+
+<h3>Tre scaglioni di votanti</h3>
+<div class="sc3"><div class="sc"><div class="n1">2 milioni</div><div class="t">di votanti</div>
+    <div class="c">Solo anagrafica: da <b>80.000 €</b> a <b>400.000 €</b></div>
+    <div class="c">Con attributi extra: da <b>700.000 €</b> a <b>3.500.000 €</b></div>
+    <div class="s">Quota online dal 10% al 50%. Rispetto ai precedenti: 0,64 volte il 2012, 0,47 volte il 2005.</div></div><div class="sc"><div class="n1">5 milioni</div><div class="t">di votanti</div>
+    <div class="c">Solo anagrafica: da <b>200.000 €</b> a <b>1.000.000 €</b></div>
+    <div class="c">Con attributi extra: da <b>1.750.000 €</b> a <b>8.750.000 €</b></div>
+    <div class="s">Quota online dal 10% al 50%. Rispetto ai precedenti: 1,61 volte il 2012, 1,17 volte il 2005.</div></div><div class="sc"><div class="n1">10 milioni</div><div class="t">di votanti</div>
+    <div class="c">Solo anagrafica: da <b>400.000 €</b> a <b>2.000.000 €</b></div>
+    <div class="c">Con attributi extra: da <b>3.500.000 €</b> a <b>17.500.000 €</b></div>
+    <div class="s">Quota online dal 10% al 50%. Rispetto ai precedenti: 3,22 volte il 2012, 2,33 volte il 2005.</div></div></div>
+<h3>Come sono costruite le stime</h3>
+<ul>
+<li><b>Volumi.</b> I tre scaglioni sono ipotesi di lavoro. Per scala, i votanti dei precedenti italiani sono 4.290.388 (Unione 2005), 3.107.568 (Italia Bene Comune 2012) e 60.900 (Milano 2016) <span class="tag sec">stampa</span>. Due milioni sono sotto i due grandi precedenti, cinque milioni li superano, dieci milioni sono 2,33 volte il massimo storico (calcolato).</li>
+<li><b>Quota di voto online.</b> Nessuna delle tre primarie italiane aveva il voto online, quindi non esiste un dato italiano. La quota è un parametro: 10%, 25%, 50%, e 100% come limite teorico. <span class="tag inf">ipotesi</span></li>
+<li><b>Utenti unici.</b> Sono i votanti totali moltiplicati per la quota online. Si assume che tutti usino SPID con credenziali di livello 1 o 2 e che la franchigia non si applichi. Chi accede con il livello 3 costa 7 € e chi usa la CIE esce dall'Allegato 4, quindi le colonne non sono un tetto assoluto. La franchigia vale al massimo 400 € per gestore (calcolato). La CIE non rientra nell'Allegato 4 e nei capitoli del manuale operativo CIE letti (condizioni e onboarding) non compaiono costi di adesione.</li>
+<li><b>Due colonne.</b> «Solo anagrafica» a 0,4 € per utente. «Con attributi extra» a 3,5 € per utente, se chiedere la residenza tramite SPID contasse come attributo extra. La residenza non è tra i dati anagrafici elencati dall'Allegato 4. <span class="tag inf">ipotesi</span></li>
+<li><b>Escluso.</b> Il margine dell'aggregatore, che non è pubblicato e si ottiene solo con preventivo scritto. Esclusi anche sviluppo della piattaforma, audit, assistenza, seggi, costi di incasso della quota e l'IVA, da aggiungere alle cifre. Sono escluse anche le autenticazioni fuori dal voto (per esempio le firme dei candidati), che aggiungerebbero utenti unici, e quelle di fine 2026, che ricadrebbero nel periodo di fatturazione precedente al 2027 <span class="tag inf">ipotesi</span>.</li>
+</ul>
+<div style="break-inside:avoid"><table><tr><th>Votanti</th><th>Quota online</th><th>Utenti unici online</th><th>Solo anagrafica (0,4 €)</th><th>Con attributi extra (3,5 €)</th></tr><tr><td rowspan="4" class="big">2.000.000</td><td>10%</td><td class="n">200.000</td><td class="n">80.000 €</td><td class="n">700.000 €</td></tr><tr><td>25%</td><td class="n">500.000</td><td class="n">200.000 €</td><td class="n">1.750.000 €</td></tr><tr><td>50%</td><td class="n">1.000.000</td><td class="n">400.000 €</td><td class="n">3.500.000 €</td></tr><tr><td>100% (limite teorico)</td><td class="n">2.000.000</td><td class="n">800.000 €</td><td class="n">7.000.000 €</td></tr><tr><td rowspan="4" class="big">5.000.000</td><td>10%</td><td class="n">500.000</td><td class="n">200.000 €</td><td class="n">1.750.000 €</td></tr><tr><td>25%</td><td class="n">1.250.000</td><td class="n">500.000 €</td><td class="n">4.375.000 €</td></tr><tr><td>50%</td><td class="n">2.500.000</td><td class="n">1.000.000 €</td><td class="n">8.750.000 €</td></tr><tr><td>100% (limite teorico)</td><td class="n">5.000.000</td><td class="n">2.000.000 €</td><td class="n">17.500.000 €</td></tr><tr><td rowspan="4" class="big">10.000.000</td><td>10%</td><td class="n">1.000.000</td><td class="n">400.000 €</td><td class="n">3.500.000 €</td></tr><tr><td>25%</td><td class="n">2.500.000</td><td class="n">1.000.000 €</td><td class="n">8.750.000 €</td></tr><tr><td>50%</td><td class="n">5.000.000</td><td class="n">2.000.000 €</td><td class="n">17.500.000 €</td></tr><tr><td>100% (limite teorico)</td><td class="n">10.000.000</td><td class="n">4.000.000 €</td><td class="n">35.000.000 €</td></tr></table></div>
+<p class="cap">Come riferimento, la quota di 2 euro decisa per i votanti darebbe un gettito teorico di 4.000.000 €, 10.000.000 € e 20.000.000 € se la pagassero tutti. A quota online del 50% il costo AgID solo anagrafica pesa il 10% di quel gettito, quello con attributi extra l'87,5% (calcolato).</p>
+
+<h2>Tempi</h2>
+<table><tr><th>Data</th><th>Passaggio</th></tr>
+<tr><td>15 dicembre (26 giorni da oggi)</td><td>Regolamento e informativa approvati. Fino a qui si sceglie l'aggregatore o il piano B <span class="tag inf">ipotesi</span></td></tr>
+<tr><td>5 gennaio</td><td>Candidature</td></tr>
+<tr><td>15 gennaio (57 giorni da oggi)</td><td>Piattaforma pronta, audit concluso, aggregatore attivo</td></tr>
+<tr><td>22 gennaio (64 giorni da oggi)</td><td>Apre il voto online</td></tr>
+<tr><td>30 e 31 gennaio</td><td>Seggi, il voto chiude domenica 31</td></tr>
+<tr><td>Entro il 10 gennaio 2028</td><td>Fatture dei gestori per le autenticazioni del 2027 <span class="tag doc">ufficiale</span></td></tr></table>
+<p>Per la CIE l'adesione richiede una richiesta sul portale della federazione del Ministero dell'Interno, l'autorizzazione, l'inserimento dei dati tecnici e i test in ambiente di prova e di produzione <span class="tag doc">ufficiale</span>. Nelle fonti lette non sono indicati i tempi di queste fasi né quelli di attivazione di un aggregatore, quindi vanno chiesti nel preventivo.</p>
+
+<h2 class="pb">Piano B: senza aggregatori</h2>
+<h3>B1. Adesione diretta come fornitore di servizi</h3>
+<ul>
+<li><b>SPID.</b> Il fornitore privato aderisce con una convenzione con AgID e comunica ad AgID i servizi e gli attributi richiesti (schema di convenzione, art. 2). <span class="tag doc">ufficiale</span></li>
+<li><b>CIE.</b> Un soggetto privato può aderire come fornitore di servizi con richiesta sul portale del Ministero, dichiarazioni sostitutive di onorabilità e test. <span class="tag doc">ufficiale</span></li>
+<li><b>Costo per utente.</b> Le tariffe dell'Allegato 4 si pagano direttamente ai gestori. Le cifre della tabella restano valide, senza il margine dell'aggregatore. Che l'Allegato si applichi così al comitato è un'inferenza. <span class="tag inf">ipotesi</span></li>
+<li><b>Costo da sostenere in più.</b> Sviluppo, certificazione e manutenzione dell'integrazione a carico nostro. Nessuna fonte ne dà l'importo, quindi non lo quantifico.</li>
+<li><b>Da verificare con un legale.</b> Se un comitato promotore possa firmare le convenzioni e aderire alla federazione CIE. <span class="tag inf">ipotesi</span></li>
+</ul>
+<h3>B2. Solo seggi, senza voto online</h3>
+<ul>
+<li>È il modello dei tre grandi precedenti: Italia Bene Comune 2012, Roma 2016 e Milano 2016 si votavano solo ai seggi, con documento e tessera elettorale. <span class="tag sec">stampa</span> Nessuna dipendenza da SPID, CIE o aggregatori.</li>
+<li>Il peso passa sui seggi. A Milano 2016 si ebbero 150 seggi per 60.900 votanti, cioè 406 voti per seggio (calcolato) <span class="tag sec">stampa</span>. Con lo stesso rapporto servirebbero i seggi della tabella, un'estrapolazione mia. <span class="tag inf">ipotesi</span></li>
+<li>Il registro unico del voto va aggiornato tra seggi. Nel 2012 si usava un cedolino per ogni giornata di voto, trattenuto al seggio contro il doppio voto (art. 10.2 e 10.3). <span class="tag doc">ufficiale</span></li>
+</ul>
+<table><tr><th>Votanti</th><th>Seggi a 406 voti per seggio</th><th>Gettito teorico della quota di 2 €</th></tr><tr><td class="big">2.000.000</td><td class="n">4.926</td><td class="n">4.000.000 €</td></tr><tr><td class="big">5.000.000</td><td class="n">12.315</td><td class="n">10.000.000 €</td></tr><tr><td class="big">10.000.000</td><td class="n">24.631</td><td class="n">20.000.000 €</td></tr></table>
+<p class="cap">Il costo di un seggio non è disponibile nelle fonti, quindi non è stimato.</p>
+
+<h3>Confronto</h3>
+<table><tr><th></th><th>Con aggregatore</th><th>B1 adesione diretta</th><th>B2 solo seggi</th></tr>
+<tr><td>Costo per utente online</td><td>Tariffa AgID più margine (da preventivo)</td><td>Tariffa AgID</td><td>Nessuno</td></tr>
+<tr><td>Sviluppo dell'integrazione</td><td>Dell'aggregatore</td><td>Nostro, non quantificato</td><td>Nessuno</td></tr>
+<tr><td>Tempi</td><td>Da chiedere, scadenza 15 gennaio</td><td>Non indicati nelle fonti</td><td>Nessuna attivazione</td></tr>
+<tr><td>Canale online</td><td>Sì</td><td>Sì</td><td>No</td></tr>
+<tr><td>Carico sui seggi</td><td>Ridotto dalla quota online</td><td>Ridotto dalla quota online</td><td>Tutto sui seggi</td></tr></table>
+<p>B2 è anche la rete di sicurezza degli altri due: se l'attivazione online non fosse pronta il 15 gennaio, i seggi del 30 e 31 gennaio restano in piedi <span class="tag inf">ipotesi</span>.</p>
+
+<h2>Cosa resta da chiedere e verificare</h2>
+<ul>
+<li>Preventivo scritto a più aggregatori: margine, tempi di attivazione, attributi restituiti per CIE e per SPID, identificativo cifrato, chi custodisce la chiave.</li>
+<li>Se l'Allegato 4 del 2019 è ancora in vigore e se la residenza via SPID conta come attributo extra.</li>
+<li>Quanta parte dei votanti online userebbe la CIE e quanta SPID, e se la CIE ha costi per il fornitore.</li>
+<li>Validazione legale e del responsabile della protezione dei dati, compresa la capacità del comitato di aderire direttamente.</li>
+</ul>
+<p class="cap">Fonti: Allegato 4 AgID, corrispettivi del servizio di autenticazione SPID (2019). Schema di convenzione AgID per fornitori privati e aggregatori. Manuale operativo della federazione CIE, Ministero dell'Interno (capitoli condizioni e onboarding). Pagine di Webloom. Votanti e seggi dei precedenti: stampa, come riportato in scenari-primarie.md.</p>
+</div>
+</body>
+</html>
